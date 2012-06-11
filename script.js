@@ -73,10 +73,10 @@ function updateClocks() {
 	var copenhagenHour = positiveTime(currentHours-(copenhagenOffset-localOffset));
 	var hongkongHour = positiveTime(currentHours-(hongkongOffset-localOffset));
 	var melbourneHour = positiveTime(currentHours-(melbourneOffset-localOffset));
-	stime.innerHTML = stamfordHour + timeString;
-	ctime.innerHTML = copenhagenHour + timeString;
-	htime.innerHTML = hongkongHour + timeString;
-	mtime.innerHTML = melbourneHour + timeString;
+	stime.innerHTML = padTime(stamfordHour) + timeString;
+	ctime.innerHTML = padTime(copenhagenHour) + timeString;
+	htime.innerHTML = padTime(hongkongHour) + timeString;
+	mtime.innerHTML = padTime(melbourneHour) + timeString;
 i
 
 }
