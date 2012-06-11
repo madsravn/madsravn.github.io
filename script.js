@@ -52,6 +52,9 @@ function positiveTime(time) {
 	while(tempTime < 0) {
 		tempTime+=24;
 	}
+	while(tempTime > 23) {
+		tempTime-=24;
+	}
 	return tempTime;
 }
 
