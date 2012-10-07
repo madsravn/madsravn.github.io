@@ -53,7 +53,8 @@ a {
         color: #227ce8; }
     .sidebar .sections ul {
       margin: 0;
-      padding: 0; }
+      padding: 0;
+      left-margin: 5px; }
     .sidebar .sections li {
       list-style: none;
       margin-bottom: 7px; }
