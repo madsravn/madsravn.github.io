@@ -1,0 +1,14 @@
+body {margin: 0px; padding: 0px; font:11px Verdana,Arial; background:#eee}
+#picture { width: 676px; height: 368px; margin-left: 622px; margin-top: 100px; padding: 0px; background-image:url('picture.png');    }
+
+.hidden { display: none; width: 125px; height: 35px; padding: 0px; background-color: white; border-style: solid; }
+
+#stamford { position: absolute; top: 240px; left: 745px; background-color: white; }
+
+#copenhagen { position: absolute; top: 190px; left: 870px; background-color: white; }
+
+#hongkong { position: absolute; top: 255px; left: 1080px; background-color:white;}
+
+#melbourne { position: absolute; left: 1135px; top: 355px; background-color: white; }
+
+
