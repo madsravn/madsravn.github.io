@@ -4,7 +4,7 @@
  <title>Mads Ravn</title>
  <link href="http://madsravn.dk/atom.xml" rel="self"/>
  <link href="http://madsravn.dk/"/>
- <updated>2012-10-07T19:10:09+02:00</updated>
+ <updated>2012-10-07T19:13:28+02:00</updated>
  <id>http://madsravn.dk</id>
  <author>
    <name>Mads Ravn</name>
@@ -27,21 +27,6 @@ You can find more information about the jekyll engine on Github &lt;a href=&quot
 
 
 &lt;hr /&gt;
-
-&lt;h2&gt;Your computer&amp;rsquo;s name and hostname&lt;/h2&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://cl.ly/image/0E0o42160W26/content&quot; alt=&quot;poo&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://cl.ly/image/0s262W432e2I/content&quot; alt=&quot;share&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Other clients&lt;/strong&gt;: You can use emoji names for your wifi network and it works
-great if you connect to your base station with OS X Lion (and above), iPhone,
-or iPad. But if you run a more diverse network you&amp;rsquo;re going to run into
-problems. Snow Leopard and earlier, for example, renders emoji as square boxes
-since the OS just didn&amp;rsquo;t understand emoji until Lion. Your Xbox 360 also won&amp;rsquo;t
-render emoji, but it seems to connect just fine. It appears that Windows
-clients will refuse to connect to any emoji network name at all. Might be a
-feature instead of a bug, though.&lt;/p&gt;
 </content>
  </entry>
  
