@@ -27,13 +27,14 @@ a {
     margin: 10px 0 20px 0; }
     .sidebar .name #mads {
       padding-left: 1px;
-      font-size: 23px;
-      letter-spacing: 5px;
+      font-size: 22px;
+      letter-spacing: 4px;
       color: black; }
     .sidebar .name #ravn {
-      font-size: 17px;
+      padding-left: 1px;
+      font-size: 22px;
       font-weight: bold;
-      letter-spacing: 1px;
+      letter-spacing: 4px;
       color: black; }
   .sidebar .meta a {
     margin-left: 5px;
