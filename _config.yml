@@ -2,5 +2,9 @@ markdown: rdiscount
 pygments: true
 permalink: /posts/:title
 auto: true
+analytics :
+    provider : google
+    google :
+    tracking_id : UA-35849981-1
 rdiscount:
   extensions: [smart]
