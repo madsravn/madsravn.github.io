@@ -4,12 +4,29 @@
  <title>Mads Ravn</title>
  <link href="http://madsravn.dk/atom.xml" rel="self"/>
  <link href="http://madsravn.dk/"/>
- <updated>2012-11-25T03:24:55+01:00</updated>
+ <updated>2012-12-13T23:59:18+01:00</updated>
  <id>http://madsravn.dk</id>
  <author>
    <name>Mads Ravn</name>
  </author>
  
+ 
+ <entry>
+   <title>Music or audiobooks or ...</title>
+   <link href="http://madsravn.dk/posts/music-or-audiobooks-or"/>
+   <updated>2012-12-13T00:00:00+01:00</updated>
+   <id>http://madsravn.dk/posts/music-or-audiobooks-or</id>
+   <content type="html">&lt;p&gt;Many people today listen to music on the go &amp;ndash; to work, to school or just between places.  When I look around on any given day most people either have ear plugs in their ears or headphones over them.  Some people actually play so loud that you can just behind them and enjoy their music for free, while others I look at and wonder what they&amp;rsquo;re playing.&lt;/p&gt;
+
+&lt;p&gt;I used to listen to music myself back in the days. However, I tend to hear the same songs too much in a small period of time and then I get sick of them. This trend of mine required me to swap my music out on a regular basis and I am not really good at finding new music, and not in that small amount of time. So instead I started listening to radio. We have a pretty good radio station here in Denmark, called &lt;a href=&quot;http://www.dr.dk/p3&quot;&gt;P3&lt;/a&gt;. The talk a bit&amp;hellip; quite a lot actually and I quickly realized I liked the parts with people talking more than I liked their mainstream pop (and Danish pop really sucks), so I decided to try an audiobook instead. I started out with a book which had been on my to-reread list for a while: Sun Tzus Art of War.&lt;/p&gt;
+
+&lt;p&gt;It worked out great. The book was quickly &amp;ldquo;read&amp;rdquo; since I usually walk home from school or work instead of taking the bus because I find it relaxing to just walk, get some air and not think of work/school before I come home and start working on the weekly handins. So I went on listening to some more books &amp;ndash; I found that I enjoyed non-fiction over fiction when listening to an audiobook while normally I like both genres. The latest book I heard was Atul Gawandes The Checklist Manifesto which actually exceeded my expectations: It was exciting and I learned a bit from it.&lt;/p&gt;
+
+&lt;p&gt;But then some weeks ago I decided to re-watch &lt;a href=&quot;http://channel9.msdn.com/Events/GoingNative/GoingNative-2012/Keynote-Bjarne-Stroustrup-Cpp11-Style&quot;&gt;Bjarne Stroustrups keynote from GoingNative 2012&lt;/a&gt; since I liked some of the ideas for style that he presented. Then I noticed that you could download the talk in MP3 (Audio only). I then thought to myself that I would just listen to it on my way home from school the day after. It was just as good &amp;ndash; an audio-only version of Bjarne was plenty. So when I got home I went online to &lt;a href=&quot;http://channel9.msdn.com&quot;&gt;channel9.msdn.com&lt;/a&gt; to see what else there was. There&amp;rsquo;s a lot of very nice talks, interviews and such on there. Since I programming languages and that sort of stuff I mainly browse &lt;a href=&quot;http://channel9.msdn.com/Shows/Going+Deep&quot;&gt;Going Deep&lt;/a&gt; for videos I want to hear when I walk home. Lately I heard the interview Anders Hejlsberg and Lars Bak talking about &lt;a href=&quot;http://channel9.msdn.com/Shows/Going+Deep/Anders-Hejlsberg-and-Lars-Bak-TypeScript-JavaScript-and-Dart&quot;&gt;Typescript, Javascript and Dart&lt;/a&gt; since we&amp;rsquo;re covering all three languages in a course in school so I thought I could learn a little extra about it anyways. It was very exciting as well.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;m fairly sure I&amp;rsquo;m not the inventor of this concept. I just found out about it myself and I&amp;rsquo;m enjoying myself with it. I can warmly recommend it. So what do you listen to?&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>First post with Jekyll</title>
