@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <title>Projects</title>
+  <meta name="author" content="Mads Ravn" />
+  <meta name="description" content="Mads Ravn - An avid coder and lazy donkey." />
+  <link rel="alternate" type="application/rss+xml" href="http://feeds.feedburner.com/madsravn" />
+  <link rel="stylesheet" href="/css/compiled/base.css" type="text/css" media="screen, projection" />
+  <link rel="stylesheet" href="/css/plugins/pygments.css" type="text/css" />
+  <link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css'>
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"></script>
+  <script type="text/javascript" src="/js/compiled/application.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      
+    });
+  </script>
+</head>
+<body>
+  <section class="sidebar">
+    <a href="/">
+      <img src="http://1.gravatar.com/avatar/cff6826c1faad4528b1ce15dda1f0e6d" height="75" width="75" class="avatar" />
+    </a>
+
+    <section class="name">
+      <a href="/">
+        <span id="mads">Mads</span>
+        <span id="ravn">Ravn</span>
+      </a>
+    </section>
+
+    <section class="meta">
+    <a href="https://github.com/madsravn"><img src="http://madsravn.dk/images/github.png" height="16" width=16" alt="Github"/></a>
+    <a href="https://twitter.com/ravnmads"><img src="http://madsravn.dk/images/twitter.png" height="16" width="16" alt="twitter"/></a>
+    <a href="http://feeds.feedburner.com/madsravn"><img src="http://madsravn.dk/images/rss.png" height="16" width="16" alt="feed"/> </a>
+    </section>
+
+    <section class="sections">
+      <ul>
+        <li><a href="/about">about</a></li>
+        <li><a href="/projects">projects</a></li>
+      </ul>
+    </section>
+  </section>
+
+  <section class="content">
+  <h1>
+    <a href="/projects2.html">Projects</a>
+  </h1>
+
+  <section class="byline">
+    
+  </section>
+
+  <p>A <code>hdparm -tT /dev/sda</code> showed some disturbing news:</p>
+
+<pre><code>/dev/sda:
+Timing cached reads:   160 MB in  2.02 seconds =  79.35 MB/sec
+Timing buffered disk reads:  14 MB in 33.51 seconds = 427.79 kB/sec
+</code></pre>
+
+<p>No way we could watch a movie with 428 kB/sec. A little internet research showed that our Raspberry Pi atleast treats it&rsquo;s USB ports as a USB hub already and when connecting a new one only the four first ports are given decent speed. Checking <code>lsusb</code> I saw it might make sense since the Raspberry had two entries for &ldquo;USB-2.0 4-Port HUB&rdquo;</p>
+
+<pre><code>Bus 001 Device 005: ID 05e3:0608 Genesys Logic, Inc. USB-2.0 4-Port HUB
+Bus 001 Device 006: ID 05e3:0608 Genesys Logic, Inc. USB-2.0 4-Port HUB
+Bus 001 Device 008: ID 18a5:0237 Verbatim, Ltd Portable Harddrive (500 GB)
+</code></pre>
+
+<p>I found this weird and with a disbelief I tried swapping my external drive to the first port on the hub. <code>hdparm -tT /dev/sdb</code> revealed it was working much better now:</p>
+
+<pre><code>/dev/sdb:
+Timing cached reads:   154 MB in  2.00 seconds =  77.01 MB/sec
+Timing buffered disk reads:  40 MB in  3.10 seconds =  12.89 MB/sec
+</code></pre>
+
+<p>an increase in speed with a factor 30 was pretty convincing. I tried comparing this speed to the speed on the Raspberrys SD card</p>
+
+<pre><code>Timing cached reads:   162 MB in  2.02 seconds =  80.26 MB/sec
+Timing buffered disk reads:  52 MB in  3.03 seconds =  17.17 MB/sec
+</code></pre>
+
+<p>which shows that now the external drives speed was now close enough to decent speed. Happily we could now lie lifeless on the couch for some hours watching some mindless stuff :)</p>
+
+<p>I hope this can help others to try this simple solution before going the tech-route with installing and configuring a bunch of needless stuff.</p>
+
+<p>Equipment used:</p>
+
+<ul>
+<li>Raspberry Pi Model B rev. 2</li>
+<li>Verbatim N446</li>
+<li>Trust 7 Port USB2 Powered Hub (HU-5870V)</li>
+</ul>
+
+
+
+  <section class="meta">
+    <h3>Discussion, links, and tweets</h3>
+    <section class="copy">
+      <a href="https://twitter.com/madsravn">
+        <img src="http://1.gravatar.com/avatar/cff6826c1faad4528b1ce15dda1f0e6d" height="50" width="50" />
+      </a>
+
+      <p>
+        I'm a developer and CS student. <a href="https://twitter.com/madsravn">Follow me on Twitter</a>;
+        you'll enjoy my tweets.
+      </p>
+
+      
+
+      <p>
+        I also keep an "ask me anything" type of project in a repository on GitHub (naturally!). Feel free to <a href="https://github.com/madsravn/madsravn.github.com/issues">ask me a question</a>.
+      </p>
+
+      <a href="http://twitter.com/share" class="twitter-share-button" data-count="none" data-via="ravnmads">Tweet</a>
+      <a href="http://twitter.com/ravnmads" class="twitter-follow-button" data-show-count="false">Follow @ravnmads</a>
+      <script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+    </section>
+  </section>
+</section>
+
+
+
+
+  <script type="text/javascript">
+  var _gauges = _gauges || [];
+  (function() {
+    var t   = document.createElement('script');
+    t.type  = 'text/javascript';
+    t.async = true;
+    t.id    = 'gauges-tracker';
+    t.setAttribute('data-site-id', '50e46e05613f5d723c000019');
+    t.src = '//secure.gaug.es/track.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(t, s);
+  })();
+</script>
+</body>
+
+</html>
