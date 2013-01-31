@@ -4,12 +4,42 @@
  <title>Mads Ravn</title>
  <link href="http://madsravn.dk/atom.xml" rel="self"/>
  <link href="http://madsravn.dk/"/>
- <updated>2013-01-06T22:50:20+01:00</updated>
+ <updated>2013-01-31T22:46:32+01:00</updated>
  <id>http://madsravn.dk</id>
  <author>
    <name>Mads Ravn</name>
  </author>
  
+ 
+ <entry>
+   <title>Chess summary for January</title>
+   <link href="http://madsravn.dk/posts/chess-summary-for-january"/>
+   <updated>2013-01-31T00:00:00+01:00</updated>
+   <id>http://madsravn.dk/posts/chess-summary-for-january</id>
+   <content type="html">&lt;h2&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;Back in November I saw a video posted on Reddit. It was a video of an analysis of a chess game. This got me motivated to try playing chess and I really liked it. I also like numbers, so I have decided that I want to sum up each month of chess from now on.&lt;/p&gt;
+
+&lt;p&gt;Unfortunately January has been a exam month, so the number of chess games are sort of scarce. But &amp;hellip;&lt;/p&gt;
+
+&lt;h2&gt;The Numbers&lt;/h2&gt;
+
+&lt;p&gt;So I made &lt;a href=&quot;https://github.com/madsravn/pgn-divider/blob/master/divider.sh&quot;&gt;a little script&lt;/a&gt; to sort out the data from one big file of pgn annotation since chesscube will not let me download pgn files other than manually. From this I could deduce some statistics.&lt;/p&gt;
+
+&lt;p&gt;So I made some fancy charts with the help of &lt;a href=&quot;http://www.chartgo.com&quot;&gt;www.chartgo.com&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://madsravn.dk/images/chess1.png&quot; alt=&quot;games&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I played 46 games in January. Luckily for my ego I won more than I lost.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Raspberry Pi Model B rev. 2&lt;/li&gt;
+&lt;li&gt;Verbatim N446&lt;/li&gt;
+&lt;li&gt;Trust 7 Port USB2 Powered Hub (HU-5870V)&lt;/li&gt;
+&lt;/ul&gt;
+
+</content>
+ </entry>
  
  <entry>
    <title>Raspberry Pi with slow external hard drive</title>
