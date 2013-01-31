@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Chess summary for January
-reddit: 
+reddit: http://www.reddit.com/r/chess/comments/17nntl/my_chess_summary_for_january/ 
 ---
 
 Introduction
