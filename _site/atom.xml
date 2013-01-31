@@ -4,7 +4,7 @@
  <title>Mads Ravn</title>
  <link href="http://madsravn.dk/atom.xml" rel="self"/>
  <link href="http://madsravn.dk/"/>
- <updated>2013-01-31T23:29:49+01:00</updated>
+ <updated>2013-01-31T23:30:42+01:00</updated>
  <id>http://madsravn.dk</id>
  <author>
    <name>Mads Ravn</name>
@@ -26,7 +26,7 @@
 
 &lt;p&gt;I made &lt;a href=&quot;https://github.com/madsravn/pgn-divider/blob/master/divider.sh&quot;&gt;a little script&lt;/a&gt; to sort out the data from one big file of pgn annotation since chesscube will not let me download pgn files other than manually. From this I could deduce some statistics.&lt;/p&gt;
 
-&lt;p&gt;I made some a fancy chart with the help of &lt;a href=&quot;http://www.chartgo.com&quot;&gt;www.chartgo.com&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I made a fancy chart with the help of &lt;a href=&quot;http://www.chartgo.com&quot;&gt;www.chartgo.com&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;http://madsravn.dk/images/chess1.png&quot; alt=&quot;games&quot; /&gt;&lt;/p&gt;
 

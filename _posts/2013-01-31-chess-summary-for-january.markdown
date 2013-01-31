@@ -16,7 +16,7 @@ The Numbers
 
 I made <a href="https://github.com/madsravn/pgn-divider/blob/master/divider.sh">a little script</a> to sort out the data from one big file of pgn annotation since chesscube will not let me download pgn files other than manually. From this I could deduce some statistics.
 
-I made some a fancy chart with the help of <a href="http://www.chartgo.com">www.chartgo.com</a>. 
+I made a fancy chart with the help of <a href="http://www.chartgo.com">www.chartgo.com</a>. 
 
 <img src="http://madsravn.dk/images/chess1.png" alt="games" />
 
