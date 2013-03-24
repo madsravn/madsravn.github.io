@@ -23,7 +23,7 @@ Currently I have implemented the spatial subdivision data structure. So far I'm 
 
 Rendering time without early ray termination: 6.59 seconds
 
-Rendering time with early ray termination: 0.89 seconds (~7 times faster)
+Rendering time with early ray termination: 1.12 seconds (~6 times faster)
 
 ### What's next
 
