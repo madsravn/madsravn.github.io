@@ -25,12 +25,12 @@ a {
   .sidebar .name {
     text-transform: uppercase;
     margin: 10px 0 20px 0; }
-    .sidebar .name #mads {
+    .sidebar .name .mads {
       padding-left: 1px;
       font-size: 22px;
       letter-spacing: 4px;
       color: black; }
-    .sidebar .name #ravn {
+    .sidebar .name .ravn {
       padding-left: 1px;
       font-size: 22px;
       font-weight: bold;
