@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
 <head>
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-  <title>Rendering Algorithms</title>
+  <title>Improving performance with packet tracing and other methods</title>
   <meta name="author" content="Mads Ravn" />
   <meta name="description" content="Mads Ravn - An avid coder and lazy donkey." />
   <link rel="alternate" type="application/rss+xml" href="http://feeds.feedburner.com/madsravn" />
@@ -49,42 +49,70 @@
 
   <section class="content">
   <h1>
-    <a href="/rendalg.html">Rendering Algorithms</a>
+    <a href="/posts/final-handin-for-rendalg">Improving performance with packet tracing and other methods</a>
   </h1>
 
   <section class="byline">
-    
+    April 10, 2013
   </section>
 
-  <h3>Project</h3>
+  <h2>Introduction</h2>
 
-<p>Render the sponza scene as quickly as possible using data acceleration structure, SIMD, early ray termination and packet tracing.</p>
+<p>The subject I chose for final handin in the rendering algorithms course was improving the rendering time of a given scene, the Sponza scene as seen below. The scene consist of 66,454 triangles which are rather compact and from any given viewpoint pretty stacked &ndash; i.e. if you shoot a ray through a triangle you are pretty sure to hit at least a few other triangles either behind or in front of it.</p>
 
-<h3>Progress</h3>
+<p><img src="http://madsravn.dk/images/mravn_sponza.png" alt="sponza scene" /></p>
 
-<p>Currently I have implemented the spatial subdivision data structure. So far I&rsquo;m only using SIMD for triangle intersection test. I also have early ray termination.</p>
+<h2>The methods</h2>
 
-<h4>Data structure</h4>
+<p>Firstly I used an acceleration data structure to put all my geometry in a tree which can be traversed. An acceleration data structure is an improvement in itself, but with this tree it became possible to make some further improvements using packet tracing. Packet tracing is a method where you group some of your rays together and traverse the tree of the data structure with them packed instead of a single ray at a time. This way you don&rsquo;t have to traverse many of the nodes of the tree so many times and you can also do some early miss testing by making a frustum of this group of rays and cheaply check if they all miss a bounding box with a single frustum/AABB intersection test instead of doing 16 to 512 ray/box intersection tests.</p>
 
-<p><img src="images/mravn_ads.png" /></p>
+<p><img src="http://madsravn.dk/images/mravn_ads.png" alt="ads" /></p>
 
-<h4>Picture of sponza scene</h4>
+<h2>The results</h2>
 
-<p><img src="images/mravn_sponza.png" /></p>
+<p>I checked my implementation of packet tracing compared to the same scene with only early ray termination. I got these numbers</p>
 
-<h3>Numbers</h3>
+<h3>Normal ray tracing with early ray termination yielded the following results:</h3>
 
-<p>Rendering time without early ray termination: 6.59 seconds</p>
+<p>Did 6,503,630 triangle intersections</p>
 
-<p>Rendering time with early ray termination: 1.12 seconds (~6 times faster)</p>
+<p>Did 20,193,290 traversals</p>
 
-<h3>What&rsquo;s next</h3>
+<p>Did 33,267,596 box intersections</p>
 
-<p>I have some problems with my SAH, so my tree is kinda weird. So I need to redo it to make sense (due to going from object to spatial)</p>
+<h3>Packet tracing with a packet size of 4x4:</h3>
 
-<p>I need to implement early ray termination with SIMD</p>
+<p>Did 6,560,144 triangle intersections</p>
 
-<p>I haven&rsquo;t made the packet tracing yet</p>
+<p>Did 1,877,640 traversals</p>
+
+<p>Did 11,500,952 box intersections</p>
+
+<h3>Packet tracing with a packet size of 8x8:</h3>
+
+<p>Did 9,904,128 triangle intersections</p>
+
+<p>Did 602,404 traversals</p>
+
+<p>Did 10,080,299 box intersections</p>
+
+<h3>Packet tracing with a packet size of 16x16:</h3>
+
+<p>Did 20,155,648 triangle intersections</p>
+
+<p>Did 248,074 traversals</p>
+
+<p>Did 10,991,985 box intersections</p>
+
+<h2>Path tracing</h2>
+
+<p>A part of the handin was also to implement either photon mapping or path tracing. I chose path tracing with 512 samples per pixel. The result can be seen here</p>
+
+<p><img src="http://madsravn.dk/images/teapot.pathtracing.png" alt="pathtracing" /></p>
+
+<h2>The conclusion</h2>
+
+<p>This was a very fun project to work on and an exciting way to finish of a good course in rendering algorithms. I wish I could have had more time doing this project because I don&rsquo;t think I was far from getting much better results using leaf traversal. As you can see on my numbers above the amount of ray/triangle intersection tests explode at packet size 16x16, while the traversal is pretty low.</p>
 
 
   <section class="meta">
