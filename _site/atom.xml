@@ -4,7 +4,7 @@
  <title>Mads Ravn</title>
  <link href="http://madsravn.dk/atom.xml" rel="self"/>
  <link href="http://madsravn.dk/"/>
- <updated>2013-10-27T19:35:49+01:00</updated>
+ <updated>2013-10-27T19:39:37+01:00</updated>
  <id>http://madsravn.dk</id>
  <author>
    <name>Mads Ravn</name>
@@ -105,7 +105,7 @@
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;We allocate and copy our data to the GPU. We need the data on the GPU for the kernels to be able to read it. We also allocate storage for the output image, so we have a place to write the result of the filter to. The &amp;lt;&amp;lt;&amp;lt;&gt;&gt;&gt; is CUDA syntax and will be interpreted when compiled. It tells the compiler how many blocks and grids we are going to use.&lt;/p&gt;
+&lt;p&gt;We allocate and copy our data to the GPU. We need the data on the GPU for the kernels to be able to read it. We also allocate storage for the output image, so we have a place to write the result of the filter to. The &amp;lt;&amp;lt;&amp;lt;&gt;&gt;&gt; is CUDA syntax and will be interpreted when compiled. It tells the compiler how many blocks and grids we are going to use. Mostly every CUDA function an enum &lt;code&gt;cudaError_t&lt;/code&gt; which is why every CUDA call is surrounded by &lt;code&gt;getError&lt;/code&gt;. This way we get an error printed to the screen if anything goes wrong. Don&amp;rsquo;t worry too much about it, you can see the code for it in &lt;code&gt;helpers.cpp&lt;/code&gt;.&lt;/p&gt;
 
 &lt;p&gt;Now, let&amp;rsquo;s look at the actual filter, also located in &lt;code&gt;kernels.cu&lt;/code&gt;.&lt;/p&gt;
 

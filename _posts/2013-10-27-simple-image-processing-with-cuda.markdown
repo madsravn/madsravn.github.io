@@ -91,7 +91,7 @@ Now let's look at some actual CUDA stuff. The code below resides in `kernels.cu`
 
     }
    
-We allocate and copy our data to the GPU. We need the data on the GPU for the kernels to be able to read it. We also allocate storage for the output image, so we have a place to write the result of the filter to. The <<<>>> is CUDA syntax and will be interpreted when compiled. It tells the compiler how many blocks and grids we are going to use.
+We allocate and copy our data to the GPU. We need the data on the GPU for the kernels to be able to read it. We also allocate storage for the output image, so we have a place to write the result of the filter to. The <<<>>> is CUDA syntax and will be interpreted when compiled. It tells the compiler how many blocks and grids we are going to use. Mostly every CUDA function an enum `cudaError_t` which is why every CUDA call is surrounded by `getError`. This way we get an error printed to the screen if anything goes wrong. Don't worry too much about it, you can see the code for it in `helpers.cpp`.
 
 Now, let's look at the actual filter, also located in `kernels.cu`.
 
