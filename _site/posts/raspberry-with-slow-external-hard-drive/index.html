@@ -56,14 +56,12 @@
     January  1, 2013
   </section>
 
-  <p>On a day like January 1st I mostly like relaxing in front of the TV with some movies or series and I had been looking forward to it. I got a powered USB hub for Christmas since our external hard drive, a Verbatim N446, is USB powered and the Raspberry doesn&rsquo;t provide enough power for it. So we plugged in our new USB hub and plugged the drive to that. Discovery and mounting went fine, but when we started watching something it would take 3 seconds before it would start to buffer &ndash; it actually used more time buffered than playing.</p>
+  <p>On a day like January 1st I mostly like relaxing in front of the TV with some movies or series and I had been looking forward to it. I got a powered USB hub for Christmas since our external hard drive, a Verbatim N446, is USB powered and the Raspberry doesn&rsquo;t provide enough power for it. So we plugged in our new USB hub and plugged the drive to that. Discovery and mounting went fine, but when we started watching something it would take 3 seconds before it would start to buffer - it actually used more time buffered than playing.</p>
 
-<p>A <code>hdparm -tT /dev/sda</code> showed some disturbing news:</p>
-
-<pre><code>/dev/sda:
-Timing cached reads:   160 MB in  2.02 seconds =  79.35 MB/sec
-Timing buffered disk reads:  14 MB in 33.51 seconds = 427.79 kB/sec
-</code></pre>
+<p>A <code>hdparm -tT /dev/sda</code> showed some disturbing news:
+    /dev/sda:
+    Timing cached reads:   160 MB in  2.02 seconds =  79.35 MB/sec
+    Timing buffered disk reads:  14 MB in 33.51 seconds = 427.79 kB/sec</p>
 
 <p>No way we could watch a movie with 428 kB/sec. A little internet research showed that our Raspberry Pi atleast treats it&rsquo;s USB ports as a USB hub already and when connecting a new one only the four first ports are given decent speed. Checking <code>lsusb</code> I saw it might make sense since the Raspberry had two entries for &ldquo;USB-2.0 4-Port HUB&rdquo;</p>
 
@@ -72,14 +70,11 @@ Bus 001 Device 006: ID 05e3:0608 Genesys Logic, Inc. USB-2.0 4-Port HUB
 Bus 001 Device 008: ID 18a5:0237 Verbatim, Ltd Portable Harddrive (500 GB)
 </code></pre>
 
-<p>I found this weird and with a disbelief I tried swapping my external drive to the first port on the hub. <code>hdparm -tT /dev/sdb</code> revealed it was working much better now:</p>
-
-<pre><code>/dev/sdb:
-Timing cached reads:   154 MB in  2.00 seconds =  77.01 MB/sec
-Timing buffered disk reads:  40 MB in  3.10 seconds =  12.89 MB/sec
-</code></pre>
-
-<p>an increase in speed with a factor 30 was pretty convincing. I tried comparing this speed to the speed on the Raspberrys SD card</p>
+<p>I found this weird and with a disbelief I tried swapping my external drive to the first port on the hub. <code>hdparm -tT /dev/sdb</code> revealed it was working much better now:
+    /dev/sdb:
+    Timing cached reads:   154 MB in  2.00 seconds =  77.01 MB/sec
+    Timing buffered disk reads:  40 MB in  3.10 seconds =  12.89 MB/sec
+an increase in speed with a factor 30 was pretty convincing. I tried comparing this speed to the speed on the Raspberrys SD card</p>
 
 <pre><code>Timing cached reads:   162 MB in  2.02 seconds =  80.26 MB/sec
 Timing buffered disk reads:  52 MB in  3.03 seconds =  17.17 MB/sec

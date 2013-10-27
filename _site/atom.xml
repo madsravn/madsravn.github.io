@@ -4,12 +4,151 @@
  <title>Mads Ravn</title>
  <link href="http://madsravn.dk/atom.xml" rel="self"/>
  <link href="http://madsravn.dk/"/>
- <updated>2013-04-10T21:41:07+02:00</updated>
+ <updated>2013-10-27T19:35:49+01:00</updated>
  <id>http://madsravn.dk</id>
  <author>
    <name>Mads Ravn</name>
  </author>
  
+ 
+ <entry>
+   <title>Simple image processing with CUDA</title>
+   <link href="http://madsravn.dk/posts/simple-image-processing-with-cuda"/>
+   <updated>2013-10-27T00:00:00+02:00</updated>
+   <id>http://madsravn.dk/posts/simple-image-processing-with-cuda</id>
+   <content type="html">&lt;p&gt;I like graphics and image processing. So I have been fiddling a little with NVIDIAs CUDA in order to capatilize on some multithreaded programming. I have made a little starter edition for people who wants to try forces with CUDA for image processing.&lt;/p&gt;
+
+&lt;p&gt;I am using &lt;a href=&quot;http://lodev.org/lodepng/&quot;&gt;lodepng&lt;/a&gt; for loading and saving images for the filtering. It is very easy to easy, has no dependencies and just works. In my example code I am reading filenames for input and output images from the command line parameters.&lt;/p&gt;
+
+&lt;p&gt;Enough talk, let&amp;rsquo;s see some code:&lt;/p&gt;
+
+&lt;p&gt;In my &lt;code&gt;main.cpp&lt;/code&gt; file I load and save images and call the filter.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;int main(int argc, char** argv) {
+    if(argc != 3) {
+        std::cout &amp;lt;&amp;lt; &quot;Run with input and output image filenames.&quot; &amp;lt;&amp;lt; std::endl;
+        return 0;
+    }
+
+    // Read the arguments
+    const char* input_file = argv[1];
+    const char* output_file = argv[2];
+
+    std::vector&amp;lt;unsigned char&amp;gt; in_image;
+    unsigned int width, height;
+
+    // Load the data
+    unsigned error = lodepng::decode(in_image, width, height, input_file);
+    if(error) std::cout &amp;lt;&amp;lt; &quot;decoder error &quot; &amp;lt;&amp;lt; error &amp;lt;&amp;lt; &quot;: &quot; &amp;lt;&amp;lt; lodepng_error_text(error) &amp;lt;&amp;lt; std::endl;
+
+    // Prepare the data
+    unsigned char* input_image = new unsigned char[(in_image.size()*3)/4];
+    unsigned char* output_image = new unsigned char[(in_image.size()*3)/4];
+    int where = 0;
+    for(int i = 0; i &amp;lt; in_image.size(); ++i) {
+       if((i+1) % 4 != 0) {
+           input_image[where] = in_image.at(i);
+           output_image[where] = 255;
+           where++;
+       }
+    }
+
+    // Run the filter on it
+    filter(input_image, output_image, width, height); 
+
+    // Prepare data for output
+    std::vector&amp;lt;unsigned char&amp;gt; out_image;
+    for(int i = 0; i &amp;lt; in_image.size(); ++i) {
+        out_image.push_back(output_image[i]);
+        if((i+1) % 3 == 0) {
+            out_image.push_back(255);
+        }
+    }
+
+    // Output the data
+    error = lodepng::encode(output_file, out_image, width, height);
+
+    //if there's an error, display it
+    if(error) std::cout &amp;lt;&amp;lt; &quot;encoder error &quot; &amp;lt;&amp;lt; error &amp;lt;&amp;lt; &quot;: &quot;&amp;lt;&amp;lt; lodepng_error_text(error) &amp;lt;&amp;lt; std::endl;
+
+    delete[] input_image;
+    delete[] output_image;
+    return 0;
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We notice how easy lodepng is to use. We tell it we want our image loaded into our vector and voila, we have it. We then remove the alpha channel, as I was not using it in my project. You can however change it to your preferences. We then give our image data to the &lt;code&gt;filter&lt;/code&gt; function - this is the function which will load the data onto our GPU and call the CUDA kernel which runs our filter. We then save our image, clean up and exits.&lt;/p&gt;
+
+&lt;p&gt;Now let&amp;rsquo;s look at some actual CUDA stuff. The code below resides in &lt;code&gt;kernels.cu&lt;/code&gt;. The CUDA compiler, nvcc, is sort of picky as to what filename extensions it will compile as what. For now, just let the name be.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; void filter (unsigned char* input_image, unsigned char* output_image, int width, int height) {
+
+    unsigned char* dev_input;
+    unsigned char* dev_output;
+    getError(cudaMalloc( (void**) &amp;amp;dev_input, width*height*3*sizeof(unsigned char)));
+    getError(cudaMemcpy( dev_input, input_image, width*height*3*sizeof(unsigned char), cudaMemcpyHostToDevice ));
+
+    getError(cudaMalloc( (void**) &amp;amp;dev_output, width*height*3*sizeof(unsigned char)));
+
+    dim3 blockDims(512,1,1);
+    dim3 gridDims((unsigned int) ceil((double)(width*height*3/blockDims.x)), 1, 1 );
+
+    filter&amp;lt;&amp;lt;&amp;lt;gridDims, blockDims&amp;gt;&amp;gt;&amp;gt;(dev_input, dev_output, width, height); 
+
+
+    getError(cudaMemcpy(output_image, dev_output, width*height*3*sizeof(unsigned char), cudaMemcpyDeviceToHost ));
+
+    getError(cudaFree(dev_input));
+    getError(cudaFree(dev_output));
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We allocate and copy our data to the GPU. We need the data on the GPU for the kernels to be able to read it. We also allocate storage for the output image, so we have a place to write the result of the filter to. The &amp;lt;&amp;lt;&amp;lt;&gt;&gt;&gt; is CUDA syntax and will be interpreted when compiled. It tells the compiler how many blocks and grids we are going to use.&lt;/p&gt;
+
+&lt;p&gt;Now, let&amp;rsquo;s look at the actual filter, also located in &lt;code&gt;kernels.cu&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;__global__
+void blur(unsigned char* input_image, unsigned char* output_image, int width, int height) {
+
+    const unsigned int offset = blockIdx.x*blockDim.x + threadIdx.x;
+    int x = offset % width;
+    int y = (offset-x)/width;
+    int fsize = 5; // Filter size
+    if(offset &amp;lt; width*height) {
+
+        float output_red = 0;
+        float output_green = 0;
+        float output_blue = 0;
+        int hits = 0;
+        for(int ox = -fsize; ox &amp;lt; fsize+1; ++ox) {
+            for(int oy = -fsize; oy &amp;lt; fsize+1; ++oy) {
+                if((x+ox) &amp;gt; -1 &amp;amp;&amp;amp; (x+ox) &amp;lt; width &amp;amp;&amp;amp; (y+oy) &amp;gt; -1 &amp;amp;&amp;amp; (y+oy) &amp;lt; height) {
+                    const int currentoffset = (offset+ox+oy*width)*3;
+                    output_red += input_image[currentoffset]; 
+                    output_green += input_image[currentoffset+1];
+                    output_blue += input_image[currentoffset+2];
+                    hits++;
+                }
+            }
+        }
+        output_image[offset*3] = output_red/hits;
+        output_image[offset*3+1] = output_green/hits;
+        output_image[offset*3+2] = output_blue/hits;
+        }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Again, the &lt;strong&gt;global&lt;/strong&gt; is a CUDA keyword. For each pixel in the input image we take the average of each of the neighbouring pixels and writes it to the output image. This filter is known as a Box blur. A better blur filter would be the Gaussian blur. I have written a Gaussian function in &lt;code&gt;helpers.cpp&lt;/code&gt; if you want to try. However, before doing that, just try to play around it and see what happens. I learn best from trial and error, and that is also why graphics and image processing is a subject I like - because you can see the result of your work in an easily understanded way instead of reading thousands of lines of output data.&lt;/p&gt;
+
+&lt;p&gt;Notice that we check if our &lt;code&gt;offset&lt;/code&gt; is actually within the range of &lt;code&gt;width*height&lt;/code&gt; because it can happen that it will be outside due to the blocks CUDA will run, so remember to keep that. Also we need to remember to check whether or not the pixel we read are actually in our image when doing the box blur as well. You can try to remove them one at a time and see what happens.&lt;/p&gt;
+
+&lt;p&gt;So now, try running the program on an image and look at the output image. Blurred, huh?&lt;/p&gt;
+
+&lt;p&gt;I have made a simple compile script for the project as well - it works for linux and MAC OSX. Under Windows I guess it&amp;rsquo;s pretty easy to get it up and running in Visual Studio as well. Good luck. &lt;a href=&quot;https://github.com/madsravn/easyCuda&quot;&gt; The code can be found on my github&lt;/a&gt;.&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Improving performance with packet tracing and other methods</title>
@@ -18,7 +157,7 @@
    <id>http://madsravn.dk/posts/final-handin-for-rendalg</id>
    <content type="html">&lt;h2&gt;Introduction&lt;/h2&gt;
 
-&lt;p&gt;The subject I chose for final handin in the rendering algorithms course was improving the rendering time of a given scene, the Sponza scene as seen below. The scene consist of 66,454 triangles which are rather compact and from any given viewpoint pretty stacked &amp;ndash; i.e. if you shoot a ray through a triangle you are pretty sure to hit at least a few other triangles either behind or in front of it.&lt;/p&gt;
+&lt;p&gt;The subject I chose for final handin in the rendering algorithms course was improving the rendering time of a given scene, the Sponza scene as seen below. The scene consist of 66,454 triangles which are rather compact and from any given viewpoint pretty stacked - i.e. if you shoot a ray through a triangle you are pretty sure to hit at least a few other triangles either behind or in front of it.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;http://madsravn.dk/images/mravn_sponza.png&quot; alt=&quot;sponza scene&quot; /&gt;&lt;/p&gt;
 
@@ -107,7 +246,7 @@
 
 &lt;p&gt;I really like playing chess. I like that the game doesn&amp;rsquo;t include any form of randomness that many other games like card games and backgammon have. I also feel like I am training my concentration by playing and trying to think some moves ahead while keeping my head in current situation of the game.&lt;/p&gt;
 
-&lt;p&gt;I would like to thank &lt;a href=&quot;http://www.youtube.com/user/Ruxistico/videos?view=0&quot;&gt;Rune Friborg&lt;/a&gt; for making the video who initially got me motivated to play. He also invited me to an awesome facebook group &amp;ldquo;Fucking Skak&amp;rdquo; (Fucking Chess) and then challenged me to a game and gave me an analysis of the game afterwards &amp;ndash; this was an awesome start on my chess adventure. I&amp;rsquo;d also like to thank the awesome facebook group Fucking skak for constant motivation and chess news. The people in the group seems like good and dedicated players and this is the first facebook group I have been in which actually contributes content of very high quality!&lt;/p&gt;
+&lt;p&gt;I would like to thank &lt;a href=&quot;http://www.youtube.com/user/Ruxistico/videos?view=0&quot;&gt;Rune Friborg&lt;/a&gt; for making the video who initially got me motivated to play. He also invited me to an awesome facebook group &amp;ldquo;Fucking Skak&amp;rdquo; (Fucking Chess) and then challenged me to a game and gave me an analysis of the game afterwards - this was an awesome start on my chess adventure. I&amp;rsquo;d also like to thank the awesome facebook group Fucking skak for constant motivation and chess news. The people in the group seems like good and dedicated players and this is the first facebook group I have been in which actually contributes content of very high quality!&lt;/p&gt;
 
 &lt;p&gt;And I cannot forget the huge impact both &lt;a href=&quot;http://www.youtube.com/user/kingscrusher&quot;&gt;kingcrusher&lt;/a&gt; and &lt;a href=&quot;http://www.reddit.com/r/chess&quot;&gt;/r/chess&lt;/a&gt; have had on my game. Both definitely delivers good content on a regular basis!&lt;/p&gt;
 
@@ -120,14 +259,12 @@
    <link href="http://madsravn.dk/posts/raspberry-with-slow-external-hard-drive"/>
    <updated>2013-01-01T00:00:00+01:00</updated>
    <id>http://madsravn.dk/posts/raspberry-with-slow-external-hard-drive</id>
-   <content type="html">&lt;p&gt;On a day like January 1st I mostly like relaxing in front of the TV with some movies or series and I had been looking forward to it. I got a powered USB hub for Christmas since our external hard drive, a Verbatim N446, is USB powered and the Raspberry doesn&amp;rsquo;t provide enough power for it. So we plugged in our new USB hub and plugged the drive to that. Discovery and mounting went fine, but when we started watching something it would take 3 seconds before it would start to buffer &amp;ndash; it actually used more time buffered than playing.&lt;/p&gt;
+   <content type="html">&lt;p&gt;On a day like January 1st I mostly like relaxing in front of the TV with some movies or series and I had been looking forward to it. I got a powered USB hub for Christmas since our external hard drive, a Verbatim N446, is USB powered and the Raspberry doesn&amp;rsquo;t provide enough power for it. So we plugged in our new USB hub and plugged the drive to that. Discovery and mounting went fine, but when we started watching something it would take 3 seconds before it would start to buffer - it actually used more time buffered than playing.&lt;/p&gt;
 
-&lt;p&gt;A &lt;code&gt;hdparm -tT /dev/sda&lt;/code&gt; showed some disturbing news:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;/dev/sda:
-Timing cached reads:   160 MB in  2.02 seconds =  79.35 MB/sec
-Timing buffered disk reads:  14 MB in 33.51 seconds = 427.79 kB/sec
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;A &lt;code&gt;hdparm -tT /dev/sda&lt;/code&gt; showed some disturbing news:
+    /dev/sda:
+    Timing cached reads:   160 MB in  2.02 seconds =  79.35 MB/sec
+    Timing buffered disk reads:  14 MB in 33.51 seconds = 427.79 kB/sec&lt;/p&gt;
 
 &lt;p&gt;No way we could watch a movie with 428 kB/sec. A little internet research showed that our Raspberry Pi atleast treats it&amp;rsquo;s USB ports as a USB hub already and when connecting a new one only the four first ports are given decent speed. Checking &lt;code&gt;lsusb&lt;/code&gt; I saw it might make sense since the Raspberry had two entries for &amp;ldquo;USB-2.0 4-Port HUB&amp;rdquo;&lt;/p&gt;
 
@@ -136,14 +273,11 @@ Bus 001 Device 006: ID 05e3:0608 Genesys Logic, Inc. USB-2.0 4-Port HUB
 Bus 001 Device 008: ID 18a5:0237 Verbatim, Ltd Portable Harddrive (500 GB)
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;I found this weird and with a disbelief I tried swapping my external drive to the first port on the hub. &lt;code&gt;hdparm -tT /dev/sdb&lt;/code&gt; revealed it was working much better now:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;/dev/sdb:
-Timing cached reads:   154 MB in  2.00 seconds =  77.01 MB/sec
-Timing buffered disk reads:  40 MB in  3.10 seconds =  12.89 MB/sec
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;an increase in speed with a factor 30 was pretty convincing. I tried comparing this speed to the speed on the Raspberrys SD card&lt;/p&gt;
+&lt;p&gt;I found this weird and with a disbelief I tried swapping my external drive to the first port on the hub. &lt;code&gt;hdparm -tT /dev/sdb&lt;/code&gt; revealed it was working much better now:
+    /dev/sdb:
+    Timing cached reads:   154 MB in  2.00 seconds =  77.01 MB/sec
+    Timing buffered disk reads:  40 MB in  3.10 seconds =  12.89 MB/sec
+an increase in speed with a factor 30 was pretty convincing. I tried comparing this speed to the speed on the Raspberrys SD card&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;Timing cached reads:   162 MB in  2.02 seconds =  80.26 MB/sec
 Timing buffered disk reads:  52 MB in  3.03 seconds =  17.17 MB/sec
@@ -169,13 +303,13 @@ Timing buffered disk reads:  52 MB in  3.03 seconds =  17.17 MB/sec
    <link href="http://madsravn.dk/posts/music-or-audiobooks-or"/>
    <updated>2012-12-13T00:00:00+01:00</updated>
    <id>http://madsravn.dk/posts/music-or-audiobooks-or</id>
-   <content type="html">&lt;p&gt;Many people today listen to music on the go &amp;ndash; to work, to school or just between places.  When I look around on any given day most people either have ear plugs in their ears or headphones over them.  Some people actually play so loud that you can just behind them and enjoy their music for free, while others I look at and wonder what they&amp;rsquo;re playing.&lt;/p&gt;
+   <content type="html">&lt;p&gt;Many people today listen to music on the go - to work, to school or just between places.  When I look around on any given day most people either have ear plugs in their ears or headphones over them.  Some people actually play so loud that you can just behind them and enjoy their music for free, while others I look at and wonder what they&amp;rsquo;re playing.&lt;/p&gt;
 
 &lt;p&gt;I used to listen to music myself back in the days. However, I tend to hear the same songs too much in a small period of time and then I get sick of them. This trend of mine required me to swap my music out on a regular basis and I am not really good at finding new music, and not in that small amount of time. So instead I started listening to radio. We have a pretty good radio station here in Denmark, called &lt;a href=&quot;http://www.dr.dk/p3&quot;&gt;P3&lt;/a&gt;. The talk a bit&amp;hellip; quite a lot actually and I quickly realized I liked the parts with people talking more than I liked their mainstream pop (and Danish pop really sucks), so I decided to try an audiobook instead. I started out with a book which had been on my to-reread list for a while: Sun Tzus Art of War.&lt;/p&gt;
 
-&lt;p&gt;It worked out great. The book was quickly &amp;ldquo;read&amp;rdquo; since I usually walk home from school or work instead of taking the bus because I find it relaxing to just walk, get some air and not think of work/school before I come home and start working on the weekly handins. So I went on listening to some more books &amp;ndash; I found that I enjoyed non-fiction over fiction when listening to an audiobook while normally I like both genres. The latest book I heard was Atul Gawandes The Checklist Manifesto which actually exceeded my expectations: It was exciting and I learned a bit from it.&lt;/p&gt;
+&lt;p&gt;It worked out great. The book was quickly &amp;ldquo;read&amp;rdquo; since I usually walk home from school or work instead of taking the bus because I find it relaxing to just walk, get some air and not think of work/school before I come home and start working on the weekly handins. So I went on listening to some more books - I found that I enjoyed non-fiction over fiction when listening to an audiobook while normally I like both genres. The latest book I heard was Atul Gawandes The Checklist Manifesto which actually exceeded my expectations: It was exciting and I learned a bit from it.&lt;/p&gt;
 
-&lt;p&gt;But then some weeks ago I decided to re-watch &lt;a href=&quot;http://channel9.msdn.com/Events/GoingNative/GoingNative-2012/Keynote-Bjarne-Stroustrup-Cpp11-Style&quot;&gt;Bjarne Stroustrups keynote from GoingNative 2012&lt;/a&gt; since I liked some of the ideas for style that he presented. Then I noticed that you could download the talk in MP3 (Audio only). I then thought to myself that I would just listen to it on my way home from school the day after. It was just as good &amp;ndash; an audio-only version of Bjarne was plenty. So when I got home I went online to &lt;a href=&quot;http://channel9.msdn.com&quot;&gt;channel9.msdn.com&lt;/a&gt; to see what else there was. There&amp;rsquo;s a lot of very nice talks, interviews and such on there. Since I programming languages and that sort of stuff I mainly browse &lt;a href=&quot;http://channel9.msdn.com/Shows/Going+Deep&quot;&gt;Going Deep&lt;/a&gt; for videos I want to hear when I walk home. Lately I heard the interview Anders Hejlsberg and Lars Bak talking about &lt;a href=&quot;http://channel9.msdn.com/Shows/Going+Deep/Anders-Hejlsberg-and-Lars-Bak-TypeScript-JavaScript-and-Dart&quot;&gt;Typescript, Javascript and Dart&lt;/a&gt; since we&amp;rsquo;re covering all three languages in a course in school so I thought I could learn a little extra about it anyways. It was very exciting as well.&lt;/p&gt;
+&lt;p&gt;But then some weeks ago I decided to re-watch &lt;a href=&quot;http://channel9.msdn.com/Events/GoingNative/GoingNative-2012/Keynote-Bjarne-Stroustrup-Cpp11-Style&quot;&gt;Bjarne Stroustrups keynote from GoingNative 2012&lt;/a&gt; since I liked some of the ideas for style that he presented. Then I noticed that you could download the talk in MP3 (Audio only). I then thought to myself that I would just listen to it on my way home from school the day after. It was just as good - an audio-only version of Bjarne was plenty. So when I got home I went online to &lt;a href=&quot;http://channel9.msdn.com&quot;&gt;channel9.msdn.com&lt;/a&gt; to see what else there was. There&amp;rsquo;s a lot of very nice talks, interviews and such on there. Since I programming languages and that sort of stuff I mainly browse &lt;a href=&quot;http://channel9.msdn.com/Shows/Going+Deep&quot;&gt;Going Deep&lt;/a&gt; for videos I want to hear when I walk home. Lately I heard the interview Anders Hejlsberg and Lars Bak talking about &lt;a href=&quot;http://channel9.msdn.com/Shows/Going+Deep/Anders-Hejlsberg-and-Lars-Bak-TypeScript-JavaScript-and-Dart&quot;&gt;Typescript, Javascript and Dart&lt;/a&gt; since we&amp;rsquo;re covering all three languages in a course in school so I thought I could learn a little extra about it anyways. It was very exciting as well.&lt;/p&gt;
 
 &lt;p&gt;I&amp;rsquo;m fairly sure I&amp;rsquo;m not the inventor of this concept. I just found out about it myself and I&amp;rsquo;m enjoying myself with it. I can warmly recommend it. So what do you listen to?&lt;/p&gt;
 </content>
@@ -193,7 +327,7 @@ You can find more information about the jekyll engine on Github &lt;a href=&quot
 
 &lt;p&gt;I have been following &lt;a href=&quot;http://zachholman.com/&quot;&gt;Zach Holmans blog&lt;/a&gt; for some time now and I eagerly been reading about his work at Github and what he feels is a hot topic on a given blog-post date. I came to admire him: Writing exciting stuff, working at github and having friendly and funny discussion on Twitter and at Hacker News.&lt;/p&gt;
 
-&lt;p&gt;I then did what others do when they strive to achieve: I imitated the person having what I wanted to have. I have borrowed the idea of using Jekyll on Github and the design of the blog from Zach &amp;ndash; with permission of course. I have it a bit, though &amp;ndash; my name instead of his name, some small details as sizes in the style and then &lt;a href=&quot;http://evafrederiksen.blogspot.dk/&quot;&gt;my girlfriend&lt;/a&gt; made some new icons for my menu since the ones Zach had weren&amp;rsquo;t free.&lt;/p&gt;
+&lt;p&gt;I then did what others do when they strive to achieve: I imitated the person having what I wanted to have. I have borrowed the idea of using Jekyll on Github and the design of the blog from Zach - with permission of course. I have it a bit, though - my name instead of his name, some small details as sizes in the style and then &lt;a href=&quot;http://evafrederiksen.blogspot.dk/&quot;&gt;my girlfriend&lt;/a&gt; made some new icons for my menu since the ones Zach had weren&amp;rsquo;t free.&lt;/p&gt;
 
 &lt;p&gt;My idea is to change the look and feel of the site gradually over time since design isn&amp;rsquo;t really my strong suit and right now I&amp;rsquo;m quite content with the look. But I can imagine that eventually I want a site which I have made mostly entirely myself instead of a site where only 10% of the design is my own.&lt;/p&gt;
 
