@@ -2,6 +2,7 @@
 layout: post
 title: Simple image processing with CUDA
 hn:  https://news.ycombinator.com/item?id=6622979
+reddit: http://www.reddit.com/r/programming/comments/1pbuyt/simple_image_processing_with_cuda/
 ---
 
 I like graphics and image processing. So I have been fiddling a little with NVIDIAs CUDA in order to capatilize on some multithreaded programming. I have made a little starter edition for people who wants to try forces with CUDA for image processing.
