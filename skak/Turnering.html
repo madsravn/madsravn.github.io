@@ -34,7 +34,7 @@
     <title>FUCKING SKAK</title>
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
     <script>
-    $('[data-toggle]').on('click', function() { 
+    $('.toggler').on('click', function() { 
             alert($(this).data('toggle'));
             $($(this).data('toggle')).toggle();
             });
@@ -87,7 +87,7 @@
         <th>SPIL</th>
         <tr><td>Rune Friborg</td><td></td><td>Jesper Lund Thomsen</td> <td><div id="1runejesper" /> </td></tr>
         <tr><td>Esben Nicolajsen</td><td></td><td>Bj&oslash;rn Nielsen</td><td><div id="1esbenbjorn" /> </td></tr>
-            <tr><td>Mads Ravn</td><td></td><td>Alex Smith</td><td><button title="1madsalex" data-toggle="#1madsalex">se/skjul spil</button><div id="1madsalex"><div id="1madsalex-container"></div></div></td></tr>
+        <tr><td>Mads Ravn</td><td></td><td>Alex Smith</td><td><button title="1madsalex" class="toggler" data-toggle="#1madsalex">se/skjul spil</button><div id="1madsalex"><div id="1madsalex-container"></div></div></td></tr>
         <tr><td>Simon Andersson</td><td></td><td>Tobias Dorph</td><td><div id="1simontobias" /></td></tr>
         <tr><td>Thomas Hansen</td><td></td><td>Niels S Oder</td><td><div id="1thomasniels" /></td></tr>
         <tr><td>Martin Ditlevsen</td><td></td><td>Simon Christoffersen</td><td><div id="1martinsimon" /></td></tr>
