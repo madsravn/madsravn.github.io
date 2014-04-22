@@ -34,7 +34,10 @@
     <title>FUCKING SKAK</title>
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
     <script>
-    $('[data-toggle]').on('click', function() { $($(this).data('toggle')).toggle(); });
+    $('[data-toggle]').on('click', function() { 
+            alert($(this).data('toggle'));
+            $($(this).data('toggle')).toggle();
+            });
     </script>
 
     </head>
