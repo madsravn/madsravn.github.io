@@ -12,6 +12,7 @@ My thesis was half theoretical and half practical. So while I had to write some 
 
 To conclude, remember to:
  * Find tools to streamline your process.
+ * Use the time of your advisor as best as possible. Invest some time to prepare for your meetings.
  * Focus on the important aspects of your thesis, and don't get lost in what is interesting or fun.
  * Find yourself a book on writing. 
 
