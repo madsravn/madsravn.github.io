@@ -4,7 +4,7 @@
  <title>Mads Ravn</title>
  <link href="http://madsravn.dk/atom.xml" rel="self"/>
  <link href="http://madsravn.dk/"/>
- <updated>2015-11-21T20:22:11+01:00</updated>
+ <updated>2015-11-21T20:27:44+01:00</updated>
  <id>http://madsravn.dk</id>
  <author>
    <name>Mads Ravn</name>
@@ -16,7 +16,7 @@
    <link href="http://madsravn.dk/posts/master-thesis-done-lessons-learned"/>
    <updated>2015-11-21T00:00:00+01:00</updated>
    <id>http://madsravn.dk/posts/master-thesis-done-lessons-learned</id>
-   <content type="html">&lt;p&gt;I graduated from Aarhus University with a degree in Computer Science this june. Now, I&amp;rsquo;m finally getting around to publishing my code (as I linked in my thesis). I thought that I would give a quick summary of the process of writing my thesis as well. You can find my thesis and the code I developed for my thesis &lt;a href=&quot;../BIS/index.html&quot;&gt;here&lt;/a&gt;. The title of my thesis is Orthogonal Range Searching in 2D with Ball Inheritance and my advisor was &lt;a href=&quot;http://cs.au.dk/~larsen/&quot;&gt;Kasper Green Larsen&lt;/a&gt;.&lt;/p&gt;
+   <content type="html">&lt;p&gt;I graduated from Aarhus University with a degree in Computer Science this june. Now, I&amp;rsquo;m finally getting around to publishing my code (as I linked in my thesis). I thought that I would give a quick summary of the process of writing my thesis as well. You can find my thesis and the code I developed for my thesis &lt;a href=&quot;./../BIS/index.html&quot;&gt;here&lt;/a&gt;. The title of my thesis is Orthogonal Range Searching in 2D with Ball Inheritance and my advisor was &lt;a href=&quot;http://cs.au.dk/~larsen/&quot;&gt;Kasper Green Larsen&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Before I started writing my thesis, I followed a course called Master Thesis Preparation by &lt;a href=&quot;http://cs.au.dk/~danvy/&quot;&gt;Olivier Danvy&lt;/a&gt;. He has advised for quite a few PhD students so far, so he certainly has a good experience with it. The course consisted of a lot of good tips, tricks and good stories (which is his modus operandi). One of the few things which really stuck with me was to remember an advisor has a limited amount of time for you and it is your responsibility to use it as best as possible. My advisor was awesome enough to read some of what I had written each time we met. And in order to maximize what I got from this, I always compiled a &amp;lsquo;diff-version&amp;rsquo; of my thesis for him. A &amp;lsquo;diff-version&amp;rsquo; was made using &lt;code&gt;latexdiff&lt;/code&gt;. Each time I handed something in, I saved the latex files for that version. Next time I handed something in, I would then run &lt;code&gt;latexdiff&lt;/code&gt; on the current version and what I handed in last time. With this it was easy to see what was removed, what was added and what was the same as last time he read it. This worked out pretty good.&lt;/p&gt;
 
