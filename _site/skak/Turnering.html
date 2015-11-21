@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <style>
+            table, th, td, tr
+            {
+                border-collapse:collapse;
+                padding:15px;
+                font-family:calibri;
+            }
+        </style>
+
+    <!-- Support libraries from Yahoo YUI project -->  
+    <script type="text/javascript"  
+        src="http://chesstempo.com/js/pgnyui.js">  
+    </script>   
+    <script type="text/javascript"  
+        src="http://chesstempo.com/js/pgnviewer.js">  
+    </script>  
+    <link  
+     type="text/css"   
+     rel="stylesheet"   
+     href="http://chesstempo.com/css/board-min.css">  
+    </link>  
+
+    <script>
+    new PgnViewer({
+            boardName: "1madsalex",
+            pgnFile: '1madsalex.pgn'});
+    </script>
+
+    <meta charset="utf-8">
+    <title>FUCKING SKAK</title>
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('.toggler').on('click', function() { 
+                $($(this).data('toggle')).toggle();
+                });
+        $('.game').hide();
+        });
+        
+    </script>
+
+    </head>
+    <body>
+        <table border="1" width="599" height='1000'>
+            <tr>
+            <th>Navn</th>
+            <th>Runde 1</th>
+            <th>Runde 2</th>
+            <th>Runde 3</th>
+            <th>Runde 4</th>
+            <th>Runde 5</th>
+            </tr>
+            
+            <tr><td>Rune Friborg</td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td>Jesper Thomsen</td> <td></td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td>Esben Nicolajsen</td> <td></td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td>Bj&oslash;rn Nielsen</td> <td></td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td>Mads Ravn</td><td> </td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td>Alex Smith</td><td> </td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td>Simon Andersson</td><td> </td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td>Tobias Dorph</td><td> </td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td>Thomas Hansen</td><td> </td><td></td><td></td><td></td><td></td>
+            <tr><td>Niels S Oder</td><td> </td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td>Martin Ditlevsen</td><td> </td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td>Simon C.</td><td> </td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td>Esben Lauritzen</td><td> </td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td>Aske E Bregendahl</td><td> </td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td>Rasmus Th&oslash;gersen</td><td> </td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td>Tobial Ils&oslash;e</td><td> </td></td><td></td><td></td><td></td><td></td></tr>
+            
+            
+            
+           
+        </table>
+    </body>
+    <br>
+    <br>
+    <br>
+    <font face='calibri'>
+    <h1>F&Oslash;RSTE RUNDE/ FIRST ROUND</h1>
+    </font>
+    <table border='1'>
+        <th>HVID</th>
+        <Th>VS.</Th>
+        <th>SORT</th>
+        <th>SPIL</th>
+        <tr><td>Rune Friborg</td><td></td><td>Jesper Lund Thomsen</td> <td><div id="1runejesper" /> </td></tr>
+        <tr><td>Esben Nicolajsen</td><td></td><td>Bj&oslash;rn Nielsen</td><td><div id="1esbenbjorn" /> </td></tr>
+            <tr><td>Alex Smith</td><td>1-0</td><td>Mads Ravn</td><td><button class="toggler" data-toggle="#1madsalex">se/skjul spil</button><div id="1madsalex" class="game"><div id="1madsalex-container"></div></div></td></tr>
+        <tr><td>Simon Andersson</td><td></td><td>Tobias Dorph</td><td><div id="1simontobias" /></td></tr>
+        <tr><td>Thomas Hansen</td><td></td><td>Niels S Oder</td><td><div id="1thomasniels" /></td></tr>
+        <tr><td>Martin Ditlevsen</td><td></td><td>Simon Christoffersen</td><td><div id="1martinsimon" /></td></tr>
+        <tr><td>Esben Merlach Lauritzen </td><td></td><td>Aske E Bregendahl</td><td><div id="1esbenaske" /></td></tr>
+        <tr><td>Rasmus Th&oslash;gersen</td><td></td><td>Tobias Ils&oslash;e Jensen</td><td><div id="1rasmustobias" /></td></tr>
+    </table>
+</html>
