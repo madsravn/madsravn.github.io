@@ -11,8 +11,9 @@ Before I started writing my thesis, I followed a course called Master Thesis Pre
 My thesis was half theoretical and half practical. So while I had to write some code and analyze some results, the actual written thesis was still the main focus. And we all know that writing code is funnier than writing a thesis. So I forced myself to write the draft for the introduction chapter and another chapter before I started coding. This way I did not get lost in just having fun coding and postpone the writing for later (where 'later' might too late).
 
 To conclude, remember to:
- * Find tools to streamline your process.
- * Use the time of your advisor as best as possible. Invest some time to prepare for your meetings.
- * Focus on the important aspects of your thesis, and don't get lost in what is interesting or fun.
- * Find yourself a book on writing. 
+
+* Find tools to streamline your process.
+* Use the time of your advisor as best as possible. Invest some time to prepare for your meetings.
+* Focus on the important aspects of your thesis, and don't get lost in what is interesting or fun.
+* Find yourself a book on writing. 
 
