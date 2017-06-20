@@ -49,42 +49,42 @@
 
   <section class="content">
   <h1>
-    <a href="/rendalg.html">Rendering Algorithms</a>
+    <a href="/rendalg">Rendering Algorithms</a>
   </h1>
 
   <section class="byline">
     
   </section>
 
-  <h3>Project</h3>
+  <h3 id="project">Project</h3>
 
 <p>Render the sponza scene as quickly as possible using data acceleration structure, SIMD, early ray termination and packet tracing.</p>
 
-<h3>Progress</h3>
+<h3 id="progress">Progress</h3>
 
-<p>Currently I have implemented the spatial subdivision data structure. So far I&rsquo;m only using SIMD for triangle intersection test. I also have early ray termination.</p>
+<p>Currently I have implemented the spatial subdivision data structure. So far I’m only using SIMD for triangle intersection test. I also have early ray termination.</p>
 
-<h4>Data structure</h4>
+<h4 id="data-structure">Data structure</h4>
 
 <p><img src="images/mravn_ads.png" /></p>
 
-<h4>Picture of sponza scene</h4>
+<h4 id="picture-of-sponza-scene">Picture of sponza scene</h4>
 
 <p><img src="images/mravn_sponza.png" /></p>
 
-<h3>Numbers</h3>
+<h3 id="numbers">Numbers</h3>
 
 <p>Rendering time without early ray termination: 6.59 seconds</p>
 
 <p>Rendering time with early ray termination: 1.12 seconds (~6 times faster)</p>
 
-<h3>What&rsquo;s next</h3>
+<h3 id="whats-next">What’s next</h3>
 
 <p>I have some problems with my SAH, so my tree is kinda weird. So I need to redo it to make sense (due to going from object to spatial)</p>
 
 <p>I need to implement early ray termination with SIMD</p>
 
-<p>I haven&rsquo;t made the packet tracing yet</p>
+<p>I haven’t made the packet tracing yet</p>
 
 
   <section class="meta">

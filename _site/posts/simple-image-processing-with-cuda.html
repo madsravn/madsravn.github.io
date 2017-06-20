@@ -60,7 +60,7 @@
 
 <p>I am using <a href="http://lodev.org/lodepng/">lodepng</a> for loading and saving images for the filtering. It is very easy to easy, has no dependencies and just works. In my example code I am reading filenames for input and output images from the command line parameters.</p>
 
-<p>Enough talk, let&rsquo;s see some code:</p>
+<p>Enough talk, let’s see some code:</p>
 
 <p>In my <code>main.cpp</code> file I load and save images and call the filter.</p>
 
@@ -104,7 +104,7 @@
             out_image.push_back(255);
         }
     }
-
+    
     // Output the data
     error = lodepng::encode(output_file, out_image, width, height);
 
@@ -120,7 +120,7 @@
 
 <p>We notice how easy lodepng is to use. We tell it we want our image loaded into our vector and voila, we have it. We then remove the alpha channel, as I was not using it in my project. You can however change it to your preferences. We then give our image data to the <code>filter</code> function - this is the function which will load the data onto our GPU and call the CUDA kernel which runs our filter. We then save our image, clean up and exits.</p>
 
-<p>Now let&rsquo;s look at some actual CUDA stuff. The code below resides in <code>kernels.cu</code>. The CUDA compiler, nvcc, is sort of picky as to what filename extensions it will compile as what. For now, just let the name be.</p>
+<p>Now let’s look at some actual CUDA stuff. The code below resides in <code>kernels.cu</code>. The CUDA compiler, nvcc, is sort of picky as to what filename extensions it will compile as what. For now, just let the name be.</p>
 
 <pre><code> void filter (unsigned char* input_image, unsigned char* output_image, int width, int height) {
 
@@ -128,7 +128,7 @@
     unsigned char* dev_output;
     getError(cudaMalloc( (void**) &amp;dev_input, width*height*3*sizeof(unsigned char)));
     getError(cudaMemcpy( dev_input, input_image, width*height*3*sizeof(unsigned char), cudaMemcpyHostToDevice ));
-
+ 
     getError(cudaMalloc( (void**) &amp;dev_output, width*height*3*sizeof(unsigned char)));
 
     dim3 blockDims(512,1,1);
@@ -145,9 +145,9 @@
 }
 </code></pre>
 
-<p>We allocate and copy our data to the GPU. We need the data on the GPU for the kernels to be able to read it. We also allocate storage for the output image, so we have a place to write the result of the filter to. The &lt;&lt;&lt;>>> is CUDA syntax and will be interpreted when compiled. It tells the compiler how many blocks and grids we are going to use. Mostly every CUDA function an enum <code>cudaError_t</code> which is why every CUDA call is surrounded by <code>getError</code>. This way we get an error printed to the screen if anything goes wrong. Don&rsquo;t worry too much about it, you can see the code for it in <code>helpers.cpp</code>.</p>
+<p>We allocate and copy our data to the GPU. We need the data on the GPU for the kernels to be able to read it. We also allocate storage for the output image, so we have a place to write the result of the filter to. The «&lt;»&gt; is CUDA syntax and will be interpreted when compiled. It tells the compiler how many blocks and grids we are going to use. Mostly every CUDA function an enum <code>cudaError_t</code> which is why every CUDA call is surrounded by <code>getError</code>. This way we get an error printed to the screen if anything goes wrong. Don’t worry too much about it, you can see the code for it in <code>helpers.cpp</code>.</p>
 
-<p>Now, let&rsquo;s look at the actual filter, also located in <code>kernels.cu</code>.</p>
+<p>Now, let’s look at the actual filter, also located in <code>kernels.cu</code>.</p>
 
 <pre><code>__global__
 void blur(unsigned char* input_image, unsigned char* output_image, int width, int height) {
@@ -186,7 +186,7 @@ void blur(unsigned char* input_image, unsigned char* output_image, int width, in
 
 <p>So now, try running the program on an image and look at the output image. Blurred, huh?</p>
 
-<p>I have made a simple compile script for the project as well - it works for linux and MAC OSX. Under Windows I guess it&rsquo;s pretty easy to get it up and running in Visual Studio as well. Good luck. <a href="https://github.com/madsravn/easyCuda"> The code can be found on my github</a>.</p>
+<p>I have made a simple compile script for the project as well - it works for linux and MAC OSX. Under Windows I guess it’s pretty easy to get it up and running in Visual Studio as well. Good luck. <a href="https://github.com/madsravn/easyCuda"> The code can be found on my github</a>.</p>
 
 
   <section class="meta">

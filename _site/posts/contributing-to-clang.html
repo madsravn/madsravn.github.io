@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
 <head>
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-  <title>Projects</title>
+  <title>Contributing to Clang</title>
   <meta name="author" content="Mads Ravn" />
   <meta name="description" content="Mads Ravn - An avid coder and lazy donkey." />
   <link rel="alternate" type="application/rss+xml" href="http://feeds.feedburner.com/madsravn" />
@@ -49,46 +49,29 @@
 
   <section class="content">
   <h1>
-    <a href="/projects2">Projects</a>
+    <a href="/posts/contributing-to-clang">Contributing to Clang</a>
   </h1>
 
   <section class="byline">
-    
+    June 20, 2017
   </section>
 
-  <p>A <code>hdparm -tT /dev/sda</code> showed some disturbing news:
-    /dev/sda:
-    Timing cached reads:   160 MB in  2.02 seconds =  79.35 MB/sec
-    Timing buffered disk reads:  14 MB in 33.51 seconds = 427.79 kB/sec</p>
+  <p>A year or so ago I started contributing code to Clang. For those of you who doesn’t know what <a href="http://clang.llvm.org/">Clang</a> is; it is a C and C++ front-end for LLVM. In short, a C++ compiler. I have mostly been doing work on <a href="http://clang.llvm.org/extra/clang-tidy/">Clang-Tidy</a> which is a Clang-based C++ linter. It can help you find errors, enforce coding guidelines or modernize your project. it is a very helpful tool which can be an effective part of your tool chain. It is also very easy to extend Clang-Tidy with your own checks - and it also easy to have this code accepted into the official Clang project.</p>
 
-<p>No way we could watch a movie with 428 kB/sec. A little internet research showed that our Raspberry Pi atleast treats it’s USB ports as a USB hub already and when connecting a new one only the four first ports are given decent speed. Checking <code>lsusb</code> I saw it might make sense since the Raspberry had two entries for “USB-2.0 4-Port HUB”</p>
+<p>So if you are looking for a fun open source project to contribute to, look no further. In this post I will quickly explain the few steps you need to follow in order to extend Clang-Tidy and have it accepted into the Clang project.</p>
 
-<pre><code>Bus 001 Device 005: ID 05e3:0608 Genesys Logic, Inc. USB-2.0 4-Port HUB
-Bus 001 Device 006: ID 05e3:0608 Genesys Logic, Inc. USB-2.0 4-Port HUB
-Bus 001 Device 008: ID 18a5:0237 Verbatim, Ltd Portable Harddrive (500 GB)
-</code></pre>
+<h2 id="get-the-code">Get the code!</h2>
 
-<p>I found this weird and with a disbelief I tried swapping my external drive to the first port on the hub. <code>hdparm -tT /dev/sdb</code> revealed it was working much better now: 
-    /dev/sdb:
-    Timing cached reads:   154 MB in  2.00 seconds =  77.01 MB/sec
-    Timing buffered disk reads:  40 MB in  3.10 seconds =  12.89 MB/sec
-an increase in speed with a factor 30 was pretty convincing. I tried comparing this speed to the speed on the Raspberrys SD card</p>
+<p>First you need to get the source code for the project. The process is described on the <a href="http://clang.llvm.org/get_started.html">getting started page</a>. Clang-Tidy is located in the clang-tools-extra repository. So you will have to check out llvm first, then clang and finally clang-tools-extra.</p>
 
-<pre><code>Timing cached reads:   162 MB in  2.02 seconds =  80.26 MB/sec
-Timing buffered disk reads:  52 MB in  3.03 seconds =  17.17 MB/sec
-</code></pre>
+<h2 id="time-for-some-code">Time for some code</h2>
+<p>Once you have checked the code out, you want to prepare the project by running CMake to get your build environment up and running. Once you have done that and opened the project, I can recommend that you <a href="http://clang.llvm.org/extra/clang-tidy/#writing-a-clang-tidy-check">read this post</a> about writing a clang-tidy check. Pay attention to the tools being used. In particular, <code>add_new_check.py</code>. Using this tool will create the files you need in the right places and add them to the CMake files of the clang-tools-extra project.</p>
 
-<p>which shows that now the external drives speed was now close enough to decent speed. Happily we could now lie lifeless on the couch for some hours watching some mindless stuff :)</p>
+<h2 id="done-coding-get-some-comments">Done coding? Get some comments!</h2>
+<p>When you are done coding - when you have made your own Clang-tidy check and some tests for it - you are going to put the changes in for code review. This is done by using Phabricator. Take a look at the <a href="http://llvm.org/docs/Phabricator.html">LLVM page for Phabricator</a> to see how you create a ‘Differential’ for your patch. If it is your first time creating code for the LLVM project there are bound to be some comments. Just take all the help you can get and be patient.</p>
 
-<p>I hope this can help others to try this simple solution before going the tech-route with installing and configuring a bunch of needless stuff.</p>
-
-<p>Equipment used:</p>
-
-<ul>
-  <li>Raspberry Pi Model B rev. 2</li>
-  <li>Verbatim N446</li>
-  <li>Trust 7 Port USB2 Powered Hub (HU-5870V)</li>
-</ul>
+<h2 id="closing-statement">Closing statement</h2>
+<p>I think the Clang project is super fun to work on. The people I have met through my contributions are super friendly and smart. They are willing to help out a lot. If you want to meet some folk, just drop by the IRC channel. It is at #llvm @ irc.oftc.net. If you want to reach out, my nick is mfrstar.</p>
 
 
   <section class="meta">
