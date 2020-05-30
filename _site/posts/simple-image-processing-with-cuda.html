@@ -62,9 +62,9 @@
 
 <p>Enough talk, let’s see some code:</p>
 
-<p>In my <code>main.cpp</code> file I load and save images and call the filter.</p>
+<p>In my <code class="language-plaintext highlighter-rouge">main.cpp</code> file I load and save images and call the filter.</p>
 
-<pre><code>int main(int argc, char** argv) {
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>int main(int argc, char** argv) {
     if(argc != 3) {
         std::cout &lt;&lt; "Run with input and output image filenames." &lt;&lt; std::endl;
         return 0;
@@ -116,13 +116,13 @@
     return 0;
 
 }
-</code></pre>
+</code></pre></div></div>
 
-<p>We notice how easy lodepng is to use. We tell it we want our image loaded into our vector and voila, we have it. We then remove the alpha channel, as I was not using it in my project. You can however change it to your preferences. We then give our image data to the <code>filter</code> function - this is the function which will load the data onto our GPU and call the CUDA kernel which runs our filter. We then save our image, clean up and exits.</p>
+<p>We notice how easy lodepng is to use. We tell it we want our image loaded into our vector and voila, we have it. We then remove the alpha channel, as I was not using it in my project. You can however change it to your preferences. We then give our image data to the <code class="language-plaintext highlighter-rouge">filter</code> function - this is the function which will load the data onto our GPU and call the CUDA kernel which runs our filter. We then save our image, clean up and exits.</p>
 
-<p>Now let’s look at some actual CUDA stuff. The code below resides in <code>kernels.cu</code>. The CUDA compiler, nvcc, is sort of picky as to what filename extensions it will compile as what. For now, just let the name be.</p>
+<p>Now let’s look at some actual CUDA stuff. The code below resides in <code class="language-plaintext highlighter-rouge">kernels.cu</code>. The CUDA compiler, nvcc, is sort of picky as to what filename extensions it will compile as what. For now, just let the name be.</p>
 
-<pre><code> void filter (unsigned char* input_image, unsigned char* output_image, int width, int height) {
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> void filter (unsigned char* input_image, unsigned char* output_image, int width, int height) {
 
     unsigned char* dev_input;
     unsigned char* dev_output;
@@ -143,13 +143,13 @@
     getError(cudaFree(dev_output));
 
 }
-</code></pre>
+</code></pre></div></div>
 
-<p>We allocate and copy our data to the GPU. We need the data on the GPU for the kernels to be able to read it. We also allocate storage for the output image, so we have a place to write the result of the filter to. The «&lt;»&gt; is CUDA syntax and will be interpreted when compiled. It tells the compiler how many blocks and grids we are going to use. Mostly every CUDA function an enum <code>cudaError_t</code> which is why every CUDA call is surrounded by <code>getError</code>. This way we get an error printed to the screen if anything goes wrong. Don’t worry too much about it, you can see the code for it in <code>helpers.cpp</code>.</p>
+<p>We allocate and copy our data to the GPU. We need the data on the GPU for the kernels to be able to read it. We also allocate storage for the output image, so we have a place to write the result of the filter to. The «&lt;»&gt; is CUDA syntax and will be interpreted when compiled. It tells the compiler how many blocks and grids we are going to use. Mostly every CUDA function an enum <code class="language-plaintext highlighter-rouge">cudaError_t</code> which is why every CUDA call is surrounded by <code class="language-plaintext highlighter-rouge">getError</code>. This way we get an error printed to the screen if anything goes wrong. Don’t worry too much about it, you can see the code for it in <code class="language-plaintext highlighter-rouge">helpers.cpp</code>.</p>
 
-<p>Now, let’s look at the actual filter, also located in <code>kernels.cu</code>.</p>
+<p>Now, let’s look at the actual filter, also located in <code class="language-plaintext highlighter-rouge">kernels.cu</code>.</p>
 
-<pre><code>__global__
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>__global__
 void blur(unsigned char* input_image, unsigned char* output_image, int width, int height) {
 
     const unsigned int offset = blockIdx.x*blockDim.x + threadIdx.x;
@@ -178,11 +178,11 @@ void blur(unsigned char* input_image, unsigned char* output_image, int width, in
         output_image[offset*3+2] = output_blue/hits;
         }
 }
-</code></pre>
+</code></pre></div></div>
 
-<p>Again, the <strong>global</strong> is a CUDA keyword. For each pixel in the input image we take the average of each of the neighbouring pixels and writes it to the output image. This filter is known as a Box blur. A better blur filter would be the Gaussian blur. I have written a Gaussian function in <code>helpers.cpp</code> if you want to try. However, before doing that, just try to play around it and see what happens. I learn best from trial and error, and that is also why graphics and image processing is a subject I like - because you can see the result of your work in an easily understanded way instead of reading thousands of lines of output data.</p>
+<p>Again, the <strong>global</strong> is a CUDA keyword. For each pixel in the input image we take the average of each of the neighbouring pixels and writes it to the output image. This filter is known as a Box blur. A better blur filter would be the Gaussian blur. I have written a Gaussian function in <code class="language-plaintext highlighter-rouge">helpers.cpp</code> if you want to try. However, before doing that, just try to play around it and see what happens. I learn best from trial and error, and that is also why graphics and image processing is a subject I like - because you can see the result of your work in an easily understanded way instead of reading thousands of lines of output data.</p>
 
-<p>Notice that we check if our <code>offset</code> is actually within the range of <code>width*height</code> because it can happen that it will be outside due to the blocks CUDA will run, so remember to keep that. Also we need to remember to check whether or not the pixel we read are actually in our image when doing the box blur as well. You can try to remove them one at a time and see what happens.</p>
+<p>Notice that we check if our <code class="language-plaintext highlighter-rouge">offset</code> is actually within the range of <code class="language-plaintext highlighter-rouge">width*height</code> because it can happen that it will be outside due to the blocks CUDA will run, so remember to keep that. Also we need to remember to check whether or not the pixel we read are actually in our image when doing the box blur as well. You can try to remove them one at a time and see what happens.</p>
 
 <p>So now, try running the program on an image and look at the output image. Blurred, huh?</p>
 
