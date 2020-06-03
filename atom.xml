@@ -2,11 +2,11 @@
 layout: nil
 ---
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
+<feed xmlns="https://www.w3.org/2005/Atom">
  
  <title>Mads Ravn</title>
- <link href="http://madsravn.dk/atom.xml" rel="self"/>
- <link href="http://madsravn.dk/"/>
+ <link href="https://madsravn.dk/atom.xml" rel="self"/>
+ <link href="https://madsravn.dk/"/>
  <updated>{{ site.time | date_to_xmlschema }}</updated>
  <id>http://madsravn.dk</id>
  <author>
@@ -16,9 +16,9 @@ layout: nil
  {% for post in site.posts %}
  <entry>
    <title>{{ post.title }}</title>
-   <link href="http://madsravn.dk{{ post.url }}"/>
+   <link href="https://madsravn.dk{{ post.url }}"/>
    <updated>{{ post.date | date_to_xmlschema }}</updated>
-   <id>http://madsravn.dk{{ post.id }}</id>
+   <id>https://madsravn.dk{{ post.id }}</id>
    <content type="html">{{ post.content | xml_escape }}</content>
  </entry>
  {% endfor %}
