@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2020-06-10T20:23:57+02:00</updated><id>/feed.xml</id><title type="html">Your awesome title</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><entry><title type="html">Contributing to Clang</title><link href="/posts/contributing-to-clang" rel="alternate" type="text/html" title="Contributing to Clang" /><published>2017-06-20T00:00:00+02:00</published><updated>2017-06-20T00:00:00+02:00</updated><id>/posts/contributing-to-clang</id><content type="html" xml:base="/posts/contributing-to-clang">&lt;p&gt;A year or so ago I started contributing code to Clang. For those of you who doesn’t know what &lt;a href=&quot;https://clang.llvm.org/&quot;&gt;Clang&lt;/a&gt; is; it is a C and C++ front-end for LLVM. In short, a C++ compiler. I have mostly been doing work on &lt;a href=&quot;https://clang.llvm.org/extra/clang-tidy/&quot;&gt;Clang-Tidy&lt;/a&gt; which is a Clang-based C++ linter. It can help you find errors, enforce coding guidelines or modernize your project. it is a very helpful tool which can be an effective part of your tool chain. It is also very easy to extend Clang-Tidy with your own checks - and it also easy to have this code accepted into the official Clang project.&lt;/p&gt;
+
+&lt;p&gt;So if you are looking for a fun open source project to contribute to, look no further. In this post I will quickly explain the few steps you need to follow in order to extend Clang-Tidy and have it accepted into the Clang project.&lt;/p&gt;
+
+&lt;h2 id=&quot;get-the-code&quot;&gt;Get the code!&lt;/h2&gt;
+
+&lt;p&gt;First you need to get the source code for the project. The process is described on the &lt;a href=&quot;https://clang.llvm.org/get_started.html&quot;&gt;getting started page&lt;/a&gt;. Clang-Tidy is located in the clang-tools-extra repository. So you will have to check out llvm first, then clang and finally clang-tools-extra.&lt;/p&gt;
+
+&lt;h2 id=&quot;time-for-some-code&quot;&gt;Time for some code&lt;/h2&gt;
+&lt;p&gt;Once you have checked the code out, you want to prepare the project by running CMake to get your build environment up and running. Once you have done that and opened the project, I can recommend that you &lt;a href=&quot;https://clang.llvm.org/extra/clang-tidy/#writing-a-clang-tidy-check&quot;&gt;read this post&lt;/a&gt; about writing a clang-tidy check. Pay attention to the tools being used. In particular, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;add_new_check.py&lt;/code&gt;. Using this tool will create the files you need in the right places and add them to the CMake files of the clang-tools-extra project.&lt;/p&gt;
+
+&lt;h2 id=&quot;done-coding-get-some-comments&quot;&gt;Done coding? Get some comments!&lt;/h2&gt;
+&lt;p&gt;When you are done coding - when you have made your own Clang-tidy check and some tests for it - you are going to put the changes in for code review. This is done by using Phabricator. Take a look at the &lt;a href=&quot;https://llvm.org/docs/Phabricator.html&quot;&gt;LLVM page for Phabricator&lt;/a&gt; to see how you create a ‘Differential’ for your patch. If it is your first time creating code for the LLVM project there are bound to be some comments. Just take all the help you can get and be patient.&lt;/p&gt;
+
+&lt;h2 id=&quot;closing-statement&quot;&gt;Closing statement&lt;/h2&gt;
+&lt;p&gt;I think the Clang project is super fun to work on. The people I have met through my contributions are super friendly and smart. They are willing to help out a lot. If you want to meet some folk, just drop by the IRC channel. It is at #llvm @ irc.oftc.net. If you want to reach out, my nick is mfrstar.&lt;/p&gt;</content><author><name></name></author><summary type="html">A year or so ago I started contributing code to Clang. For those of you who doesn’t know what Clang is; it is a C and C++ front-end for LLVM. In short, a C++ compiler. I have mostly been doing work on Clang-Tidy which is a Clang-based C++ linter. It can help you find errors, enforce coding guidelines or modernize your project. it is a very helpful tool which can be an effective part of your tool chain. It is also very easy to extend Clang-Tidy with your own checks - and it also easy to have this code accepted into the official Clang project.</summary></entry><entry><title type="html">Meeting C++ trip report</title><link href="/posts/meeting-cpp-trip-report" rel="alternate" type="text/html" title="Meeting C++ trip report" /><published>2016-11-22T00:00:00+01:00</published><updated>2016-11-22T00:00:00+01:00</updated><id>/posts/meeting-cpp-trip-report</id><content type="html" xml:base="/posts/meeting-cpp-trip-report">&lt;p&gt;Last week I attended my first ever C++ conference. It was the Meeting C++ conference in Berlin. The conference was very nicely planned with some good speakers and good topics. There were only a few minor details which was inconvinient. Below I will try to express some thoughts about the different talks I saw and about the conference in general.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-keynote&quot;&gt;The Keynote&lt;/h2&gt;
+
+&lt;p&gt;The keynote this year was presented by Bjarne Stroustrup. I have seen Bjarne a few times before and it never gets boring. He talked about what his thoughts were when he created C++ and how he is trying to stay true to those thoughts going into newer versions of C++. As always he talked expressing intent - both for the readers and the compiler. He then showed what kind of features we can expect from C++17 and what he hopes will come with C++2z. I am always impressed at the questions he gets and how he answers them. He is getting all kind of weird and technical questions and he answers them all in a very calm manner. There was one question he didn’t want to answer though, which was about which languages he likes and dislikes.&lt;/p&gt;
+
+&lt;h2 id=&quot;all-your-cache-is-belong-to-us&quot;&gt;All your cache is belong to us&lt;/h2&gt;
+
+&lt;p&gt;I also saw a talk about caches by Timur Doumler. It was very good. He had some excellent points accompanied by good figures and thought-out experiments. I never thought the subject of caching could become fun and interesting, but Doumler actually nailed it. Unfortunately, this presentation did not allow for questions due to time being short. This was the one single talk I had a question for. He also showed snippets of code as to how you would write better code if you are interested in cache friendliness.&lt;/p&gt;
+
+&lt;h2 id=&quot;a-million-lines-of-code&quot;&gt;A million lines of code&lt;/h2&gt;
+
+&lt;p&gt;Next on the schedule was Peter Bindels from Tomtom talking about their own software. He talked about how they had had problems with way too many lines of codes. He presented some guidelines for how to handle it and talked about a tool Tomtom had developed to show internal code dependencies. This tool had been very successfull in helping them make their code more clear and expressive. He mentioned that their tool could find code dependency cycles and how you did want to have these. I found this talk very good. Peter was very engaging and talked about practical experience which is easy to convert into your own work.&lt;/p&gt;
+
+&lt;h2 id=&quot;a-little-dash-of-functional&quot;&gt;A little dash of functional&lt;/h2&gt;
+
+&lt;p&gt;The last talk of the day was Phil Nash with his ‘Functional C++ for Fun and Profit’. I was a little vary when joining this talk. Sometimes when people talk about functional C++ it just becomes a garbage can of metaprogramming. Nash had none of this. His talk was concise with some very nice points from his practical experience. He showed how to express intent with functional programming and how to strive towards the idea of purity. He talked a little about some persistent data structure before showing how to make some nice functional programming with lambda expressions and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;std::optional&lt;/code&gt;. It was very intereting. This was easily the best talk of the day for me.&lt;/p&gt;
+
+&lt;h2 id=&quot;party-time&quot;&gt;Party time!&lt;/h2&gt;
+
+&lt;p&gt;At this point we got some food. It was OK - nothing too good. And there was no beer with the meal! However, after the meal there was a C++ quiz by conan.io. It was very fun to try. We did OK, I think we got 5-6th place or something. After the quiz, at 9:00 PM the beer finally arrived. I went around, drank some beer and talked to some interesting people! This was also one of the best things about the conference: just talking to people about stuff. Too bad we only had one evening to do that. But next years Meeting C++ with one more day of conference will be better!&lt;/p&gt;
+
+&lt;h2 id=&quot;saturday-morning-functional-programming&quot;&gt;Saturday morning functional programming&lt;/h2&gt;
+
+&lt;p&gt;First thing on the schedule saturday was ‘Functional Reactive Programming in C++’ by Ivan Cukic. I have to give it to Cukic for bringing a very relevant and easy to use presentation! Again, I had expected some metaprogramming, but it was good on the conceptual level as to how you want to explore funcation reactive programming! Was an excellent presentation. Cukic also shared free copies of his future book on this exact subject!&lt;/p&gt;
+
+&lt;h2 id=&quot;static-analysis&quot;&gt;Static analysis!&lt;/h2&gt;
+
+&lt;p&gt;Next up was Gabor Horvath with his talk about static analysis. Gabor is a PhD student with subject in static analysis, so this talk was a little academic. But it was indeed very interesting. He had good examples and nice slides on the subject. When the presentation was over I was much more curious about static analysis and wanted to look more into it. This was also one of my favorite talks of the conference.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-end&quot;&gt;The end&lt;/h2&gt;
+&lt;p&gt;Unfortunately I didn’t get to see the closing keynote due to my travel plans. I had to get home. But that was OK - I had had an awesome first conference. I am very inspired about the things I learned there. I can feel there are a lot of things I still need to learn and I look forward to this! I got to speak with some interesting people and share laughs with others! I hope I can take some of the subjects I heard about and incorporate them into my work.&lt;/p&gt;
+
+&lt;p&gt;This was all in all a good conference and an awesome experience!&lt;/p&gt;</content><author><name></name></author><summary type="html">Last week I attended my first ever C++ conference. It was the Meeting C++ conference in Berlin. The conference was very nicely planned with some good speakers and good topics. There were only a few minor details which was inconvinient. Below I will try to express some thoughts about the different talks I saw and about the conference in general.</summary></entry><entry><title type="html">Master thesis done - lessons learned</title><link href="/posts/master-thesis-done-lessons-learned" rel="alternate" type="text/html" title="Master thesis done - lessons learned" /><published>2015-11-21T00:00:00+01:00</published><updated>2015-11-21T00:00:00+01:00</updated><id>/posts/master-thesis-done-lessons-learned</id><content type="html" xml:base="/posts/master-thesis-done-lessons-learned">&lt;p&gt;I graduated from Aarhus University with a degree in Computer Science this june. Now, I’m finally getting around to publishing my code (as I linked in my thesis). I thought that I would give a quick summary of the process of writing my thesis as well. You can find my thesis and the code I developed for my thesis &lt;a href=&quot;./../../BIS/index.html&quot;&gt;here&lt;/a&gt;. The title of my thesis is Orthogonal Range Searching in 2D with Ball Inheritance and my advisor was &lt;a href=&quot;https://cs.au.dk/~larsen/&quot;&gt;Kasper Green Larsen&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Before I started writing my thesis, I followed a course called Master Thesis Preparation by &lt;a href=&quot;https://cs.au.dk/~danvy/&quot;&gt;Olivier Danvy&lt;/a&gt;. He has advised for quite a few PhD students so far, so he certainly has a good experience with it. The course consisted of a lot of good tips, tricks and good stories (which is his modus operandi). One of the few things which really stuck with me was to remember an advisor has a limited amount of time for you and it is your responsibility to use it as best as possible. My advisor was awesome enough to read some of what I had written each time we met. And in order to maximize what I got from this, I always compiled a ‘diff-version’ of my thesis for him. A ‘diff-version’ was made using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;latexdiff&lt;/code&gt;. Each time I handed something in, I saved the latex files for that version. Next time I handed something in, I would then run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;latexdiff&lt;/code&gt; on the current version and what I handed in last time. With this it was easy to see what was removed, what was added and what was the same as last time he read it. This worked out pretty good.&lt;/p&gt;
+
+&lt;p&gt;My thesis was half theoretical and half practical. So while I had to write some code and analyze some results, the actual written thesis was still the main focus. And we all know that writing code is funnier than writing a thesis. So I forced myself to write the draft for the introduction chapter and another chapter before I started coding. This way I did not get lost in just having fun coding and postpone the writing for later (where ‘later’ might too late).&lt;/p&gt;
+
+&lt;p&gt;To conclude, remember to:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Find tools to streamline your process.&lt;/li&gt;
+  &lt;li&gt;Use the time of your advisor as best as possible. Invest some time to prepare for your meetings.&lt;/li&gt;
+  &lt;li&gt;Focus on the important aspects of your thesis, and don’t get lost in what is interesting or fun.&lt;/li&gt;
+  &lt;li&gt;Find yourself a book on writing.&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><summary type="html">I graduated from Aarhus University with a degree in Computer Science this june. Now, I’m finally getting around to publishing my code (as I linked in my thesis). I thought that I would give a quick summary of the process of writing my thesis as well. You can find my thesis and the code I developed for my thesis here. The title of my thesis is Orthogonal Range Searching in 2D with Ball Inheritance and my advisor was Kasper Green Larsen.</summary></entry><entry><title type="html">What is better - Xbox One or Playstation 4?</title><link href="/posts/what-is-better-xbox-or-playstation" rel="alternate" type="text/html" title="What is better - Xbox One or Playstation 4?" /><published>2013-11-19T00:00:00+01:00</published><updated>2013-11-19T00:00:00+01:00</updated><id>/posts/what-is-better-xbox-or-playstation</id><content type="html" xml:base="/posts/what-is-better-xbox-or-playstation">&lt;p&gt;With the two new consoles being released soon, there is a lot of hype about it online. There is a lot of articles online describing the differences in performance, games, design and usability - reading the comparisons of the consoles almost seems like a bigger time consumption than actually playing on the console.&lt;/p&gt;
+
+&lt;p&gt;So I read all the posts and summarized it for you. Which console is the best? Here’s the answer:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://madsravn.dk/images/xboxplaystation.png&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">With the two new consoles being released soon, there is a lot of hype about it online. There is a lot of articles online describing the differences in performance, games, design and usability - reading the comparisons of the consoles almost seems like a bigger time consumption than actually playing on the console.</summary></entry><entry><title type="html">Simple image processing with CUDA</title><link href="/posts/simple-image-processing-with-cuda" rel="alternate" type="text/html" title="Simple image processing with CUDA" /><published>2013-10-27T00:00:00+02:00</published><updated>2013-10-27T00:00:00+02:00</updated><id>/posts/simple-image-processing-with-cuda</id><content type="html" xml:base="/posts/simple-image-processing-with-cuda">&lt;p&gt;I like graphics and image processing. So I have been fiddling a little with NVIDIAs CUDA in order to capatilize on some multithreaded programming. I have made a little starter edition for people who wants to try forces with CUDA for image processing.&lt;/p&gt;
+
+&lt;p&gt;I am using &lt;a href=&quot;https://lodev.org/lodepng/&quot;&gt;lodepng&lt;/a&gt; for loading and saving images for the filtering. It is very easy to easy, has no dependencies and just works. In my example code I am reading filenames for input and output images from the command line parameters.&lt;/p&gt;
+
+&lt;p&gt;Enough talk, let’s see some code:&lt;/p&gt;
+
+&lt;p&gt;In my &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;main.cpp&lt;/code&gt; file I load and save images and call the filter.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;int main(int argc, char** argv) {
+    if(argc != 3) {
+        std::cout &amp;lt;&amp;lt; &quot;Run with input and output image filenames.&quot; &amp;lt;&amp;lt; std::endl;
+        return 0;
+    }
+
+    // Read the arguments
+    const char* input_file = argv[1];
+    const char* output_file = argv[2];
+
+    std::vector&amp;lt;unsigned char&amp;gt; in_image;
+    unsigned int width, height;
+
+    // Load the data
+    unsigned error = lodepng::decode(in_image, width, height, input_file);
+    if(error) std::cout &amp;lt;&amp;lt; &quot;decoder error &quot; &amp;lt;&amp;lt; error &amp;lt;&amp;lt; &quot;: &quot; &amp;lt;&amp;lt; lodepng_error_text(error) &amp;lt;&amp;lt; std::endl;
+
+    // Prepare the data
+    unsigned char* input_image = new unsigned char[(in_image.size()*3)/4];
+    unsigned char* output_image = new unsigned char[(in_image.size()*3)/4];
+    int where = 0;
+    for(int i = 0; i &amp;lt; in_image.size(); ++i) {
+       if((i+1) % 4 != 0) {
+           input_image[where] = in_image.at(i);
+           output_image[where] = 255;
+           where++;
+       }
+    }
+
+    // Run the filter on it
+    filter(input_image, output_image, width, height); 
+
+    // Prepare data for output
+    std::vector&amp;lt;unsigned char&amp;gt; out_image;
+    for(int i = 0; i &amp;lt; in_image.size(); ++i) {
+        out_image.push_back(output_image[i]);
+        if((i+1) % 3 == 0) {
+            out_image.push_back(255);
+        }
+    }
+    
+    // Output the data
+    error = lodepng::encode(output_file, out_image, width, height);
+
+    //if there's an error, display it
+    if(error) std::cout &amp;lt;&amp;lt; &quot;encoder error &quot; &amp;lt;&amp;lt; error &amp;lt;&amp;lt; &quot;: &quot;&amp;lt;&amp;lt; lodepng_error_text(error) &amp;lt;&amp;lt; std::endl;
+
+    delete[] input_image;
+    delete[] output_image;
+    return 0;
+
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;We notice how easy lodepng is to use. We tell it we want our image loaded into our vector and voila, we have it. We then remove the alpha channel, as I was not using it in my project. You can however change it to your preferences. We then give our image data to the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;filter&lt;/code&gt; function - this is the function which will load the data onto our GPU and call the CUDA kernel which runs our filter. We then save our image, clean up and exits.&lt;/p&gt;
+
+&lt;p&gt;Now let’s look at some actual CUDA stuff. The code below resides in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;kernels.cu&lt;/code&gt;. The CUDA compiler, nvcc, is sort of picky as to what filename extensions it will compile as what. For now, just let the name be.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; void filter (unsigned char* input_image, unsigned char* output_image, int width, int height) {
+
+    unsigned char* dev_input;
+    unsigned char* dev_output;
+    getError(cudaMalloc( (void**) &amp;amp;dev_input, width*height*3*sizeof(unsigned char)));
+    getError(cudaMemcpy( dev_input, input_image, width*height*3*sizeof(unsigned char), cudaMemcpyHostToDevice ));
+ 
+    getError(cudaMalloc( (void**) &amp;amp;dev_output, width*height*3*sizeof(unsigned char)));
+
+    dim3 blockDims(512,1,1);
+    dim3 gridDims((unsigned int) ceil((double)(width*height*3/blockDims.x)), 1, 1 );
+
+    filter&amp;lt;&amp;lt;&amp;lt;gridDims, blockDims&amp;gt;&amp;gt;&amp;gt;(dev_input, dev_output, width, height); 
+
+
+    getError(cudaMemcpy(output_image, dev_output, width*height*3*sizeof(unsigned char), cudaMemcpyDeviceToHost ));
+
+    getError(cudaFree(dev_input));
+    getError(cudaFree(dev_output));
+
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;We allocate and copy our data to the GPU. We need the data on the GPU for the kernels to be able to read it. We also allocate storage for the output image, so we have a place to write the result of the filter to. The «&amp;lt;»&amp;gt; is CUDA syntax and will be interpreted when compiled. It tells the compiler how many blocks and grids we are going to use. Mostly every CUDA function an enum &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cudaError_t&lt;/code&gt; which is why every CUDA call is surrounded by &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;getError&lt;/code&gt;. This way we get an error printed to the screen if anything goes wrong. Don’t worry too much about it, you can see the code for it in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;helpers.cpp&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Now, let’s look at the actual filter, also located in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;kernels.cu&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;__global__
+void blur(unsigned char* input_image, unsigned char* output_image, int width, int height) {
+
+    const unsigned int offset = blockIdx.x*blockDim.x + threadIdx.x;
+    int x = offset % width;
+    int y = (offset-x)/width;
+    int fsize = 5; // Filter size
+    if(offset &amp;lt; width*height) {
+
+        float output_red = 0;
+        float output_green = 0;
+        float output_blue = 0;
+        int hits = 0;
+        for(int ox = -fsize; ox &amp;lt; fsize+1; ++ox) {
+            for(int oy = -fsize; oy &amp;lt; fsize+1; ++oy) {
+                if((x+ox) &amp;gt; -1 &amp;amp;&amp;amp; (x+ox) &amp;lt; width &amp;amp;&amp;amp; (y+oy) &amp;gt; -1 &amp;amp;&amp;amp; (y+oy) &amp;lt; height) {
+                    const int currentoffset = (offset+ox+oy*width)*3;
+                    output_red += input_image[currentoffset]; 
+                    output_green += input_image[currentoffset+1];
+                    output_blue += input_image[currentoffset+2];
+                    hits++;
+                }
+            }
+        }
+        output_image[offset*3] = output_red/hits;
+        output_image[offset*3+1] = output_green/hits;
+        output_image[offset*3+2] = output_blue/hits;
+        }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Again, the &lt;strong&gt;global&lt;/strong&gt; is a CUDA keyword. For each pixel in the input image we take the average of each of the neighbouring pixels and writes it to the output image. This filter is known as a Box blur. A better blur filter would be the Gaussian blur. I have written a Gaussian function in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;helpers.cpp&lt;/code&gt; if you want to try. However, before doing that, just try to play around it and see what happens. I learn best from trial and error, and that is also why graphics and image processing is a subject I like - because you can see the result of your work in an easily understanded way instead of reading thousands of lines of output data.&lt;/p&gt;
+
+&lt;p&gt;Notice that we check if our &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;offset&lt;/code&gt; is actually within the range of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;width*height&lt;/code&gt; because it can happen that it will be outside due to the blocks CUDA will run, so remember to keep that. Also we need to remember to check whether or not the pixel we read are actually in our image when doing the box blur as well. You can try to remove them one at a time and see what happens.&lt;/p&gt;
+
+&lt;p&gt;So now, try running the program on an image and look at the output image. Blurred, huh?&lt;/p&gt;
+
+&lt;p&gt;I have made a simple compile script for the project as well - it works for linux and MAC OSX. Under Windows I guess it’s pretty easy to get it up and running in Visual Studio as well. Good luck. &lt;a href=&quot;https://github.com/madsravn/easyCuda&quot;&gt; The code can be found on my github&lt;/a&gt;.&lt;/p&gt;</content><author><name></name></author><summary type="html">I like graphics and image processing. So I have been fiddling a little with NVIDIAs CUDA in order to capatilize on some multithreaded programming. I have made a little starter edition for people who wants to try forces with CUDA for image processing.</summary></entry><entry><title type="html">Improving performance with packet tracing and other methods</title><link href="/posts/final-handin-for-rendalg" rel="alternate" type="text/html" title="Improving performance with packet tracing and other methods" /><published>2013-04-10T00:00:00+02:00</published><updated>2013-04-10T00:00:00+02:00</updated><id>/posts/final-handin-for-rendalg</id><content type="html" xml:base="/posts/final-handin-for-rendalg">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;The subject I chose for final handin in the rendering algorithms course was improving the rendering time of a given scene, the Sponza scene as seen below. The scene consist of 66,454 triangles which are rather compact and from any given viewpoint pretty stacked - i.e. if you shoot a ray through a triangle you are pretty sure to hit at least a few other triangles either behind or in front of it.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://madsravn.dk/images/mravn_sponza.png&quot; alt=&quot;sponza scene&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;the-methods&quot;&gt;The methods&lt;/h2&gt;
+
+&lt;p&gt;Firstly I used an acceleration data structure to put all my geometry in a tree which can be traversed. An acceleration data structure is an improvement in itself, but with this tree it became possible to make some further improvements using packet tracing. Packet tracing is a method where you group some of your rays together and traverse the tree of the data structure with them packed instead of a single ray at a time. This way you don’t have to traverse many of the nodes of the tree so many times and you can also do some early miss testing by making a frustum of this group of rays and cheaply check if they all miss a bounding box with a single frustum/AABB intersection test instead of doing 16 to 512 ray/box intersection tests.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://madsravn.dk/images/mravn_ads.png&quot; alt=&quot;ads&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;the-results&quot;&gt;The results&lt;/h2&gt;
+
+&lt;p&gt;I checked my implementation of packet tracing compared to the same scene with only early ray termination. I got these numbers&lt;/p&gt;
+
+&lt;h3 id=&quot;normal-ray-tracing-with-early-ray-termination-yielded-the-following-results&quot;&gt;Normal ray tracing with early ray termination yielded the following results:&lt;/h3&gt;
+
+&lt;p&gt;Did 6,503,630 triangle intersections&lt;/p&gt;
+
+&lt;p&gt;Did 20,193,290 traversals&lt;/p&gt;
+
+&lt;p&gt;Did 33,267,596 box intersections&lt;/p&gt;
+
+&lt;h3 id=&quot;packet-tracing-with-a-packet-size-of-4x4&quot;&gt;Packet tracing with a packet size of 4x4:&lt;/h3&gt;
+
+&lt;p&gt;Did 6,560,144 triangle intersections&lt;/p&gt;
+
+&lt;p&gt;Did 1,877,640 traversals&lt;/p&gt;
+
+&lt;p&gt;Did 11,500,952 box intersections&lt;/p&gt;
+
+&lt;h3 id=&quot;packet-tracing-with-a-packet-size-of-8x8&quot;&gt;Packet tracing with a packet size of 8x8:&lt;/h3&gt;
+
+&lt;p&gt;Did 9,904,128 triangle intersections&lt;/p&gt;
+
+&lt;p&gt;Did 602,404 traversals&lt;/p&gt;
+
+&lt;p&gt;Did 10,080,299 box intersections&lt;/p&gt;
+
+&lt;h3 id=&quot;packet-tracing-with-a-packet-size-of-16x16&quot;&gt;Packet tracing with a packet size of 16x16:&lt;/h3&gt;
+
+&lt;p&gt;Did 20,155,648 triangle intersections&lt;/p&gt;
+
+&lt;p&gt;Did 248,074 traversals&lt;/p&gt;
+
+&lt;p&gt;Did 10,991,985 box intersections&lt;/p&gt;
+
+&lt;h2 id=&quot;path-tracing&quot;&gt;Path tracing&lt;/h2&gt;
+
+&lt;p&gt;A part of the handin was also to implement either photon mapping or path tracing. I chose path tracing with 512 samples per pixel. The result can be seen here&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://madsravn.dk/images/teapot.pathtracing.png&quot; alt=&quot;pathtracing&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;the-conclusion&quot;&gt;The conclusion&lt;/h2&gt;
+
+&lt;p&gt;This was a very fun project to work on and an exciting way to finish of a good course in rendering algorithms. I wish I could have had more time doing this project because I don’t think I was far from getting much better results using leaf traversal. As you can see on my numbers above the amount of ray/triangle intersection tests explode at packet size 16x16, while the traversal is pretty low.&lt;/p&gt;</content><author><name></name></author><summary type="html">Introduction</summary></entry><entry><title type="html">Chess summary for January</title><link href="/posts/chess-summary-for-january" rel="alternate" type="text/html" title="Chess summary for January" /><published>2013-01-31T00:00:00+01:00</published><updated>2013-01-31T00:00:00+01:00</updated><id>/posts/chess-summary-for-january</id><content type="html" xml:base="/posts/chess-summary-for-january">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;Back in November I saw a video posted on Reddit. It was a video of an analysis of a chess game. This got me motivated to try playing chess and I really liked it. I also like numbers, so I have decided that I want to sum up each month of chess from now on.&lt;/p&gt;
+
+&lt;p&gt;Unfortunately January has been a exam month, so the number of chess games are sort of scarce. But I felt chess was a welcome distraction when I wanted a little breathing room from all the reading.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-numbers&quot;&gt;The Numbers&lt;/h2&gt;
+
+&lt;p&gt;I made &lt;a href=&quot;https://github.com/madsravn/pgn-divider/blob/master/divider.sh&quot;&gt;a little script&lt;/a&gt; to sort out the data from one big file of pgn annotation since chesscube will not let me download pgn files other than manually. From this I could deduce some statistics.&lt;/p&gt;
+
+&lt;p&gt;I made a fancy chart with the help of &lt;a href=&quot;https://www.chartgo.com&quot;&gt;www.chartgo.com&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://madsravn.dk/images/chess1.png&quot; alt=&quot;games&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I played 46 games in January. Luckily for my ego I won more than I lost. I won nearly the same amount of games playing white as I did playing black. A fun difference is noticeable in the games I lost: I only lost 6 games as white compared to the 12 games I lost as black. Of course only having played 46 games this doesn’t seem like a big leap.&lt;/p&gt;
+
+&lt;p&gt;Unfortunately the game history chesscube saves only includes the rating of the players after the game. So I can make any analysis to whether players had higher or lower rating than me at the time of the game since if I had played a player near my rating and won he would probably have lower rating than me after the game. Of the 27 games I won only 3 of my opponents had a higher rating than me AFTER the game. So I think I can conclude that most of my victories were over players with a lower rating than my own.&lt;/p&gt;
+
+&lt;p&gt;In the end I went from 1326 to 1352 rating on chesscube. Even though I haven’t really moved significantly up I feel like I have learned a lot from just playing and experiencing.&lt;/p&gt;
+
+&lt;p&gt;I had imagined I could have made more charts (Who doesn’t love charts?), but seeing that I can’t do any analysis of the ratings, it seems futile to make charts of more than just win/lose. If you have any idea what I can of further analysis with data given in a pgn file containing the rating after the game, please let me know. You can see how what kind of data is in the chesscube pgn in my &lt;a href=&quot;https://github.com/madsravn/pgn-divider/blob/master/january-2013.pgn&quot;&gt;January PGN chunk here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-conclusion&quot;&gt;The conclusion&lt;/h2&gt;
+
+&lt;p&gt;I really like playing chess. I like that the game doesn’t include any form of randomness that many other games like card games and backgammon have. I also feel like I am training my concentration by playing and trying to think some moves ahead while keeping my head in current situation of the game.&lt;/p&gt;
+
+&lt;p&gt;I would like to thank &lt;a href=&quot;https://www.youtube.com/user/Ruxistico/videos?view=0&quot;&gt;Rune Friborg&lt;/a&gt; for making the video who initially got me motivated to play. He also invited me to an awesome facebook group “Fucking Skak” (Fucking Chess) and then challenged me to a game and gave me an analysis of the game afterwards - this was an awesome start on my chess adventure. I’d also like to thank the awesome facebook group Fucking skak for constant motivation and chess news. The people in the group seems like good and dedicated players and this is the first facebook group I have been in which actually contributes content of very high quality!&lt;/p&gt;
+
+&lt;p&gt;And I cannot forget the huge impact both &lt;a href=&quot;https://www.youtube.com/user/kingscrusher&quot;&gt;kingcrusher&lt;/a&gt; and &lt;a href=&quot;https://www.reddit.com/r/chess&quot;&gt;/r/chess&lt;/a&gt; have had on my game. Both definitely delivers good content on a regular basis!&lt;/p&gt;
+
+&lt;p&gt;It’s obvious I have a long way to go and A LOT more games to play before I can call myself a decent chess player. But the journey there seems fun and the goal worthwhile.&lt;/p&gt;</content><author><name></name></author><summary type="html">Introduction</summary></entry><entry><title type="html">Raspberry Pi with slow external hard drive</title><link href="/posts/raspberry-with-slow-external-hard-drive" rel="alternate" type="text/html" title="Raspberry Pi with slow external hard drive" /><published>2013-01-01T00:00:00+01:00</published><updated>2013-01-01T00:00:00+01:00</updated><id>/posts/raspberry-with-slow-external-hard-drive</id><content type="html" xml:base="/posts/raspberry-with-slow-external-hard-drive">&lt;p&gt;On a day like January 1st I mostly like relaxing in front of the TV with some movies or series and I had been looking forward to it. I got a powered USB hub for Christmas since our external hard drive, a Verbatim N446, is USB powered and the Raspberry doesn’t provide enough power for it. So we plugged in our new USB hub and plugged the drive to that. Discovery and mounting went fine, but when we started watching something it would take 3 seconds before it would start to buffer - it actually used more time buffered than playing.&lt;/p&gt;
+
+&lt;p&gt;A &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;hdparm -tT /dev/sda&lt;/code&gt; showed some disturbing news:
+    /dev/sda:
+    Timing cached reads:   160 MB in  2.02 seconds =  79.35 MB/sec
+    Timing buffered disk reads:  14 MB in 33.51 seconds = 427.79 kB/sec&lt;/p&gt;
+
+&lt;p&gt;No way we could watch a movie with 428 kB/sec. A little internet research showed that our Raspberry Pi atleast treats it’s USB ports as a USB hub already and when connecting a new one only the four first ports are given decent speed. Checking &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;lsusb&lt;/code&gt; I saw it might make sense since the Raspberry had two entries for “USB-2.0 4-Port HUB”&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Bus 001 Device 005: ID 05e3:0608 Genesys Logic, Inc. USB-2.0 4-Port HUB
+Bus 001 Device 006: ID 05e3:0608 Genesys Logic, Inc. USB-2.0 4-Port HUB
+Bus 001 Device 008: ID 18a5:0237 Verbatim, Ltd Portable Harddrive (500 GB)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;I found this weird and with a disbelief I tried swapping my external drive to the first port on the hub. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;hdparm -tT /dev/sdb&lt;/code&gt; revealed it was working much better now: 
+    /dev/sdb:
+    Timing cached reads:   154 MB in  2.00 seconds =  77.01 MB/sec
+    Timing buffered disk reads:  40 MB in  3.10 seconds =  12.89 MB/sec
+an increase in speed with a factor 30 was pretty convincing. I tried comparing this speed to the speed on the Raspberrys SD card&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Timing cached reads:   162 MB in  2.02 seconds =  80.26 MB/sec
+Timing buffered disk reads:  52 MB in  3.03 seconds =  17.17 MB/sec
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;which shows that now the external drives speed was now close enough to decent speed. Happily we could now lie lifeless on the couch for some hours watching some mindless stuff :)&lt;/p&gt;
+
+&lt;p&gt;I hope this can help others to try this simple solution before going the tech-route with installing and configuring a bunch of needless stuff.&lt;/p&gt;
+
+&lt;p&gt;Equipment used:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Raspberry Pi Model B rev. 2&lt;/li&gt;
+  &lt;li&gt;Verbatim N446&lt;/li&gt;
+  &lt;li&gt;Trust 7 Port USB2 Powered Hub (HU-5870V)&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><summary type="html">On a day like January 1st I mostly like relaxing in front of the TV with some movies or series and I had been looking forward to it. I got a powered USB hub for Christmas since our external hard drive, a Verbatim N446, is USB powered and the Raspberry doesn’t provide enough power for it. So we plugged in our new USB hub and plugged the drive to that. Discovery and mounting went fine, but when we started watching something it would take 3 seconds before it would start to buffer - it actually used more time buffered than playing.</summary></entry><entry><title type="html">Music or audiobooks or …</title><link href="/posts/music-or-audiobooks-or" rel="alternate" type="text/html" title="Music or audiobooks or ..." /><published>2012-12-13T00:00:00+01:00</published><updated>2012-12-13T00:00:00+01:00</updated><id>/posts/music-or-audiobooks-or</id><content type="html" xml:base="/posts/music-or-audiobooks-or">&lt;p&gt;Many people today listen to music on the go - to work, to school or just between places.  When I look around on any given day most people either have ear plugs in their ears or headphones over them.  Some people actually play so loud that you can just behind them and enjoy their music for free, while others I look at and wonder what they’re playing.&lt;/p&gt;
+
+&lt;p&gt;I used to listen to music myself back in the days. However, I tend to hear the same songs too much in a small period of time and then I get sick of them. This trend of mine required me to swap my music out on a regular basis and I am not really good at finding new music, and not in that small amount of time. So instead I started listening to radio. We have a pretty good radio station here in Denmark, called &lt;a href=&quot;https://www.dr.dk/p3&quot;&gt;P3&lt;/a&gt;. The talk a bit… quite a lot actually and I quickly realized I liked the parts with people talking more than I liked their mainstream pop (and Danish pop really sucks), so I decided to try an audiobook instead. I started out with a book which had been on my to-reread list for a while: Sun Tzus Art of War.&lt;/p&gt;
+
+&lt;p&gt;It worked out great. The book was quickly “read” since I usually walk home from school or work instead of taking the bus because I find it relaxing to just walk, get some air and not think of work/school before I come home and start working on the weekly handins. So I went on listening to some more books - I found that I enjoyed non-fiction over fiction when listening to an audiobook while normally I like both genres. The latest book I heard was Atul Gawandes The Checklist Manifesto which actually exceeded my expectations: It was exciting and I learned a bit from it.&lt;/p&gt;
+
+&lt;p&gt;But then some weeks ago I decided to re-watch &lt;a href=&quot;https://channel9.msdn.com/Events/GoingNative/GoingNative-2012/Keynote-Bjarne-Stroustrup-Cpp11-Style&quot;&gt;Bjarne Stroustrups keynote from GoingNative 2012&lt;/a&gt; since I liked some of the ideas for style that he presented. Then I noticed that you could download the talk in MP3 (Audio only). I then thought to myself that I would just listen to it on my way home from school the day after. It was just as good - an audio-only version of Bjarne was plenty. So when I got home I went online to &lt;a href=&quot;https://channel9.msdn.com&quot;&gt;channel9.msdn.com&lt;/a&gt; to see what else there was. There’s a lot of very nice talks, interviews and such on there. Since I programming languages and that sort of stuff I mainly browse &lt;a href=&quot;https://channel9.msdn.com/Shows/Going+Deep&quot;&gt;Going Deep&lt;/a&gt; for videos I want to hear when I walk home. Lately I heard the interview Anders Hejlsberg and Lars Bak talking about &lt;a href=&quot;https://channel9.msdn.com/Shows/Going+Deep/Anders-Hejlsberg-and-Lars-Bak-TypeScript-JavaScript-and-Dart&quot;&gt;Typescript, Javascript and Dart&lt;/a&gt; since we’re covering all three languages in a course in school so I thought I could learn a little extra about it anyways. It was very exciting as well.&lt;/p&gt;
+
+&lt;p&gt;I’m fairly sure I’m not the inventor of this concept. I just found out about it myself and I’m enjoying myself with it. I can warmly recommend it. So what do you listen to?&lt;/p&gt;</content><author><name></name></author><summary type="html">Many people today listen to music on the go - to work, to school or just between places. When I look around on any given day most people either have ear plugs in their ears or headphones over them. Some people actually play so loud that you can just behind them and enjoy their music for free, while others I look at and wonder what they’re playing.</summary></entry><entry><title type="html">First post with Jekyll</title><link href="/posts/first-post" rel="alternate" type="text/html" title="First post with Jekyll" /><published>2012-10-07T00:00:00+02:00</published><updated>2012-10-07T00:00:00+02:00</updated><id>/posts/first-post</id><content type="html" xml:base="/posts/first-post">&lt;p&gt;&lt;b&gt;First post with jekyll:&lt;/b&gt; This is my first post with the jekyll engine. While I have yet to understand all the wonders of it, I find it most awesome.
+You can find more information about the jekyll engine on Github &lt;a href=&quot;https://github.com/mojombo/jekyll&quot;&gt;here&lt;/a&gt;. I am also using &lt;a href=&quot;https://daringfireball.net/projects/markdown/syntax&quot;&gt;this short overview&lt;/a&gt; to learn the markdown syntax used by Github to render the pages on github pages.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;I have been following &lt;a href=&quot;https://zachholman.com/&quot;&gt;Zach Holmans blog&lt;/a&gt; for some time now and I eagerly been reading about his work at Github and what he feels is a hot topic on a given blog-post date. I came to admire him: Writing exciting stuff, working at github and having friendly and funny discussion on Twitter and at Hacker News.&lt;/p&gt;
+
+&lt;p&gt;I then did what others do when they strive to achieve: I imitated the person having what I wanted to have. I have borrowed the idea of using Jekyll on Github and the design of the blog from Zach - with permission of course. I have it a bit, though - my name instead of his name, some small details as sizes in the style and then &lt;a href=&quot;https://evafrederiksen.blogspot.dk/&quot;&gt;my girlfriend&lt;/a&gt; made some new icons for my menu since the ones Zach had weren’t free.&lt;/p&gt;
+
+&lt;p&gt;My idea is to change the look and feel of the site gradually over time since design isn’t really my strong suit and right now I’m quite content with the look. But I can imagine that eventually I want a site which I have made mostly entirely myself instead of a site where only 10% of the design is my own.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;So what do I want to do with this site? I want to showcase my current projects, write about solutions to problems I encounter at school or at work, tell people about my interest and what I think could be a hot topic. I am recent convert to vim and I have also recently begun playing a great deal of chess, so I could imagine I am going to write some posts about that since I would both like to share my thoughts on those topic and get some input on my thoughts.&lt;/p&gt;</content><author><name></name></author><summary type="html">First post with jekyll: This is my first post with the jekyll engine. While I have yet to understand all the wonders of it, I find it most awesome. You can find more information about the jekyll engine on Github here. I am also using this short overview to learn the markdown syntax used by Github to render the pages on github pages.</summary></entry></feed>

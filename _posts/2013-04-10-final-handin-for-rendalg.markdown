@@ -8,14 +8,14 @@ Introduction
 
 The subject I chose for final handin in the rendering algorithms course was improving the rendering time of a given scene, the Sponza scene as seen below. The scene consist of 66,454 triangles which are rather compact and from any given viewpoint pretty stacked - i.e. if you shoot a ray through a triangle you are pretty sure to hit at least a few other triangles either behind or in front of it.
 
-<img src="http://madsravn.dk/images/mravn_sponza.png" alt="sponza scene" />
+<img src="https://madsravn.dk/images/mravn_sponza.png" alt="sponza scene" />
 
 The methods
 -----------
 
 Firstly I used an acceleration data structure to put all my geometry in a tree which can be traversed. An acceleration data structure is an improvement in itself, but with this tree it became possible to make some further improvements using packet tracing. Packet tracing is a method where you group some of your rays together and traverse the tree of the data structure with them packed instead of a single ray at a time. This way you don't have to traverse many of the nodes of the tree so many times and you can also do some early miss testing by making a frustum of this group of rays and cheaply check if they all miss a bounding box with a single frustum/AABB intersection test instead of doing 16 to 512 ray/box intersection tests. 
 
-<img src="http://madsravn.dk/images/mravn_ads.png" alt="ads" />
+<img src="https://madsravn.dk/images/mravn_ads.png" alt="ads" />
 
 The results
 -----------
@@ -62,7 +62,7 @@ Path tracing
 
 A part of the handin was also to implement either photon mapping or path tracing. I chose path tracing with 512 samples per pixel. The result can be seen here
 
-<img src="http://madsravn.dk/images/teapot.pathtracing.png" alt="pathtracing" />
+<img src="https://madsravn.dk/images/teapot.pathtracing.png" alt="pathtracing" />
 
 The conclusion
 --------------

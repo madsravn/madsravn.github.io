@@ -7,23 +7,29 @@
   <title>Contributing to Clang</title>
   <meta name="author" content="Mads Ravn" />
   <meta name="description" content="Mads Ravn - An avid coder and lazy donkey." />
-  <link rel="alternate" type="application/rss+xml" href="http://feeds.feedburner.com/madsravn" />
-  <link rel="stylesheet" href="/css/compiled/base.css" type="text/css" media="screen, projection" />
-  <link rel="stylesheet" href="/css/plugins/pygments.css" type="text/css" />
-  <link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css'>
+  <link rel="alternate" type="application/rss+xml" href="https://feeds.feedburner.com/madsravn" />
+  <link rel="stylesheet" href="/css/html5reset.css" media="all">
+  <link rel="stylesheet" href="/css/col.css" media="all">
+  <link rel="stylesheet" href="/css/2cols.css" media="all">
+  <link rel="stylesheet" href="/css/3cols.css" media="all">
+  <link rel="stylesheet" href="/css/4cols.css" media="all">
+  <link rel="stylesheet" href="/css/5cols.css" media="all">
+  <link rel="stylesheet" href="/css/6cols.css" media="all">
+  <link rel="stylesheet" href="/css/7cols.css" media="all">
+  <link rel="stylesheet" href="/css/8cols.css" media="all">
+  <link rel="stylesheet" href="/css/9cols.css" media="all">
+  <link rel="stylesheet" href="/css/10cols.css" media="all">
+  <link rel="stylesheet" href="/css/11cols.css" media="all">
+  <link rel="stylesheet" href="/css/12cols.css" media="all">
+  <link rel="stylesheet" href="/css/style.css" type="text/css" media="screen, projection" />
+  <link href='https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css'>
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"></script>
-  <script type="text/javascript" src="/js/compiled/application.js"></script>
-  <script type="text/javascript">
-    $(document).ready(function() {
-      
-    });
-  </script>
 </head>
 <body>
-  <section class="sidebar">
+<div class="section group">
+<div class="col span_1_of_10">
     <a href="/">
-      <img src="http://1.gravatar.com/avatar/cff6826c1faad4528b1ce15dda1f0e6d" height="75" width="75" class="avatar" />
+      <img src="https://1.gravatar.com/avatar/cff6826c1faad4528b1ce15dda1f0e6d" height="75" width="75" class="avatar" />
     </a>
 
     <section class="name">
@@ -34,9 +40,9 @@
     </section>
 
     <section class="meta">
-    <a href="https://github.com/madsravn"><img src="http://madsravn.dk/images/github.png" height="16" width=16" alt="Github"/></a>
-    <a href="https://twitter.com/ravnmads"><img src="http://madsravn.dk/images/twitter.png" height="16" width="16" alt="twitter"/></a>
-    <a href="http://feeds.feedburner.com/madsravn"><img src="http://madsravn.dk/images/rss.png" height="16" width="16" alt="feed"/> </a>
+    <a href="https://github.com/madsravn"><img src="https://madsravn.dk/images/github.png" height="16" width=16" alt="Github"/></a>
+    <a href="https://twitter.com/ravnmads"><img src="https://madsravn.dk/images/twitter.png" height="16" width="16" alt="twitter"/></a>
+    <a href="https://feeds.feedburner.com/madsravn"><img src="https://madsravn.dk/images/rss.png" height="16" width="16" alt="feed"/> </a>
     </section>
 
     <section class="sections">
@@ -45,7 +51,8 @@
         <li><a href="/projects">projects</a></li>
       </ul>
     </section>
-  </section>
+</div>
+<div class="col span_9_of_10">
 
   <section class="content">
   <h1>
@@ -56,19 +63,19 @@
     June 20, 2017
   </section>
 
-  <p>A year or so ago I started contributing code to Clang. For those of you who doesn’t know what <a href="http://clang.llvm.org/">Clang</a> is; it is a C and C++ front-end for LLVM. In short, a C++ compiler. I have mostly been doing work on <a href="http://clang.llvm.org/extra/clang-tidy/">Clang-Tidy</a> which is a Clang-based C++ linter. It can help you find errors, enforce coding guidelines or modernize your project. it is a very helpful tool which can be an effective part of your tool chain. It is also very easy to extend Clang-Tidy with your own checks - and it also easy to have this code accepted into the official Clang project.</p>
+  <p>A year or so ago I started contributing code to Clang. For those of you who doesn’t know what <a href="https://clang.llvm.org/">Clang</a> is; it is a C and C++ front-end for LLVM. In short, a C++ compiler. I have mostly been doing work on <a href="https://clang.llvm.org/extra/clang-tidy/">Clang-Tidy</a> which is a Clang-based C++ linter. It can help you find errors, enforce coding guidelines or modernize your project. it is a very helpful tool which can be an effective part of your tool chain. It is also very easy to extend Clang-Tidy with your own checks - and it also easy to have this code accepted into the official Clang project.</p>
 
 <p>So if you are looking for a fun open source project to contribute to, look no further. In this post I will quickly explain the few steps you need to follow in order to extend Clang-Tidy and have it accepted into the Clang project.</p>
 
 <h2 id="get-the-code">Get the code!</h2>
 
-<p>First you need to get the source code for the project. The process is described on the <a href="http://clang.llvm.org/get_started.html">getting started page</a>. Clang-Tidy is located in the clang-tools-extra repository. So you will have to check out llvm first, then clang and finally clang-tools-extra.</p>
+<p>First you need to get the source code for the project. The process is described on the <a href="https://clang.llvm.org/get_started.html">getting started page</a>. Clang-Tidy is located in the clang-tools-extra repository. So you will have to check out llvm first, then clang and finally clang-tools-extra.</p>
 
 <h2 id="time-for-some-code">Time for some code</h2>
-<p>Once you have checked the code out, you want to prepare the project by running CMake to get your build environment up and running. Once you have done that and opened the project, I can recommend that you <a href="http://clang.llvm.org/extra/clang-tidy/#writing-a-clang-tidy-check">read this post</a> about writing a clang-tidy check. Pay attention to the tools being used. In particular, <code class="language-plaintext highlighter-rouge">add_new_check.py</code>. Using this tool will create the files you need in the right places and add them to the CMake files of the clang-tools-extra project.</p>
+<p>Once you have checked the code out, you want to prepare the project by running CMake to get your build environment up and running. Once you have done that and opened the project, I can recommend that you <a href="https://clang.llvm.org/extra/clang-tidy/#writing-a-clang-tidy-check">read this post</a> about writing a clang-tidy check. Pay attention to the tools being used. In particular, <code class="language-plaintext highlighter-rouge">add_new_check.py</code>. Using this tool will create the files you need in the right places and add them to the CMake files of the clang-tools-extra project.</p>
 
 <h2 id="done-coding-get-some-comments">Done coding? Get some comments!</h2>
-<p>When you are done coding - when you have made your own Clang-tidy check and some tests for it - you are going to put the changes in for code review. This is done by using Phabricator. Take a look at the <a href="http://llvm.org/docs/Phabricator.html">LLVM page for Phabricator</a> to see how you create a ‘Differential’ for your patch. If it is your first time creating code for the LLVM project there are bound to be some comments. Just take all the help you can get and be patient.</p>
+<p>When you are done coding - when you have made your own Clang-tidy check and some tests for it - you are going to put the changes in for code review. This is done by using Phabricator. Take a look at the <a href="https://llvm.org/docs/Phabricator.html">LLVM page for Phabricator</a> to see how you create a ‘Differential’ for your patch. If it is your first time creating code for the LLVM project there are bound to be some comments. Just take all the help you can get and be patient.</p>
 
 <h2 id="closing-statement">Closing statement</h2>
 <p>I think the Clang project is super fun to work on. The people I have met through my contributions are super friendly and smart. They are willing to help out a lot. If you want to meet some folk, just drop by the IRC channel. It is at #llvm @ irc.oftc.net. If you want to reach out, my nick is mfrstar.</p>
@@ -78,7 +85,7 @@
     <h3>Discussion, links, and tweets</h3>
     <section class="copy">
       <a href="https://twitter.com/madsravn">
-        <img src="http://1.gravatar.com/avatar/cff6826c1faad4528b1ce15dda1f0e6d" height="50" width="50" />
+        <img src="https://1.gravatar.com/avatar/cff6826c1faad4528b1ce15dda1f0e6d" height="50" width="50" />
       </a>
 
       <p>
@@ -94,29 +101,15 @@
         I also keep an "ask me anything" type of project in a repository on GitHub (naturally!). Feel free to <a href="https://github.com/madsravn/madsravn.github.com/issues">ask me a question</a>.
       </p>
 
-      <a href="http://twitter.com/share" class="twitter-share-button" data-count="none" data-via="ravnmads">Tweet</a>
-      <a href="http://twitter.com/ravnmads" class="twitter-follow-button" data-show-count="false">Follow @ravnmads</a>
-      <script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+      <a href="https://twitter.com/share" class="twitter-share-button" data-count="none" data-via="ravnmads">Tweet</a>
+      <a href="https://twitter.com/ravnmads" class="twitter-follow-button" data-show-count="false">Follow @ravnmads</a>
+      <script src="https://platform.twitter.com/widgets.js" type="text/javascript"></script>
     </section>
   </section>
 </section>
 
+</div>
 
-
-
-  <script type="text/javascript">
-  var _gauges = _gauges || [];
-  (function() {
-    var t   = document.createElement('script');
-    t.type  = 'text/javascript';
-    t.async = true;
-    t.id    = 'gauges-tracker';
-    t.setAttribute('data-site-id', '50e46e05613f5d723c000019');
-    t.src = '//secure.gaug.es/track.js';
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(t, s);
-  })();
-</script>
 </body>
 
 </html>

@@ -2,12 +2,12 @@
 layout: post
 title: Simple image processing with CUDA
 hn:  https://news.ycombinator.com/item?id=6622979
-reddit: http://www.reddit.com/r/programming/comments/1pbuyt/simple_image_processing_with_cuda/
+reddit: https://www.reddit.com/r/programming/comments/1pbuyt/simple_image_processing_with_cuda/
 ---
 
 I like graphics and image processing. So I have been fiddling a little with NVIDIAs CUDA in order to capatilize on some multithreaded programming. I have made a little starter edition for people who wants to try forces with CUDA for image processing.
 
-I am using <a href="http://lodev.org/lodepng/">lodepng</a> for loading and saving images for the filtering. It is very easy to easy, has no dependencies and just works. In my example code I am reading filenames for input and output images from the command line parameters.
+I am using <a href="https://lodev.org/lodepng/">lodepng</a> for loading and saving images for the filtering. It is very easy to easy, has no dependencies and just works. In my example code I am reading filenames for input and output images from the command line parameters.
 
 Enough talk, let's see some code:
 

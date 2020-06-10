@@ -7,4 +7,4 @@ With the two new consoles being released soon, there is a lot of hype about it o
 
 So I read all the posts and summarized it for you. Which console is the best? Here's the answer: 
 
-<img src="http://madsravn.dk/images/xboxplaystation.png" />
+<img src="https://madsravn.dk/images/xboxplaystation.png" />

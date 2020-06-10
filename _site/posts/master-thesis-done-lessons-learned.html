@@ -7,23 +7,29 @@
   <title>Master thesis done - lessons learned</title>
   <meta name="author" content="Mads Ravn" />
   <meta name="description" content="Mads Ravn - An avid coder and lazy donkey." />
-  <link rel="alternate" type="application/rss+xml" href="http://feeds.feedburner.com/madsravn" />
-  <link rel="stylesheet" href="/css/compiled/base.css" type="text/css" media="screen, projection" />
-  <link rel="stylesheet" href="/css/plugins/pygments.css" type="text/css" />
-  <link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css'>
+  <link rel="alternate" type="application/rss+xml" href="https://feeds.feedburner.com/madsravn" />
+  <link rel="stylesheet" href="/css/html5reset.css" media="all">
+  <link rel="stylesheet" href="/css/col.css" media="all">
+  <link rel="stylesheet" href="/css/2cols.css" media="all">
+  <link rel="stylesheet" href="/css/3cols.css" media="all">
+  <link rel="stylesheet" href="/css/4cols.css" media="all">
+  <link rel="stylesheet" href="/css/5cols.css" media="all">
+  <link rel="stylesheet" href="/css/6cols.css" media="all">
+  <link rel="stylesheet" href="/css/7cols.css" media="all">
+  <link rel="stylesheet" href="/css/8cols.css" media="all">
+  <link rel="stylesheet" href="/css/9cols.css" media="all">
+  <link rel="stylesheet" href="/css/10cols.css" media="all">
+  <link rel="stylesheet" href="/css/11cols.css" media="all">
+  <link rel="stylesheet" href="/css/12cols.css" media="all">
+  <link rel="stylesheet" href="/css/style.css" type="text/css" media="screen, projection" />
+  <link href='https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css'>
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"></script>
-  <script type="text/javascript" src="/js/compiled/application.js"></script>
-  <script type="text/javascript">
-    $(document).ready(function() {
-      
-    });
-  </script>
 </head>
 <body>
-  <section class="sidebar">
+<div class="section group">
+<div class="col span_1_of_10">
     <a href="/">
-      <img src="http://1.gravatar.com/avatar/cff6826c1faad4528b1ce15dda1f0e6d" height="75" width="75" class="avatar" />
+      <img src="https://1.gravatar.com/avatar/cff6826c1faad4528b1ce15dda1f0e6d" height="75" width="75" class="avatar" />
     </a>
 
     <section class="name">
@@ -34,9 +40,9 @@
     </section>
 
     <section class="meta">
-    <a href="https://github.com/madsravn"><img src="http://madsravn.dk/images/github.png" height="16" width=16" alt="Github"/></a>
-    <a href="https://twitter.com/ravnmads"><img src="http://madsravn.dk/images/twitter.png" height="16" width="16" alt="twitter"/></a>
-    <a href="http://feeds.feedburner.com/madsravn"><img src="http://madsravn.dk/images/rss.png" height="16" width="16" alt="feed"/> </a>
+    <a href="https://github.com/madsravn"><img src="https://madsravn.dk/images/github.png" height="16" width=16" alt="Github"/></a>
+    <a href="https://twitter.com/ravnmads"><img src="https://madsravn.dk/images/twitter.png" height="16" width="16" alt="twitter"/></a>
+    <a href="https://feeds.feedburner.com/madsravn"><img src="https://madsravn.dk/images/rss.png" height="16" width="16" alt="feed"/> </a>
     </section>
 
     <section class="sections">
@@ -45,7 +51,8 @@
         <li><a href="/projects">projects</a></li>
       </ul>
     </section>
-  </section>
+</div>
+<div class="col span_9_of_10">
 
   <section class="content">
   <h1>
@@ -56,9 +63,9 @@
     November 21, 2015
   </section>
 
-  <p>I graduated from Aarhus University with a degree in Computer Science this june. Now, I’m finally getting around to publishing my code (as I linked in my thesis). I thought that I would give a quick summary of the process of writing my thesis as well. You can find my thesis and the code I developed for my thesis <a href="./../../BIS/index.html">here</a>. The title of my thesis is Orthogonal Range Searching in 2D with Ball Inheritance and my advisor was <a href="http://cs.au.dk/~larsen/">Kasper Green Larsen</a>.</p>
+  <p>I graduated from Aarhus University with a degree in Computer Science this june. Now, I’m finally getting around to publishing my code (as I linked in my thesis). I thought that I would give a quick summary of the process of writing my thesis as well. You can find my thesis and the code I developed for my thesis <a href="./../../BIS/index.html">here</a>. The title of my thesis is Orthogonal Range Searching in 2D with Ball Inheritance and my advisor was <a href="https://cs.au.dk/~larsen/">Kasper Green Larsen</a>.</p>
 
-<p>Before I started writing my thesis, I followed a course called Master Thesis Preparation by <a href="http://cs.au.dk/~danvy/">Olivier Danvy</a>. He has advised for quite a few PhD students so far, so he certainly has a good experience with it. The course consisted of a lot of good tips, tricks and good stories (which is his modus operandi). One of the few things which really stuck with me was to remember an advisor has a limited amount of time for you and it is your responsibility to use it as best as possible. My advisor was awesome enough to read some of what I had written each time we met. And in order to maximize what I got from this, I always compiled a ‘diff-version’ of my thesis for him. A ‘diff-version’ was made using <code class="language-plaintext highlighter-rouge">latexdiff</code>. Each time I handed something in, I saved the latex files for that version. Next time I handed something in, I would then run <code class="language-plaintext highlighter-rouge">latexdiff</code> on the current version and what I handed in last time. With this it was easy to see what was removed, what was added and what was the same as last time he read it. This worked out pretty good.</p>
+<p>Before I started writing my thesis, I followed a course called Master Thesis Preparation by <a href="https://cs.au.dk/~danvy/">Olivier Danvy</a>. He has advised for quite a few PhD students so far, so he certainly has a good experience with it. The course consisted of a lot of good tips, tricks and good stories (which is his modus operandi). One of the few things which really stuck with me was to remember an advisor has a limited amount of time for you and it is your responsibility to use it as best as possible. My advisor was awesome enough to read some of what I had written each time we met. And in order to maximize what I got from this, I always compiled a ‘diff-version’ of my thesis for him. A ‘diff-version’ was made using <code class="language-plaintext highlighter-rouge">latexdiff</code>. Each time I handed something in, I saved the latex files for that version. Next time I handed something in, I would then run <code class="language-plaintext highlighter-rouge">latexdiff</code> on the current version and what I handed in last time. With this it was easy to see what was removed, what was added and what was the same as last time he read it. This worked out pretty good.</p>
 
 <p>My thesis was half theoretical and half practical. So while I had to write some code and analyze some results, the actual written thesis was still the main focus. And we all know that writing code is funnier than writing a thesis. So I forced myself to write the draft for the introduction chapter and another chapter before I started coding. This way I did not get lost in just having fun coding and postpone the writing for later (where ‘later’ might too late).</p>
 
@@ -77,7 +84,7 @@
     <h3>Discussion, links, and tweets</h3>
     <section class="copy">
       <a href="https://twitter.com/madsravn">
-        <img src="http://1.gravatar.com/avatar/cff6826c1faad4528b1ce15dda1f0e6d" height="50" width="50" />
+        <img src="https://1.gravatar.com/avatar/cff6826c1faad4528b1ce15dda1f0e6d" height="50" width="50" />
       </a>
 
       <p>
@@ -93,29 +100,15 @@
         I also keep an "ask me anything" type of project in a repository on GitHub (naturally!). Feel free to <a href="https://github.com/madsravn/madsravn.github.com/issues">ask me a question</a>.
       </p>
 
-      <a href="http://twitter.com/share" class="twitter-share-button" data-count="none" data-via="ravnmads">Tweet</a>
-      <a href="http://twitter.com/ravnmads" class="twitter-follow-button" data-show-count="false">Follow @ravnmads</a>
-      <script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+      <a href="https://twitter.com/share" class="twitter-share-button" data-count="none" data-via="ravnmads">Tweet</a>
+      <a href="https://twitter.com/ravnmads" class="twitter-follow-button" data-show-count="false">Follow @ravnmads</a>
+      <script src="https://platform.twitter.com/widgets.js" type="text/javascript"></script>
     </section>
   </section>
 </section>
 
+</div>
 
-
-
-  <script type="text/javascript">
-  var _gauges = _gauges || [];
-  (function() {
-    var t   = document.createElement('script');
-    t.type  = 'text/javascript';
-    t.async = true;
-    t.id    = 'gauges-tracker';
-    t.setAttribute('data-site-id', '50e46e05613f5d723c000019');
-    t.src = '//secure.gaug.es/track.js';
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(t, s);
-  })();
-</script>
 </body>
 
 </html>

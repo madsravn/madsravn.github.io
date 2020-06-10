@@ -4,7 +4,7 @@
  <title>Mads Ravn</title>
  <link href="http://madsravn.dk/atom.xml" rel="self"/>
  <link href="http://madsravn.dk/"/>
- <updated>2020-05-30T21:11:58+02:00</updated>
+ <updated>2020-06-10T20:23:57+02:00</updated>
  <id>http://madsravn.dk</id>
  <author>
    <name>Mads Ravn</name>
@@ -16,19 +16,19 @@
    <link href="http://madsravn.dk/posts/contributing-to-clang"/>
    <updated>2017-06-20T00:00:00+02:00</updated>
    <id>http://madsravn.dk/posts/contributing-to-clang</id>
-   <content type="html">&lt;p&gt;A year or so ago I started contributing code to Clang. For those of you who doesn’t know what &lt;a href=&quot;http://clang.llvm.org/&quot;&gt;Clang&lt;/a&gt; is; it is a C and C++ front-end for LLVM. In short, a C++ compiler. I have mostly been doing work on &lt;a href=&quot;http://clang.llvm.org/extra/clang-tidy/&quot;&gt;Clang-Tidy&lt;/a&gt; which is a Clang-based C++ linter. It can help you find errors, enforce coding guidelines or modernize your project. it is a very helpful tool which can be an effective part of your tool chain. It is also very easy to extend Clang-Tidy with your own checks - and it also easy to have this code accepted into the official Clang project.&lt;/p&gt;
+   <content type="html">&lt;p&gt;A year or so ago I started contributing code to Clang. For those of you who doesn’t know what &lt;a href=&quot;https://clang.llvm.org/&quot;&gt;Clang&lt;/a&gt; is; it is a C and C++ front-end for LLVM. In short, a C++ compiler. I have mostly been doing work on &lt;a href=&quot;https://clang.llvm.org/extra/clang-tidy/&quot;&gt;Clang-Tidy&lt;/a&gt; which is a Clang-based C++ linter. It can help you find errors, enforce coding guidelines or modernize your project. it is a very helpful tool which can be an effective part of your tool chain. It is also very easy to extend Clang-Tidy with your own checks - and it also easy to have this code accepted into the official Clang project.&lt;/p&gt;
 
 &lt;p&gt;So if you are looking for a fun open source project to contribute to, look no further. In this post I will quickly explain the few steps you need to follow in order to extend Clang-Tidy and have it accepted into the Clang project.&lt;/p&gt;
 
 &lt;h2 id=&quot;get-the-code&quot;&gt;Get the code!&lt;/h2&gt;
 
-&lt;p&gt;First you need to get the source code for the project. The process is described on the &lt;a href=&quot;http://clang.llvm.org/get_started.html&quot;&gt;getting started page&lt;/a&gt;. Clang-Tidy is located in the clang-tools-extra repository. So you will have to check out llvm first, then clang and finally clang-tools-extra.&lt;/p&gt;
+&lt;p&gt;First you need to get the source code for the project. The process is described on the &lt;a href=&quot;https://clang.llvm.org/get_started.html&quot;&gt;getting started page&lt;/a&gt;. Clang-Tidy is located in the clang-tools-extra repository. So you will have to check out llvm first, then clang and finally clang-tools-extra.&lt;/p&gt;
 
 &lt;h2 id=&quot;time-for-some-code&quot;&gt;Time for some code&lt;/h2&gt;
-&lt;p&gt;Once you have checked the code out, you want to prepare the project by running CMake to get your build environment up and running. Once you have done that and opened the project, I can recommend that you &lt;a href=&quot;http://clang.llvm.org/extra/clang-tidy/#writing-a-clang-tidy-check&quot;&gt;read this post&lt;/a&gt; about writing a clang-tidy check. Pay attention to the tools being used. In particular, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;add_new_check.py&lt;/code&gt;. Using this tool will create the files you need in the right places and add them to the CMake files of the clang-tools-extra project.&lt;/p&gt;
+&lt;p&gt;Once you have checked the code out, you want to prepare the project by running CMake to get your build environment up and running. Once you have done that and opened the project, I can recommend that you &lt;a href=&quot;https://clang.llvm.org/extra/clang-tidy/#writing-a-clang-tidy-check&quot;&gt;read this post&lt;/a&gt; about writing a clang-tidy check. Pay attention to the tools being used. In particular, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;add_new_check.py&lt;/code&gt;. Using this tool will create the files you need in the right places and add them to the CMake files of the clang-tools-extra project.&lt;/p&gt;
 
 &lt;h2 id=&quot;done-coding-get-some-comments&quot;&gt;Done coding? Get some comments!&lt;/h2&gt;
-&lt;p&gt;When you are done coding - when you have made your own Clang-tidy check and some tests for it - you are going to put the changes in for code review. This is done by using Phabricator. Take a look at the &lt;a href=&quot;http://llvm.org/docs/Phabricator.html&quot;&gt;LLVM page for Phabricator&lt;/a&gt; to see how you create a ‘Differential’ for your patch. If it is your first time creating code for the LLVM project there are bound to be some comments. Just take all the help you can get and be patient.&lt;/p&gt;
+&lt;p&gt;When you are done coding - when you have made your own Clang-tidy check and some tests for it - you are going to put the changes in for code review. This is done by using Phabricator. Take a look at the &lt;a href=&quot;https://llvm.org/docs/Phabricator.html&quot;&gt;LLVM page for Phabricator&lt;/a&gt; to see how you create a ‘Differential’ for your patch. If it is your first time creating code for the LLVM project there are bound to be some comments. Just take all the help you can get and be patient.&lt;/p&gt;
 
 &lt;h2 id=&quot;closing-statement&quot;&gt;Closing statement&lt;/h2&gt;
 &lt;p&gt;I think the Clang project is super fun to work on. The people I have met through my contributions are super friendly and smart. They are willing to help out a lot. If you want to meet some folk, just drop by the IRC channel. It is at #llvm @ irc.oftc.net. If you want to reach out, my nick is mfrstar.&lt;/p&gt;
@@ -83,9 +83,9 @@
    <link href="http://madsravn.dk/posts/master-thesis-done-lessons-learned"/>
    <updated>2015-11-21T00:00:00+01:00</updated>
    <id>http://madsravn.dk/posts/master-thesis-done-lessons-learned</id>
-   <content type="html">&lt;p&gt;I graduated from Aarhus University with a degree in Computer Science this june. Now, I’m finally getting around to publishing my code (as I linked in my thesis). I thought that I would give a quick summary of the process of writing my thesis as well. You can find my thesis and the code I developed for my thesis &lt;a href=&quot;./../../BIS/index.html&quot;&gt;here&lt;/a&gt;. The title of my thesis is Orthogonal Range Searching in 2D with Ball Inheritance and my advisor was &lt;a href=&quot;http://cs.au.dk/~larsen/&quot;&gt;Kasper Green Larsen&lt;/a&gt;.&lt;/p&gt;
+   <content type="html">&lt;p&gt;I graduated from Aarhus University with a degree in Computer Science this june. Now, I’m finally getting around to publishing my code (as I linked in my thesis). I thought that I would give a quick summary of the process of writing my thesis as well. You can find my thesis and the code I developed for my thesis &lt;a href=&quot;./../../BIS/index.html&quot;&gt;here&lt;/a&gt;. The title of my thesis is Orthogonal Range Searching in 2D with Ball Inheritance and my advisor was &lt;a href=&quot;https://cs.au.dk/~larsen/&quot;&gt;Kasper Green Larsen&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;Before I started writing my thesis, I followed a course called Master Thesis Preparation by &lt;a href=&quot;http://cs.au.dk/~danvy/&quot;&gt;Olivier Danvy&lt;/a&gt;. He has advised for quite a few PhD students so far, so he certainly has a good experience with it. The course consisted of a lot of good tips, tricks and good stories (which is his modus operandi). One of the few things which really stuck with me was to remember an advisor has a limited amount of time for you and it is your responsibility to use it as best as possible. My advisor was awesome enough to read some of what I had written each time we met. And in order to maximize what I got from this, I always compiled a ‘diff-version’ of my thesis for him. A ‘diff-version’ was made using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;latexdiff&lt;/code&gt;. Each time I handed something in, I saved the latex files for that version. Next time I handed something in, I would then run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;latexdiff&lt;/code&gt; on the current version and what I handed in last time. With this it was easy to see what was removed, what was added and what was the same as last time he read it. This worked out pretty good.&lt;/p&gt;
+&lt;p&gt;Before I started writing my thesis, I followed a course called Master Thesis Preparation by &lt;a href=&quot;https://cs.au.dk/~danvy/&quot;&gt;Olivier Danvy&lt;/a&gt;. He has advised for quite a few PhD students so far, so he certainly has a good experience with it. The course consisted of a lot of good tips, tricks and good stories (which is his modus operandi). One of the few things which really stuck with me was to remember an advisor has a limited amount of time for you and it is your responsibility to use it as best as possible. My advisor was awesome enough to read some of what I had written each time we met. And in order to maximize what I got from this, I always compiled a ‘diff-version’ of my thesis for him. A ‘diff-version’ was made using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;latexdiff&lt;/code&gt;. Each time I handed something in, I saved the latex files for that version. Next time I handed something in, I would then run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;latexdiff&lt;/code&gt; on the current version and what I handed in last time. With this it was easy to see what was removed, what was added and what was the same as last time he read it. This worked out pretty good.&lt;/p&gt;
 
 &lt;p&gt;My thesis was half theoretical and half practical. So while I had to write some code and analyze some results, the actual written thesis was still the main focus. And we all know that writing code is funnier than writing a thesis. So I forced myself to write the draft for the introduction chapter and another chapter before I started coding. This way I did not get lost in just having fun coding and postpone the writing for later (where ‘later’ might too late).&lt;/p&gt;
 
@@ -110,7 +110,7 @@
 
 &lt;p&gt;So I read all the posts and summarized it for you. Which console is the best? Here’s the answer:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://madsravn.dk/images/xboxplaystation.png&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://madsravn.dk/images/xboxplaystation.png&quot; /&gt;&lt;/p&gt;
 </content>
  </entry>
  
@@ -121,7 +121,7 @@
    <id>http://madsravn.dk/posts/simple-image-processing-with-cuda</id>
    <content type="html">&lt;p&gt;I like graphics and image processing. So I have been fiddling a little with NVIDIAs CUDA in order to capatilize on some multithreaded programming. I have made a little starter edition for people who wants to try forces with CUDA for image processing.&lt;/p&gt;
 
-&lt;p&gt;I am using &lt;a href=&quot;http://lodev.org/lodepng/&quot;&gt;lodepng&lt;/a&gt; for loading and saving images for the filtering. It is very easy to easy, has no dependencies and just works. In my example code I am reading filenames for input and output images from the command line parameters.&lt;/p&gt;
+&lt;p&gt;I am using &lt;a href=&quot;https://lodev.org/lodepng/&quot;&gt;lodepng&lt;/a&gt; for loading and saving images for the filtering. It is very easy to easy, has no dependencies and just works. In my example code I am reading filenames for input and output images from the command line parameters.&lt;/p&gt;
 
 &lt;p&gt;Enough talk, let’s see some code:&lt;/p&gt;
 
@@ -262,13 +262,13 @@ void blur(unsigned char* input_image, unsigned char* output_image, int width, in
 
 &lt;p&gt;The subject I chose for final handin in the rendering algorithms course was improving the rendering time of a given scene, the Sponza scene as seen below. The scene consist of 66,454 triangles which are rather compact and from any given viewpoint pretty stacked - i.e. if you shoot a ray through a triangle you are pretty sure to hit at least a few other triangles either behind or in front of it.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://madsravn.dk/images/mravn_sponza.png&quot; alt=&quot;sponza scene&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://madsravn.dk/images/mravn_sponza.png&quot; alt=&quot;sponza scene&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;the-methods&quot;&gt;The methods&lt;/h2&gt;
 
 &lt;p&gt;Firstly I used an acceleration data structure to put all my geometry in a tree which can be traversed. An acceleration data structure is an improvement in itself, but with this tree it became possible to make some further improvements using packet tracing. Packet tracing is a method where you group some of your rays together and traverse the tree of the data structure with them packed instead of a single ray at a time. This way you don’t have to traverse many of the nodes of the tree so many times and you can also do some early miss testing by making a frustum of this group of rays and cheaply check if they all miss a bounding box with a single frustum/AABB intersection test instead of doing 16 to 512 ray/box intersection tests.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://madsravn.dk/images/mravn_ads.png&quot; alt=&quot;ads&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://madsravn.dk/images/mravn_ads.png&quot; alt=&quot;ads&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;the-results&quot;&gt;The results&lt;/h2&gt;
 
@@ -310,7 +310,7 @@ void blur(unsigned char* input_image, unsigned char* output_image, int width, in
 
 &lt;p&gt;A part of the handin was also to implement either photon mapping or path tracing. I chose path tracing with 512 samples per pixel. The result can be seen here&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://madsravn.dk/images/teapot.pathtracing.png&quot; alt=&quot;pathtracing&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://madsravn.dk/images/teapot.pathtracing.png&quot; alt=&quot;pathtracing&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;the-conclusion&quot;&gt;The conclusion&lt;/h2&gt;
 
@@ -333,9 +333,9 @@ void blur(unsigned char* input_image, unsigned char* output_image, int width, in
 
 &lt;p&gt;I made &lt;a href=&quot;https://github.com/madsravn/pgn-divider/blob/master/divider.sh&quot;&gt;a little script&lt;/a&gt; to sort out the data from one big file of pgn annotation since chesscube will not let me download pgn files other than manually. From this I could deduce some statistics.&lt;/p&gt;
 
-&lt;p&gt;I made a fancy chart with the help of &lt;a href=&quot;http://www.chartgo.com&quot;&gt;www.chartgo.com&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I made a fancy chart with the help of &lt;a href=&quot;https://www.chartgo.com&quot;&gt;www.chartgo.com&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://madsravn.dk/images/chess1.png&quot; alt=&quot;games&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://madsravn.dk/images/chess1.png&quot; alt=&quot;games&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;I played 46 games in January. Luckily for my ego I won more than I lost. I won nearly the same amount of games playing white as I did playing black. A fun difference is noticeable in the games I lost: I only lost 6 games as white compared to the 12 games I lost as black. Of course only having played 46 games this doesn’t seem like a big leap.&lt;/p&gt;
 
@@ -349,9 +349,9 @@ void blur(unsigned char* input_image, unsigned char* output_image, int width, in
 
 &lt;p&gt;I really like playing chess. I like that the game doesn’t include any form of randomness that many other games like card games and backgammon have. I also feel like I am training my concentration by playing and trying to think some moves ahead while keeping my head in current situation of the game.&lt;/p&gt;
 
-&lt;p&gt;I would like to thank &lt;a href=&quot;http://www.youtube.com/user/Ruxistico/videos?view=0&quot;&gt;Rune Friborg&lt;/a&gt; for making the video who initially got me motivated to play. He also invited me to an awesome facebook group “Fucking Skak” (Fucking Chess) and then challenged me to a game and gave me an analysis of the game afterwards - this was an awesome start on my chess adventure. I’d also like to thank the awesome facebook group Fucking skak for constant motivation and chess news. The people in the group seems like good and dedicated players and this is the first facebook group I have been in which actually contributes content of very high quality!&lt;/p&gt;
+&lt;p&gt;I would like to thank &lt;a href=&quot;https://www.youtube.com/user/Ruxistico/videos?view=0&quot;&gt;Rune Friborg&lt;/a&gt; for making the video who initially got me motivated to play. He also invited me to an awesome facebook group “Fucking Skak” (Fucking Chess) and then challenged me to a game and gave me an analysis of the game afterwards - this was an awesome start on my chess adventure. I’d also like to thank the awesome facebook group Fucking skak for constant motivation and chess news. The people in the group seems like good and dedicated players and this is the first facebook group I have been in which actually contributes content of very high quality!&lt;/p&gt;
 
-&lt;p&gt;And I cannot forget the huge impact both &lt;a href=&quot;http://www.youtube.com/user/kingscrusher&quot;&gt;kingcrusher&lt;/a&gt; and &lt;a href=&quot;http://www.reddit.com/r/chess&quot;&gt;/r/chess&lt;/a&gt; have had on my game. Both definitely delivers good content on a regular basis!&lt;/p&gt;
+&lt;p&gt;And I cannot forget the huge impact both &lt;a href=&quot;https://www.youtube.com/user/kingscrusher&quot;&gt;kingcrusher&lt;/a&gt; and &lt;a href=&quot;https://www.reddit.com/r/chess&quot;&gt;/r/chess&lt;/a&gt; have had on my game. Both definitely delivers good content on a regular basis!&lt;/p&gt;
 
 &lt;p&gt;It’s obvious I have a long way to go and A LOT more games to play before I can call myself a decent chess player. But the journey there seems fun and the goal worthwhile.&lt;/p&gt;
 
@@ -408,11 +408,11 @@ Timing buffered disk reads:  52 MB in  3.03 seconds =  17.17 MB/sec
    <id>http://madsravn.dk/posts/music-or-audiobooks-or</id>
    <content type="html">&lt;p&gt;Many people today listen to music on the go - to work, to school or just between places.  When I look around on any given day most people either have ear plugs in their ears or headphones over them.  Some people actually play so loud that you can just behind them and enjoy their music for free, while others I look at and wonder what they’re playing.&lt;/p&gt;
 
-&lt;p&gt;I used to listen to music myself back in the days. However, I tend to hear the same songs too much in a small period of time and then I get sick of them. This trend of mine required me to swap my music out on a regular basis and I am not really good at finding new music, and not in that small amount of time. So instead I started listening to radio. We have a pretty good radio station here in Denmark, called &lt;a href=&quot;http://www.dr.dk/p3&quot;&gt;P3&lt;/a&gt;. The talk a bit… quite a lot actually and I quickly realized I liked the parts with people talking more than I liked their mainstream pop (and Danish pop really sucks), so I decided to try an audiobook instead. I started out with a book which had been on my to-reread list for a while: Sun Tzus Art of War.&lt;/p&gt;
+&lt;p&gt;I used to listen to music myself back in the days. However, I tend to hear the same songs too much in a small period of time and then I get sick of them. This trend of mine required me to swap my music out on a regular basis and I am not really good at finding new music, and not in that small amount of time. So instead I started listening to radio. We have a pretty good radio station here in Denmark, called &lt;a href=&quot;https://www.dr.dk/p3&quot;&gt;P3&lt;/a&gt;. The talk a bit… quite a lot actually and I quickly realized I liked the parts with people talking more than I liked their mainstream pop (and Danish pop really sucks), so I decided to try an audiobook instead. I started out with a book which had been on my to-reread list for a while: Sun Tzus Art of War.&lt;/p&gt;
 
 &lt;p&gt;It worked out great. The book was quickly “read” since I usually walk home from school or work instead of taking the bus because I find it relaxing to just walk, get some air and not think of work/school before I come home and start working on the weekly handins. So I went on listening to some more books - I found that I enjoyed non-fiction over fiction when listening to an audiobook while normally I like both genres. The latest book I heard was Atul Gawandes The Checklist Manifesto which actually exceeded my expectations: It was exciting and I learned a bit from it.&lt;/p&gt;
 
-&lt;p&gt;But then some weeks ago I decided to re-watch &lt;a href=&quot;http://channel9.msdn.com/Events/GoingNative/GoingNative-2012/Keynote-Bjarne-Stroustrup-Cpp11-Style&quot;&gt;Bjarne Stroustrups keynote from GoingNative 2012&lt;/a&gt; since I liked some of the ideas for style that he presented. Then I noticed that you could download the talk in MP3 (Audio only). I then thought to myself that I would just listen to it on my way home from school the day after. It was just as good - an audio-only version of Bjarne was plenty. So when I got home I went online to &lt;a href=&quot;http://channel9.msdn.com&quot;&gt;channel9.msdn.com&lt;/a&gt; to see what else there was. There’s a lot of very nice talks, interviews and such on there. Since I programming languages and that sort of stuff I mainly browse &lt;a href=&quot;http://channel9.msdn.com/Shows/Going+Deep&quot;&gt;Going Deep&lt;/a&gt; for videos I want to hear when I walk home. Lately I heard the interview Anders Hejlsberg and Lars Bak talking about &lt;a href=&quot;http://channel9.msdn.com/Shows/Going+Deep/Anders-Hejlsberg-and-Lars-Bak-TypeScript-JavaScript-and-Dart&quot;&gt;Typescript, Javascript and Dart&lt;/a&gt; since we’re covering all three languages in a course in school so I thought I could learn a little extra about it anyways. It was very exciting as well.&lt;/p&gt;
+&lt;p&gt;But then some weeks ago I decided to re-watch &lt;a href=&quot;https://channel9.msdn.com/Events/GoingNative/GoingNative-2012/Keynote-Bjarne-Stroustrup-Cpp11-Style&quot;&gt;Bjarne Stroustrups keynote from GoingNative 2012&lt;/a&gt; since I liked some of the ideas for style that he presented. Then I noticed that you could download the talk in MP3 (Audio only). I then thought to myself that I would just listen to it on my way home from school the day after. It was just as good - an audio-only version of Bjarne was plenty. So when I got home I went online to &lt;a href=&quot;https://channel9.msdn.com&quot;&gt;channel9.msdn.com&lt;/a&gt; to see what else there was. There’s a lot of very nice talks, interviews and such on there. Since I programming languages and that sort of stuff I mainly browse &lt;a href=&quot;https://channel9.msdn.com/Shows/Going+Deep&quot;&gt;Going Deep&lt;/a&gt; for videos I want to hear when I walk home. Lately I heard the interview Anders Hejlsberg and Lars Bak talking about &lt;a href=&quot;https://channel9.msdn.com/Shows/Going+Deep/Anders-Hejlsberg-and-Lars-Bak-TypeScript-JavaScript-and-Dart&quot;&gt;Typescript, Javascript and Dart&lt;/a&gt; since we’re covering all three languages in a course in school so I thought I could learn a little extra about it anyways. It was very exciting as well.&lt;/p&gt;
 
 &lt;p&gt;I’m fairly sure I’m not the inventor of this concept. I just found out about it myself and I’m enjoying myself with it. I can warmly recommend it. So what do you listen to?&lt;/p&gt;
 </content>
@@ -424,13 +424,13 @@ Timing buffered disk reads:  52 MB in  3.03 seconds =  17.17 MB/sec
    <updated>2012-10-07T00:00:00+02:00</updated>
    <id>http://madsravn.dk/posts/first-post</id>
    <content type="html">&lt;p&gt;&lt;b&gt;First post with jekyll:&lt;/b&gt; This is my first post with the jekyll engine. While I have yet to understand all the wonders of it, I find it most awesome.
-You can find more information about the jekyll engine on Github &lt;a href=&quot;https://github.com/mojombo/jekyll&quot;&gt;here&lt;/a&gt;. I am also using &lt;a href=&quot;http://daringfireball.net/projects/markdown/syntax&quot;&gt;this short overview&lt;/a&gt; to learn the markdown syntax used by Github to render the pages on github pages.&lt;/p&gt;
+You can find more information about the jekyll engine on Github &lt;a href=&quot;https://github.com/mojombo/jekyll&quot;&gt;here&lt;/a&gt;. I am also using &lt;a href=&quot;https://daringfireball.net/projects/markdown/syntax&quot;&gt;this short overview&lt;/a&gt; to learn the markdown syntax used by Github to render the pages on github pages.&lt;/p&gt;
 
 &lt;hr /&gt;
 
-&lt;p&gt;I have been following &lt;a href=&quot;http://zachholman.com/&quot;&gt;Zach Holmans blog&lt;/a&gt; for some time now and I eagerly been reading about his work at Github and what he feels is a hot topic on a given blog-post date. I came to admire him: Writing exciting stuff, working at github and having friendly and funny discussion on Twitter and at Hacker News.&lt;/p&gt;
+&lt;p&gt;I have been following &lt;a href=&quot;https://zachholman.com/&quot;&gt;Zach Holmans blog&lt;/a&gt; for some time now and I eagerly been reading about his work at Github and what he feels is a hot topic on a given blog-post date. I came to admire him: Writing exciting stuff, working at github and having friendly and funny discussion on Twitter and at Hacker News.&lt;/p&gt;
 
-&lt;p&gt;I then did what others do when they strive to achieve: I imitated the person having what I wanted to have. I have borrowed the idea of using Jekyll on Github and the design of the blog from Zach - with permission of course. I have it a bit, though - my name instead of his name, some small details as sizes in the style and then &lt;a href=&quot;http://evafrederiksen.blogspot.dk/&quot;&gt;my girlfriend&lt;/a&gt; made some new icons for my menu since the ones Zach had weren’t free.&lt;/p&gt;
+&lt;p&gt;I then did what others do when they strive to achieve: I imitated the person having what I wanted to have. I have borrowed the idea of using Jekyll on Github and the design of the blog from Zach - with permission of course. I have it a bit, though - my name instead of his name, some small details as sizes in the style and then &lt;a href=&quot;https://evafrederiksen.blogspot.dk/&quot;&gt;my girlfriend&lt;/a&gt; made some new icons for my menu since the ones Zach had weren’t free.&lt;/p&gt;
 
 &lt;p&gt;My idea is to change the look and feel of the site gradually over time since design isn’t really my strong suit and right now I’m quite content with the look. But I can imagine that eventually I want a site which I have made mostly entirely myself instead of a site where only 10% of the design is my own.&lt;/p&gt;
 

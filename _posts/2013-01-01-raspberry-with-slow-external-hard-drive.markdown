@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Raspberry Pi with slow external hard drive
-hn: http://news.ycombinator.com/item?id=5017893
+hn: https://news.ycombinator.com/item?id=5017893
 ---
 
 On a day like January 1st I mostly like relaxing in front of the TV with some movies or series and I had been looking forward to it. I got a powered USB hub for Christmas since our external hard drive, a Verbatim N446, is USB powered and the Raspberry doesn't provide enough power for it. So we plugged in our new USB hub and plugged the drive to that. Discovery and mounting went fine, but when we started watching something it would take 3 seconds before it would start to buffer - it actually used more time buffered than playing.
