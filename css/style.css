@@ -80,7 +80,7 @@
     height: 26px;
     text-align: left;
     font-family: 'Roboto Slab', Black;
-    font-size: 20;
+    font-size: 20px;
     margin-bottom: 35px;
     letter-spacing: 0px;
     color: #000000;
@@ -89,10 +89,10 @@
 }
 
 #about p {
-    width: 585px;
-    height: 499px;
     text-align: left;
-    font: Regular 15px/30px Helvetica;
+    font-family: 'Helvitica', Regular; 
+    font-size: 15px;
+    margin-bottom: 30px;
     letter-spacing: 0px;
     color: #000000;
     opacity: 1;
