@@ -79,10 +79,13 @@
     width: 193px;
     height: 26px;
     text-align: left;
-    font: Black 20px/35px Roboto Slab;
+    font-family: 'Roboto Slab', Black;
+    font-size: 20;
+    margin-bottom: 35px;
     letter-spacing: 0px;
     color: #000000;
     opacity: 1;
+
 }
 
 #about p {
