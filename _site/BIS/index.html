@@ -8,6 +8,7 @@
   <meta name="author" content="Mads Ravn" />
   <meta name="description" content="Mads Ravn - An avid coder and lazy donkey." />
   <link rel="alternate" type="application/rss+xml" href="https://feeds.feedburner.com/madsravn" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab">
   <link rel="stylesheet" href="/css/html5reset.css" media="all">
   <link rel="stylesheet" href="/css/col.css" media="all">
   <link rel="stylesheet" href="/css/2cols.css" media="all">
@@ -28,6 +29,7 @@
 <body>
 <div class="section group">
 <div class="col span_1_of_10">
+  <div class="middle">
     <a href="/">
       <img src="https://1.gravatar.com/avatar/cff6826c1faad4528b1ce15dda1f0e6d" height="75" width="75" class="avatar" />
     </a>
@@ -40,17 +42,41 @@
     </section>
 
     <section class="meta">
-    <a href="https://github.com/madsravn"><img src="https://madsravn.dk/images/github.png" height="16" width=16" alt="Github"/></a>
-    <a href="https://twitter.com/ravnmads"><img src="https://madsravn.dk/images/twitter.png" height="16" width="16" alt="twitter"/></a>
-    <a href="https://feeds.feedburner.com/madsravn"><img src="https://madsravn.dk/images/rss.png" height="16" width="16" alt="feed"/> </a>
+    <a href="https://github.com/madsravn"><img src="https://madsravn.dk/images/github.png" height="20" width=20" alt="Github"/></a>
+    <a href="https://twitter.com/ravnmads"><img src="https://madsravn.dk/images/twitter.png" height="20" width="20" alt="twitter"/></a>
+    <a href="https://feeds.feedburner.com/madsravn"><img src="https://madsravn.dk/images/rss.png" height="20" width="20" alt="feed"/> </a>
     </section>
+    <br />
 
-    <section class="sections">
-      <ul>
-        <li><a href="/about.html">about</a></li>
-        <li><a href="/projects">projects</a></li>
-      </ul>
+    <section class="menu">
+      <a href="index.html">
+        <p class="menubig">
+          01
+        </p>
+        <p class="menusmall">
+          blog
+        </p>
+      </a>
+      <hr />
+      <a href="projects.html">
+        <p class="menubig">
+          02
+        </p>
+        <p class="menusmall">
+          projects
+        </p>
+      </a>
+      <hr />
+      <a href="about.html">
+        <p class="menubig">
+          03
+        </p>
+        <p class="menusmall">
+          about
+        </p>
+      </a>
     </section>
+  </div>
 </div>
 <div class="col span_9_of_10">
 
@@ -74,6 +100,73 @@
   </div>
 </div>
 
+
+  <br />
+
+  <ul>
+  
+    <li>
+      <h2><a href="/posts/contributing-to-clang">Contributing to Clang</a></h2>
+      <p>A year or so ago I started contributing code to Clang. For those of you who doesn’t know what <a href="https://clang.llvm.org/">Clang</a> is; it is a C and C++ front-end for LLVM. In short, a C++ compiler. I have mostly been doing work on <a href="https://clang.llvm.org/extra/clang-tidy/">Clang-Tidy</a> which is a Clang-based C++ linter. It can help you find errors, enforce coding guidelines or modernize your project. it is a very helpful tool which can be an effective part of your tool chain. It is also very easy to extend Clang-Tidy with your own checks - and it also easy to have this code accepted into the official Clang project.</p>
+
+    </li>
+  
+    <li>
+      <h2><a href="/posts/meeting-cpp-trip-report">Meeting C++ trip report</a></h2>
+      <p>Last week I attended my first ever C++ conference. It was the Meeting C++ conference in Berlin. The conference was very nicely planned with some good speakers and good topics. There were only a few minor details which was inconvinient. Below I will try to express some thoughts about the different talks I saw and about the conference in general.</p>
+
+    </li>
+  
+    <li>
+      <h2><a href="/posts/master-thesis-done-lessons-learned">Master thesis done - lessons learned</a></h2>
+      <p>I graduated from Aarhus University with a degree in Computer Science this june. Now, I’m finally getting around to publishing my code (as I linked in my thesis). I thought that I would give a quick summary of the process of writing my thesis as well. You can find my thesis and the code I developed for my thesis <a href="./../../BIS/index.html">here</a>. The title of my thesis is Orthogonal Range Searching in 2D with Ball Inheritance and my advisor was <a href="https://cs.au.dk/~larsen/">Kasper Green Larsen</a>.</p>
+
+    </li>
+  
+    <li>
+      <h2><a href="/posts/what-is-better-xbox-or-playstation">What is better - Xbox One or Playstation 4?</a></h2>
+      <p>With the two new consoles being released soon, there is a lot of hype about it online. There is a lot of articles online describing the differences in performance, games, design and usability - reading the comparisons of the consoles almost seems like a bigger time consumption than actually playing on the console.</p>
+
+    </li>
+  
+    <li>
+      <h2><a href="/posts/simple-image-processing-with-cuda">Simple image processing with CUDA</a></h2>
+      <p>I like graphics and image processing. So I have been fiddling a little with NVIDIAs CUDA in order to capatilize on some multithreaded programming. I have made a little starter edition for people who wants to try forces with CUDA for image processing.</p>
+
+    </li>
+  
+    <li>
+      <h2><a href="/posts/final-handin-for-rendalg">Improving performance with packet tracing and other methods</a></h2>
+      <h2 id="introduction">Introduction</h2>
+
+    </li>
+  
+    <li>
+      <h2><a href="/posts/chess-summary-for-january">Chess summary for January</a></h2>
+      <h2 id="introduction">Introduction</h2>
+
+    </li>
+  
+    <li>
+      <h2><a href="/posts/raspberry-with-slow-external-hard-drive">Raspberry Pi with slow external hard drive</a></h2>
+      <p>On a day like January 1st I mostly like relaxing in front of the TV with some movies or series and I had been looking forward to it. I got a powered USB hub for Christmas since our external hard drive, a Verbatim N446, is USB powered and the Raspberry doesn’t provide enough power for it. So we plugged in our new USB hub and plugged the drive to that. Discovery and mounting went fine, but when we started watching something it would take 3 seconds before it would start to buffer - it actually used more time buffered than playing.</p>
+
+    </li>
+  
+    <li>
+      <h2><a href="/posts/music-or-audiobooks-or">Music or audiobooks or ...</a></h2>
+      <p>Many people today listen to music on the go - to work, to school or just between places.  When I look around on any given day most people either have ear plugs in their ears or headphones over them.  Some people actually play so loud that you can just behind them and enjoy their music for free, while others I look at and wonder what they’re playing.</p>
+
+    </li>
+  
+    <li>
+      <h2><a href="/posts/first-post">First post with Jekyll</a></h2>
+      <p><b>First post with jekyll:</b> This is my first post with the jekyll engine. While I have yet to understand all the wonders of it, I find it most awesome.
+You can find more information about the jekyll engine on Github <a href="https://github.com/mojombo/jekyll">here</a>. I am also using <a href="https://daringfireball.net/projects/markdown/syntax">this short overview</a> to learn the markdown syntax used by Github to render the pages on github pages.</p>
+
+    </li>
+  
+</ul>
 </div>
 
 </body>
