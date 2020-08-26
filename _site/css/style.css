@@ -76,24 +76,23 @@
 }
 
 #about h3 {
-    top: 136px;
-    left: 351px;
     width: 193px;
     height: 26px;
     text-align: left;
-    font: Black 20px/35px Roboto Slab;
+    font-family: 'Roboto Slab', Black;
+    font-size: 20px;
+    margin-bottom: 35px;
     letter-spacing: 0px;
     color: #000000;
     opacity: 1;
+
 }
 
 #about p {
-    top: 186px;
-    left: 351px;
-    width: 585px;
-    height: 499px;
     text-align: left;
-    font: Regular 15px/30px Helvetica;
+    font-family: 'Helvitica', Regular; 
+    font-size: 15px;
+    line-height: 30px;
     letter-spacing: 0px;
     color: #000000;
     opacity: 1;
@@ -101,6 +100,45 @@
 
 #me {
     height: 390px;
-    background: transparent url('../images/IMG_2915.png') 0% 0% no-repeat padding-box;
     opacity: 1;
 }
+
+.pictureme {
+  max-width: 100%;
+  max-height: 100%;
+  padding-top: 41px;
+}
+
+.menubig {
+  font-size: 70px;
+  font-family: 'Roboto Slab', Black;
+  color: #86A691;
+  text-align: left;
+  letter-spacing: 0px;
+  opacity: 1;
+  font-weight: bold;
+}
+
+.menusmall {
+  font-size: 20;
+  font-family: 'Helvitica', Regular;
+  color: #86A691;
+  text-align: left;
+  letter-spacing: 0px;
+  opacity: 1;
+}
+
+.middle {
+  margin: 0 auto;
+  padding: 20px;
+  position: relative;
+}
+
+.menu a {
+  text-decoration: none;
+}
+
+.name a {
+  text-decoration: none;
+}
+

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
+<feed xmlns="https://www.w3.org/2005/Atom">
  
  <title>Mads Ravn</title>
- <link href="http://madsravn.dk/atom.xml" rel="self"/>
- <link href="http://madsravn.dk/"/>
- <updated>2020-06-10T20:23:57+02:00</updated>
+ <link href="https://madsravn.dk/atom.xml" rel="self"/>
+ <link href="https://madsravn.dk/"/>
+ <updated>2020-08-26T13:22:04+02:00</updated>
  <id>http://madsravn.dk</id>
  <author>
    <name>Mads Ravn</name>
@@ -13,9 +13,9 @@
  
  <entry>
    <title>Contributing to Clang</title>
-   <link href="http://madsravn.dk/posts/contributing-to-clang"/>
+   <link href="https://madsravn.dk/posts/contributing-to-clang"/>
    <updated>2017-06-20T00:00:00+02:00</updated>
-   <id>http://madsravn.dk/posts/contributing-to-clang</id>
+   <id>https://madsravn.dk/posts/contributing-to-clang</id>
    <content type="html">&lt;p&gt;A year or so ago I started contributing code to Clang. For those of you who doesn’t know what &lt;a href=&quot;https://clang.llvm.org/&quot;&gt;Clang&lt;/a&gt; is; it is a C and C++ front-end for LLVM. In short, a C++ compiler. I have mostly been doing work on &lt;a href=&quot;https://clang.llvm.org/extra/clang-tidy/&quot;&gt;Clang-Tidy&lt;/a&gt; which is a Clang-based C++ linter. It can help you find errors, enforce coding guidelines or modernize your project. it is a very helpful tool which can be an effective part of your tool chain. It is also very easy to extend Clang-Tidy with your own checks - and it also easy to have this code accepted into the official Clang project.&lt;/p&gt;
 
 &lt;p&gt;So if you are looking for a fun open source project to contribute to, look no further. In this post I will quickly explain the few steps you need to follow in order to extend Clang-Tidy and have it accepted into the Clang project.&lt;/p&gt;
@@ -37,9 +37,9 @@
  
  <entry>
    <title>Meeting C++ trip report</title>
-   <link href="http://madsravn.dk/posts/meeting-cpp-trip-report"/>
+   <link href="https://madsravn.dk/posts/meeting-cpp-trip-report"/>
    <updated>2016-11-22T00:00:00+01:00</updated>
-   <id>http://madsravn.dk/posts/meeting-cpp-trip-report</id>
+   <id>https://madsravn.dk/posts/meeting-cpp-trip-report</id>
    <content type="html">&lt;p&gt;Last week I attended my first ever C++ conference. It was the Meeting C++ conference in Berlin. The conference was very nicely planned with some good speakers and good topics. There were only a few minor details which was inconvinient. Below I will try to express some thoughts about the different talks I saw and about the conference in general.&lt;/p&gt;
 
 &lt;h2 id=&quot;the-keynote&quot;&gt;The Keynote&lt;/h2&gt;
@@ -80,9 +80,9 @@
  
  <entry>
    <title>Master thesis done - lessons learned</title>
-   <link href="http://madsravn.dk/posts/master-thesis-done-lessons-learned"/>
+   <link href="https://madsravn.dk/posts/master-thesis-done-lessons-learned"/>
    <updated>2015-11-21T00:00:00+01:00</updated>
-   <id>http://madsravn.dk/posts/master-thesis-done-lessons-learned</id>
+   <id>https://madsravn.dk/posts/master-thesis-done-lessons-learned</id>
    <content type="html">&lt;p&gt;I graduated from Aarhus University with a degree in Computer Science this june. Now, I’m finally getting around to publishing my code (as I linked in my thesis). I thought that I would give a quick summary of the process of writing my thesis as well. You can find my thesis and the code I developed for my thesis &lt;a href=&quot;./../../BIS/index.html&quot;&gt;here&lt;/a&gt;. The title of my thesis is Orthogonal Range Searching in 2D with Ball Inheritance and my advisor was &lt;a href=&quot;https://cs.au.dk/~larsen/&quot;&gt;Kasper Green Larsen&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Before I started writing my thesis, I followed a course called Master Thesis Preparation by &lt;a href=&quot;https://cs.au.dk/~danvy/&quot;&gt;Olivier Danvy&lt;/a&gt;. He has advised for quite a few PhD students so far, so he certainly has a good experience with it. The course consisted of a lot of good tips, tricks and good stories (which is his modus operandi). One of the few things which really stuck with me was to remember an advisor has a limited amount of time for you and it is your responsibility to use it as best as possible. My advisor was awesome enough to read some of what I had written each time we met. And in order to maximize what I got from this, I always compiled a ‘diff-version’ of my thesis for him. A ‘diff-version’ was made using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;latexdiff&lt;/code&gt;. Each time I handed something in, I saved the latex files for that version. Next time I handed something in, I would then run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;latexdiff&lt;/code&gt; on the current version and what I handed in last time. With this it was easy to see what was removed, what was added and what was the same as last time he read it. This worked out pretty good.&lt;/p&gt;
@@ -103,9 +103,9 @@
  
  <entry>
    <title>What is better - Xbox One or Playstation 4?</title>
-   <link href="http://madsravn.dk/posts/what-is-better-xbox-or-playstation"/>
+   <link href="https://madsravn.dk/posts/what-is-better-xbox-or-playstation"/>
    <updated>2013-11-19T00:00:00+01:00</updated>
-   <id>http://madsravn.dk/posts/what-is-better-xbox-or-playstation</id>
+   <id>https://madsravn.dk/posts/what-is-better-xbox-or-playstation</id>
    <content type="html">&lt;p&gt;With the two new consoles being released soon, there is a lot of hype about it online. There is a lot of articles online describing the differences in performance, games, design and usability - reading the comparisons of the consoles almost seems like a bigger time consumption than actually playing on the console.&lt;/p&gt;
 
 &lt;p&gt;So I read all the posts and summarized it for you. Which console is the best? Here’s the answer:&lt;/p&gt;
@@ -116,9 +116,9 @@
  
  <entry>
    <title>Simple image processing with CUDA</title>
-   <link href="http://madsravn.dk/posts/simple-image-processing-with-cuda"/>
+   <link href="https://madsravn.dk/posts/simple-image-processing-with-cuda"/>
    <updated>2013-10-27T00:00:00+02:00</updated>
-   <id>http://madsravn.dk/posts/simple-image-processing-with-cuda</id>
+   <id>https://madsravn.dk/posts/simple-image-processing-with-cuda</id>
    <content type="html">&lt;p&gt;I like graphics and image processing. So I have been fiddling a little with NVIDIAs CUDA in order to capatilize on some multithreaded programming. I have made a little starter edition for people who wants to try forces with CUDA for image processing.&lt;/p&gt;
 
 &lt;p&gt;I am using &lt;a href=&quot;https://lodev.org/lodepng/&quot;&gt;lodepng&lt;/a&gt; for loading and saving images for the filtering. It is very easy to easy, has no dependencies and just works. In my example code I am reading filenames for input and output images from the command line parameters.&lt;/p&gt;
@@ -255,9 +255,9 @@ void blur(unsigned char* input_image, unsigned char* output_image, int width, in
  
  <entry>
    <title>Improving performance with packet tracing and other methods</title>
-   <link href="http://madsravn.dk/posts/final-handin-for-rendalg"/>
+   <link href="https://madsravn.dk/posts/final-handin-for-rendalg"/>
    <updated>2013-04-10T00:00:00+02:00</updated>
-   <id>http://madsravn.dk/posts/final-handin-for-rendalg</id>
+   <id>https://madsravn.dk/posts/final-handin-for-rendalg</id>
    <content type="html">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
 
 &lt;p&gt;The subject I chose for final handin in the rendering algorithms course was improving the rendering time of a given scene, the Sponza scene as seen below. The scene consist of 66,454 triangles which are rather compact and from any given viewpoint pretty stacked - i.e. if you shoot a ray through a triangle you are pretty sure to hit at least a few other triangles either behind or in front of it.&lt;/p&gt;
@@ -320,9 +320,9 @@ void blur(unsigned char* input_image, unsigned char* output_image, int width, in
  
  <entry>
    <title>Chess summary for January</title>
-   <link href="http://madsravn.dk/posts/chess-summary-for-january"/>
+   <link href="https://madsravn.dk/posts/chess-summary-for-january"/>
    <updated>2013-01-31T00:00:00+01:00</updated>
-   <id>http://madsravn.dk/posts/chess-summary-for-january</id>
+   <id>https://madsravn.dk/posts/chess-summary-for-january</id>
    <content type="html">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
 
 &lt;p&gt;Back in November I saw a video posted on Reddit. It was a video of an analysis of a chess game. This got me motivated to try playing chess and I really liked it. I also like numbers, so I have decided that I want to sum up each month of chess from now on.&lt;/p&gt;
@@ -360,9 +360,9 @@ void blur(unsigned char* input_image, unsigned char* output_image, int width, in
  
  <entry>
    <title>Raspberry Pi with slow external hard drive</title>
-   <link href="http://madsravn.dk/posts/raspberry-with-slow-external-hard-drive"/>
+   <link href="https://madsravn.dk/posts/raspberry-with-slow-external-hard-drive"/>
    <updated>2013-01-01T00:00:00+01:00</updated>
-   <id>http://madsravn.dk/posts/raspberry-with-slow-external-hard-drive</id>
+   <id>https://madsravn.dk/posts/raspberry-with-slow-external-hard-drive</id>
    <content type="html">&lt;p&gt;On a day like January 1st I mostly like relaxing in front of the TV with some movies or series and I had been looking forward to it. I got a powered USB hub for Christmas since our external hard drive, a Verbatim N446, is USB powered and the Raspberry doesn’t provide enough power for it. So we plugged in our new USB hub and plugged the drive to that. Discovery and mounting went fine, but when we started watching something it would take 3 seconds before it would start to buffer - it actually used more time buffered than playing.&lt;/p&gt;
 
 &lt;p&gt;A &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;hdparm -tT /dev/sda&lt;/code&gt; showed some disturbing news:
@@ -403,9 +403,9 @@ Timing buffered disk reads:  52 MB in  3.03 seconds =  17.17 MB/sec
  
  <entry>
    <title>Music or audiobooks or ...</title>
-   <link href="http://madsravn.dk/posts/music-or-audiobooks-or"/>
+   <link href="https://madsravn.dk/posts/music-or-audiobooks-or"/>
    <updated>2012-12-13T00:00:00+01:00</updated>
-   <id>http://madsravn.dk/posts/music-or-audiobooks-or</id>
+   <id>https://madsravn.dk/posts/music-or-audiobooks-or</id>
    <content type="html">&lt;p&gt;Many people today listen to music on the go - to work, to school or just between places.  When I look around on any given day most people either have ear plugs in their ears or headphones over them.  Some people actually play so loud that you can just behind them and enjoy their music for free, while others I look at and wonder what they’re playing.&lt;/p&gt;
 
 &lt;p&gt;I used to listen to music myself back in the days. However, I tend to hear the same songs too much in a small period of time and then I get sick of them. This trend of mine required me to swap my music out on a regular basis and I am not really good at finding new music, and not in that small amount of time. So instead I started listening to radio. We have a pretty good radio station here in Denmark, called &lt;a href=&quot;https://www.dr.dk/p3&quot;&gt;P3&lt;/a&gt;. The talk a bit… quite a lot actually and I quickly realized I liked the parts with people talking more than I liked their mainstream pop (and Danish pop really sucks), so I decided to try an audiobook instead. I started out with a book which had been on my to-reread list for a while: Sun Tzus Art of War.&lt;/p&gt;
@@ -420,9 +420,9 @@ Timing buffered disk reads:  52 MB in  3.03 seconds =  17.17 MB/sec
  
  <entry>
    <title>First post with Jekyll</title>
-   <link href="http://madsravn.dk/posts/first-post"/>
+   <link href="https://madsravn.dk/posts/first-post"/>
    <updated>2012-10-07T00:00:00+02:00</updated>
-   <id>http://madsravn.dk/posts/first-post</id>
+   <id>https://madsravn.dk/posts/first-post</id>
    <content type="html">&lt;p&gt;&lt;b&gt;First post with jekyll:&lt;/b&gt; This is my first post with the jekyll engine. While I have yet to understand all the wonders of it, I find it most awesome.
 You can find more information about the jekyll engine on Github &lt;a href=&quot;https://github.com/mojombo/jekyll&quot;&gt;here&lt;/a&gt;. I am also using &lt;a href=&quot;https://daringfireball.net/projects/markdown/syntax&quot;&gt;this short overview&lt;/a&gt; to learn the markdown syntax used by Github to render the pages on github pages.&lt;/p&gt;
 

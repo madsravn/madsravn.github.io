@@ -100,6 +100,45 @@
 
 #me {
     height: 390px;
-    background: transparent url('../images/IMG_2915.png') 0% 0% no-repeat padding-box;
     opacity: 1;
 }
+
+.pictureme {
+  max-width: 100%;
+  max-height: 100%;
+  padding-top: 41px;
+}
+
+.menubig {
+  font-size: 70px;
+  font-family: 'Roboto Slab', Black;
+  color: #86A691;
+  text-align: left;
+  letter-spacing: 0px;
+  opacity: 1;
+  font-weight: bold;
+}
+
+.menusmall {
+  font-size: 20;
+  font-family: 'Helvitica', Regular;
+  color: #86A691;
+  text-align: left;
+  letter-spacing: 0px;
+  opacity: 1;
+}
+
+.middle {
+  margin: 0 auto;
+  padding: 20px;
+  position: relative;
+}
+
+.menu a {
+  text-decoration: none;
+}
+
+.name a {
+  text-decoration: none;
+}
+
