@@ -100,7 +100,6 @@
 
 #me {
     height: 390px;
-<<<<<<< HEAD
     /* background: transparent url('../images/IMG_2915.png') 0% 0% no-repeat padding-box; */
     opacity: 1;
 }
@@ -120,8 +119,7 @@
     border: 1px solid #777777;
     border-radius: 3px;
     padding: 2px 3px;
-    display: inline-block;}
-=======
+    display: inline-block;
     opacity: 1;
 }
 
@@ -133,12 +131,12 @@
 
 .menubig {
   font-size: 70px;
-  font-family: 'Roboto Slab', Black;
+  font-family: 'Roboto Slab';
   color: #86A691;
   text-align: left;
   letter-spacing: 0px;
   opacity: 1;
-  font-weight: bold;
+  font-weight: 900;
 }
 
 .menusmall {
@@ -164,4 +162,7 @@
   text-decoration: none;
 }
 
->>>>>>> d48b4f9d8cc93ae48469c8cab66005b66d210e3b
+
+.main-content {
+    box-shadow: 0px 10px 20px #00000029;
+}
