@@ -35,8 +35,13 @@ plugins:
     #  - jekyll-paginate
     #- jekyll-sitemap
 
-markdown: kramdown
 highlighter: rouge
+kramdown:
+  input: GFM
+  syntax_highlighter_opts:
+    default_lang: html
+    css_class   : 'syntax'
+
 permalink: /posts/:title
 # Exclude from processing.
 # The following items will not be processed, by default.

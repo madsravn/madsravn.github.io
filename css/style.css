@@ -101,6 +101,23 @@
 
 #me {
     height: 390px;
-    background: transparent url('../images/IMG_2915.png') 0% 0% no-repeat padding-box;
+    /* background: transparent url('../images/IMG_2915.png') 0% 0% no-repeat padding-box; */
     opacity: 1;
 }
+    .content p {
+        display: inline-block
+    }
+    .content p code {
+      font-size: 12px;
+      background-color: #eeeeee;
+      border: 1px solid #777777;
+      border-radius: 3px;
+      padding: 2px 3px;
+      display: inline-block;}
+  .content pre {
+    font-size: 12px;
+    background-color: #eeeeee;
+    border: 1px solid #777777;
+    border-radius: 3px;
+    padding: 2px 3px;
+    display: inline-block;}

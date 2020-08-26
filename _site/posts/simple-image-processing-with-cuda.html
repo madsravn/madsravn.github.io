@@ -69,79 +69,79 @@
 
 <p>Enough talk, let’s see some code:</p>
 
-<p>In my <code class="language-plaintext highlighter-rouge">main.cpp</code> file I load and save images and call the filter.</p>
+<p>In my <code class="language-html highlighter-rouge">main.cpp</code> file I load and save images and call the filter.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>int main(int argc, char** argv) {
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>int main(int argc, char** argv) {
     if(argc != 3) {
-        std::cout &lt;&lt; "Run with input and output image filenames." &lt;&lt; std::endl;
-        return 0;
-    }
+        std::cout <span class="nt">&lt;</span><span class="err">&lt;</span> <span class="err">"</span><span class="na">Run</span> <span class="na">with</span> <span class="na">input</span> <span class="na">and</span> <span class="na">output</span> <span class="na">image</span> <span class="na">filenames</span><span class="err">."</span> <span class="err">&lt;&lt;</span> <span class="na">std::endl</span><span class="err">;</span>
+        <span class="na">return</span> <span class="na">0</span><span class="err">;</span>
+    <span class="err">}</span>
 
-    // Read the arguments
-    const char* input_file = argv[1];
-    const char* output_file = argv[2];
+    <span class="err">//</span> <span class="na">Read</span> <span class="na">the</span> <span class="na">arguments</span>
+    <span class="na">const</span> <span class="na">char*</span> <span class="na">input_file = </span><span class="s">argv[1];</span>
+    <span class="na">const</span> <span class="na">char*</span> <span class="na">output_file = </span><span class="s">argv[2];</span>
 
-    std::vector&lt;unsigned char&gt; in_image;
+    <span class="na">std::vector</span><span class="err">&lt;</span><span class="na">unsigned</span> <span class="na">char</span><span class="nt">&gt;</span> in_image;
     unsigned int width, height;
 
     // Load the data
     unsigned error = lodepng::decode(in_image, width, height, input_file);
-    if(error) std::cout &lt;&lt; "decoder error " &lt;&lt; error &lt;&lt; ": " &lt;&lt; lodepng_error_text(error) &lt;&lt; std::endl;
+    if(error) std::cout <span class="nt">&lt;</span><span class="err">&lt;</span> <span class="err">"</span><span class="na">decoder</span> <span class="na">error</span> <span class="err">"</span> <span class="err">&lt;&lt;</span> <span class="na">error</span> <span class="err">&lt;&lt;</span> <span class="err">"</span><span class="na">:</span> <span class="err">"</span> <span class="err">&lt;&lt;</span> <span class="na">lodepng_error_text</span><span class="err">(</span><span class="na">error</span><span class="err">)</span> <span class="err">&lt;&lt;</span> <span class="na">std::endl</span><span class="err">;</span>
 
-    // Prepare the data
-    unsigned char* input_image = new unsigned char[(in_image.size()*3)/4];
-    unsigned char* output_image = new unsigned char[(in_image.size()*3)/4];
-    int where = 0;
-    for(int i = 0; i &lt; in_image.size(); ++i) {
-       if((i+1) % 4 != 0) {
-           input_image[where] = in_image.at(i);
-           output_image[where] = 255;
-           where++;
-       }
-    }
+    <span class="err">//</span> <span class="na">Prepare</span> <span class="na">the</span> <span class="na">data</span>
+    <span class="na">unsigned</span> <span class="na">char*</span> <span class="na">input_image = </span><span class="s">new</span> <span class="na">unsigned</span> <span class="na">char</span><span class="err">[(</span><span class="na">in_image</span><span class="err">.</span><span class="na">size</span><span class="err">()</span><span class="na">*3</span><span class="err">)/</span><span class="na">4</span><span class="err">];</span>
+    <span class="na">unsigned</span> <span class="na">char*</span> <span class="na">output_image = </span><span class="s">new</span> <span class="na">unsigned</span> <span class="na">char</span><span class="err">[(</span><span class="na">in_image</span><span class="err">.</span><span class="na">size</span><span class="err">()</span><span class="na">*3</span><span class="err">)/</span><span class="na">4</span><span class="err">];</span>
+    <span class="na">int</span> <span class="na">where = </span><span class="s">0;</span>
+    <span class="na">for</span><span class="err">(</span><span class="na">int</span> <span class="na">i = </span><span class="s">0;</span> <span class="na">i</span> <span class="err">&lt;</span> <span class="na">in_image</span><span class="err">.</span><span class="na">size</span><span class="err">();</span> <span class="err">++</span><span class="na">i</span><span class="err">)</span> <span class="err">{</span>
+       <span class="na">if</span><span class="err">((</span><span class="na">i</span><span class="err">+</span><span class="na">1</span><span class="err">)</span> <span class="err">%</span> <span class="na">4</span> <span class="err">!=</span> <span class="na">0</span><span class="err">)</span> <span class="err">{</span>
+           <span class="na">input_image[where] = </span><span class="s">in_image.at(i);</span>
+           <span class="na">output_image[where] = </span><span class="s">255;</span>
+           <span class="na">where</span><span class="err">++;</span>
+       <span class="err">}</span>
+    <span class="err">}</span>
 
-    // Run the filter on it
-    filter(input_image, output_image, width, height); 
+    <span class="err">//</span> <span class="na">Run</span> <span class="na">the</span> <span class="na">filter</span> <span class="na">on</span> <span class="na">it</span>
+    <span class="na">filter</span><span class="err">(</span><span class="na">input_image</span><span class="err">,</span> <span class="na">output_image</span><span class="err">,</span> <span class="na">width</span><span class="err">,</span> <span class="na">height</span><span class="err">);</span> 
 
-    // Prepare data for output
-    std::vector&lt;unsigned char&gt; out_image;
-    for(int i = 0; i &lt; in_image.size(); ++i) {
-        out_image.push_back(output_image[i]);
-        if((i+1) % 3 == 0) {
-            out_image.push_back(255);
-        }
-    }
+    <span class="err">//</span> <span class="na">Prepare</span> <span class="na">data</span> <span class="na">for</span> <span class="na">output</span>
+    <span class="na">std::vector</span><span class="err">&lt;</span><span class="na">unsigned</span> <span class="na">char</span><span class="nt">&gt;</span> out_image;
+    for(int i = 0; i <span class="nt">&lt;</span> <span class="nt">in</span><span class="na">_image</span><span class="err">.</span><span class="na">size</span><span class="err">();</span> <span class="err">++</span><span class="na">i</span><span class="err">)</span> <span class="err">{</span>
+        <span class="na">out_image</span><span class="err">.</span><span class="na">push_back</span><span class="err">(</span><span class="na">output_image</span><span class="err">[</span><span class="na">i</span><span class="err">]);</span>
+        <span class="na">if</span><span class="err">((</span><span class="na">i</span><span class="err">+</span><span class="na">1</span><span class="err">)</span> <span class="err">%</span> <span class="na">3 =</span><span class="s">=</span> <span class="na">0</span><span class="err">)</span> <span class="err">{</span>
+            <span class="na">out_image</span><span class="err">.</span><span class="na">push_back</span><span class="err">(</span><span class="na">255</span><span class="err">);</span>
+        <span class="err">}</span>
+    <span class="err">}</span>
     
-    // Output the data
-    error = lodepng::encode(output_file, out_image, width, height);
+    <span class="err">//</span> <span class="na">Output</span> <span class="na">the</span> <span class="na">data</span>
+    <span class="na">error = </span><span class="s">lodepng::encode(output_file,</span> <span class="na">out_image</span><span class="err">,</span> <span class="na">width</span><span class="err">,</span> <span class="na">height</span><span class="err">);</span>
 
-    //if there's an error, display it
-    if(error) std::cout &lt;&lt; "encoder error " &lt;&lt; error &lt;&lt; ": "&lt;&lt; lodepng_error_text(error) &lt;&lt; std::endl;
+    <span class="err">//</span><span class="na">if</span> <span class="na">there</span><span class="err">'</span><span class="na">s</span> <span class="na">an</span> <span class="na">error</span><span class="err">,</span> <span class="na">display</span> <span class="na">it</span>
+    <span class="na">if</span><span class="err">(</span><span class="na">error</span><span class="err">)</span> <span class="na">std::cout</span> <span class="err">&lt;&lt;</span> <span class="err">"</span><span class="na">encoder</span> <span class="na">error</span> <span class="err">"</span> <span class="err">&lt;&lt;</span> <span class="na">error</span> <span class="err">&lt;&lt;</span> <span class="err">"</span><span class="na">:</span> <span class="err">"&lt;&lt;</span> <span class="na">lodepng_error_text</span><span class="err">(</span><span class="na">error</span><span class="err">)</span> <span class="err">&lt;&lt;</span> <span class="na">std::endl</span><span class="err">;</span>
 
-    delete[] input_image;
-    delete[] output_image;
-    return 0;
+    <span class="na">delete</span><span class="err">[]</span> <span class="na">input_image</span><span class="err">;</span>
+    <span class="na">delete</span><span class="err">[]</span> <span class="na">output_image</span><span class="err">;</span>
+    <span class="na">return</span> <span class="na">0</span><span class="err">;</span>
 
-}
+<span class="err">}</span>
 </code></pre></div></div>
 
-<p>We notice how easy lodepng is to use. We tell it we want our image loaded into our vector and voila, we have it. We then remove the alpha channel, as I was not using it in my project. You can however change it to your preferences. We then give our image data to the <code class="language-plaintext highlighter-rouge">filter</code> function - this is the function which will load the data onto our GPU and call the CUDA kernel which runs our filter. We then save our image, clean up and exits.</p>
+<p>We notice how easy lodepng is to use. We tell it we want our image loaded into our vector and voila, we have it. We then remove the alpha channel, as I was not using it in my project. You can however change it to your preferences. We then give our image data to the <code class="language-html highlighter-rouge">filter</code> function - this is the function which will load the data onto our GPU and call the CUDA kernel which runs our filter. We then save our image, clean up and exits.</p>
 
-<p>Now let’s look at some actual CUDA stuff. The code below resides in <code class="language-plaintext highlighter-rouge">kernels.cu</code>. The CUDA compiler, nvcc, is sort of picky as to what filename extensions it will compile as what. For now, just let the name be.</p>
+<p>Now let’s look at some actual CUDA stuff. The code below resides in <code class="language-html highlighter-rouge">kernels.cu</code>. The CUDA compiler, nvcc, is sort of picky as to what filename extensions it will compile as what. For now, just let the name be.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> void filter (unsigned char* input_image, unsigned char* output_image, int width, int height) {
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code> void filter (unsigned char* input_image, unsigned char* output_image, int width, int height) {
 
     unsigned char* dev_input;
     unsigned char* dev_output;
-    getError(cudaMalloc( (void**) &amp;dev_input, width*height*3*sizeof(unsigned char)));
+    getError(cudaMalloc( (void**) <span class="err">&amp;</span>dev_input, width*height*3*sizeof(unsigned char)));
     getError(cudaMemcpy( dev_input, input_image, width*height*3*sizeof(unsigned char), cudaMemcpyHostToDevice ));
  
-    getError(cudaMalloc( (void**) &amp;dev_output, width*height*3*sizeof(unsigned char)));
+    getError(cudaMalloc( (void**) <span class="err">&amp;</span>dev_output, width*height*3*sizeof(unsigned char)));
 
     dim3 blockDims(512,1,1);
     dim3 gridDims((unsigned int) ceil((double)(width*height*3/blockDims.x)), 1, 1 );
 
-    filter&lt;&lt;&lt;gridDims, blockDims&gt;&gt;&gt;(dev_input, dev_output, width, height); 
+    filter<span class="nt">&lt;</span><span class="err">&lt;&lt;</span><span class="na">gridDims</span><span class="err">,</span> <span class="na">blockDims</span><span class="nt">&gt;</span>&gt;&gt;(dev_input, dev_output, width, height); 
 
 
     getError(cudaMemcpy(output_image, dev_output, width*height*3*sizeof(unsigned char), cudaMemcpyDeviceToHost ));
@@ -152,44 +152,44 @@
 }
 </code></pre></div></div>
 
-<p>We allocate and copy our data to the GPU. We need the data on the GPU for the kernels to be able to read it. We also allocate storage for the output image, so we have a place to write the result of the filter to. The «&lt;»&gt; is CUDA syntax and will be interpreted when compiled. It tells the compiler how many blocks and grids we are going to use. Mostly every CUDA function an enum <code class="language-plaintext highlighter-rouge">cudaError_t</code> which is why every CUDA call is surrounded by <code class="language-plaintext highlighter-rouge">getError</code>. This way we get an error printed to the screen if anything goes wrong. Don’t worry too much about it, you can see the code for it in <code class="language-plaintext highlighter-rouge">helpers.cpp</code>.</p>
+<p>We allocate and copy our data to the GPU. We need the data on the GPU for the kernels to be able to read it. We also allocate storage for the output image, so we have a place to write the result of the filter to. The «&lt;»&gt; is CUDA syntax and will be interpreted when compiled. It tells the compiler how many blocks and grids we are going to use. Mostly every CUDA function an enum <code class="language-html highlighter-rouge">cudaError_t</code> which is why every CUDA call is surrounded by <code class="language-html highlighter-rouge">getError</code>. This way we get an error printed to the screen if anything goes wrong. Don’t worry too much about it, you can see the code for it in <code class="language-html highlighter-rouge">helpers.cpp</code>.</p>
 
-<p>Now, let’s look at the actual filter, also located in <code class="language-plaintext highlighter-rouge">kernels.cu</code>.</p>
+<p>Now, let’s look at the actual filter, also located in <code class="language-html highlighter-rouge">kernels.cu</code>.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>__global__
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>__global__
 void blur(unsigned char* input_image, unsigned char* output_image, int width, int height) {
 
     const unsigned int offset = blockIdx.x*blockDim.x + threadIdx.x;
     int x = offset % width;
     int y = (offset-x)/width;
     int fsize = 5; // Filter size
-    if(offset &lt; width*height) {
+    if(offset <span class="nt">&lt;</span> <span class="nt">width</span><span class="na">*height</span><span class="err">)</span> <span class="err">{</span>
 
-        float output_red = 0;
-        float output_green = 0;
-        float output_blue = 0;
-        int hits = 0;
-        for(int ox = -fsize; ox &lt; fsize+1; ++ox) {
-            for(int oy = -fsize; oy &lt; fsize+1; ++oy) {
-                if((x+ox) &gt; -1 &amp;&amp; (x+ox) &lt; width &amp;&amp; (y+oy) &gt; -1 &amp;&amp; (y+oy) &lt; height) {
-                    const int currentoffset = (offset+ox+oy*width)*3;
-                    output_red += input_image[currentoffset]; 
-                    output_green += input_image[currentoffset+1];
-                    output_blue += input_image[currentoffset+2];
-                    hits++;
-                }
-            }
-        }
-        output_image[offset*3] = output_red/hits;
-        output_image[offset*3+1] = output_green/hits;
-        output_image[offset*3+2] = output_blue/hits;
-        }
-}
+        <span class="na">float</span> <span class="na">output_red = </span><span class="s">0;</span>
+        <span class="na">float</span> <span class="na">output_green = </span><span class="s">0;</span>
+        <span class="na">float</span> <span class="na">output_blue = </span><span class="s">0;</span>
+        <span class="na">int</span> <span class="na">hits = </span><span class="s">0;</span>
+        <span class="na">for</span><span class="err">(</span><span class="na">int</span> <span class="na">ox = </span><span class="s">-fsize;</span> <span class="na">ox</span> <span class="err">&lt;</span> <span class="na">fsize</span><span class="err">+</span><span class="na">1</span><span class="err">;</span> <span class="err">++</span><span class="na">ox</span><span class="err">)</span> <span class="err">{</span>
+            <span class="na">for</span><span class="err">(</span><span class="na">int</span> <span class="na">oy = </span><span class="s">-fsize;</span> <span class="na">oy</span> <span class="err">&lt;</span> <span class="na">fsize</span><span class="err">+</span><span class="na">1</span><span class="err">;</span> <span class="err">++</span><span class="na">oy</span><span class="err">)</span> <span class="err">{</span>
+                <span class="na">if</span><span class="err">((</span><span class="na">x</span><span class="err">+</span><span class="na">ox</span><span class="err">)</span> <span class="nt">&gt;</span> -1 <span class="err">&amp;&amp;</span> (x+ox) <span class="nt">&lt;</span> <span class="nt">width</span> <span class="err">&amp;&amp;</span> <span class="err">(</span><span class="na">y</span><span class="err">+</span><span class="na">oy</span><span class="err">)</span> <span class="nt">&gt;</span> -1 <span class="err">&amp;&amp;</span> (y+oy) <span class="nt">&lt;</span> <span class="nt">height</span><span class="err">)</span> <span class="err">{</span>
+                    <span class="na">const</span> <span class="na">int</span> <span class="na">currentoffset = </span><span class="s">(offset+ox+oy*width)*3;</span>
+                    <span class="na">output_red</span> <span class="err">+=</span> <span class="na">input_image</span><span class="err">[</span><span class="na">currentoffset</span><span class="err">];</span> 
+                    <span class="na">output_green</span> <span class="err">+=</span> <span class="na">input_image</span><span class="err">[</span><span class="na">currentoffset</span><span class="err">+</span><span class="na">1</span><span class="err">];</span>
+                    <span class="na">output_blue</span> <span class="err">+=</span> <span class="na">input_image</span><span class="err">[</span><span class="na">currentoffset</span><span class="err">+</span><span class="na">2</span><span class="err">];</span>
+                    <span class="na">hits</span><span class="err">++;</span>
+                <span class="err">}</span>
+            <span class="err">}</span>
+        <span class="err">}</span>
+        <span class="na">output_image[offset*3] = </span><span class="s">output_red/hits;</span>
+        <span class="na">output_image</span><span class="err">[</span><span class="na">offset*3</span><span class="err">+</span><span class="na">1] = </span><span class="s">output_green/hits;</span>
+        <span class="na">output_image</span><span class="err">[</span><span class="na">offset*3</span><span class="err">+</span><span class="na">2] = </span><span class="s">output_blue/hits;</span>
+        <span class="err">}</span>
+<span class="err">}</span>
 </code></pre></div></div>
 
-<p>Again, the <strong>global</strong> is a CUDA keyword. For each pixel in the input image we take the average of each of the neighbouring pixels and writes it to the output image. This filter is known as a Box blur. A better blur filter would be the Gaussian blur. I have written a Gaussian function in <code class="language-plaintext highlighter-rouge">helpers.cpp</code> if you want to try. However, before doing that, just try to play around it and see what happens. I learn best from trial and error, and that is also why graphics and image processing is a subject I like - because you can see the result of your work in an easily understanded way instead of reading thousands of lines of output data.</p>
+<p>Again, the <strong>global</strong> is a CUDA keyword. For each pixel in the input image we take the average of each of the neighbouring pixels and writes it to the output image. This filter is known as a Box blur. A better blur filter would be the Gaussian blur. I have written a Gaussian function in <code class="language-html highlighter-rouge">helpers.cpp</code> if you want to try. However, before doing that, just try to play around it and see what happens. I learn best from trial and error, and that is also why graphics and image processing is a subject I like - because you can see the result of your work in an easily understanded way instead of reading thousands of lines of output data.</p>
 
-<p>Notice that we check if our <code class="language-plaintext highlighter-rouge">offset</code> is actually within the range of <code class="language-plaintext highlighter-rouge">width*height</code> because it can happen that it will be outside due to the blocks CUDA will run, so remember to keep that. Also we need to remember to check whether or not the pixel we read are actually in our image when doing the box blur as well. You can try to remove them one at a time and see what happens.</p>
+<p>Notice that we check if our <code class="language-html highlighter-rouge">offset</code> is actually within the range of <code class="language-html highlighter-rouge">width*height</code> because it can happen that it will be outside due to the blocks CUDA will run, so remember to keep that. Also we need to remember to check whether or not the pixel we read are actually in our image when doing the box blur as well. You can try to remove them one at a time and see what happens.</p>
 
 <p>So now, try running the program on an image and look at the output image. Blurred, huh?</p>
 
