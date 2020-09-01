@@ -3,12 +3,20 @@ layout: layout
 title: "Mads Ravn"
 ---
 
-<section class="content">
-  <ul class="listing">
+<div id="blogindex" class="section group">
+    <div class="col span_1_of_10 push">
+
+    </div>
+    <div class="col span_6_of_10">
+    <section class="content">
+      <ul class="listing">
     {% for post in site.posts %}
     <li>
-      <span>{{ post.date | date: "%B %e, %Y" }}</span> <a href="{{ post.url }}">{{ post.title }}</a>
+       <a href="{{ post.url }}">{{ post.title }}</a> <span class="left">{{ post.date | date: "%B %e, %Y" }}</span>
+       <hr>
     </li>
     {% endfor %}
   </ul>
 </section>
+</div>
+</div>
