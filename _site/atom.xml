@@ -4,12 +4,32 @@
  <title>Mads Ravn</title>
  <link href="https://madsravn.dk/atom.xml" rel="self"/>
  <link href="https://madsravn.dk/"/>
- <updated>2020-10-03T12:21:02+02:00</updated>
+ <updated>2020-11-10T23:24:50+01:00</updated>
  <id>http://madsravn.dk</id>
  <author>
    <name>Mads Ravn</name>
  </author>
  
+ 
+ <entry>
+   <title>Enabling LaTeX rendering with jekyll</title>
+   <link href="https://madsravn.dk/posts/enabling-latex-with-jekyll"/>
+   <updated>2020-11-10T00:00:00+01:00</updated>
+   <id>https://madsravn.dk/posts/enabling-latex-with-jekyll</id>
+   <content type="html">&lt;p&gt;I was looking for a good way render some LaTeX math while writing blog posts with jekyll. I couldn’t find a jekyll plugin which would allow me to inline LaTeX equation and have them rendered client-side. I ended up finding &lt;a href=&quot;https://www.mathjax.org/&quot;&gt;mathjax.org&lt;/a&gt;. It is an easy solution - it is as simple as adding these two lines to my layout document:&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;syntax&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://polyfill.io/v3/polyfill.min.js?features=es6&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;MathJax-script&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;After adding these two lines it gets as simple as just writing your LaTeX equation within &lt;code class=&quot;language-html highlighter-rouge&quot;&gt;$$...$$&lt;/code&gt;. It’s pretty straight forward plug’n’play compared to some other solutions. And it also works just as well for other blog solutions and static site generators. It was just jekyll I was looking for a solution for.&lt;/p&gt;
+
+&lt;p&gt;As an example, here is a rendered equation from my thesis: &lt;code class=&quot;language-html highlighter-rouge&quot;&gt;$$\sum\limits_{i=1}^{\lg_B \lg n} \frac{\lg n}{B^i} \cdot \mathcal{O}(B^i) = \mathcal{O}(\lg n \cdot \lg_B \lg n)$$&lt;/code&gt;&lt;/p&gt;
+
+\[\sum\limits_{i=1}^{\lg_B \lg n} \frac{\lg n}{B^i} \cdot \mathcal{O}(B^i) = \mathcal{O}(\lg n \cdot \lg_B \lg n)\]
+
+</content>
+ </entry>
  
  <entry>
    <title>Contributing to Clang</title>
