@@ -4,12 +4,71 @@
  <title>Mads Ravn</title>
  <link href="https://madsravn.dk/atom.xml" rel="self"/>
  <link href="https://madsravn.dk/"/>
- <updated>2020-11-24T22:55:48+01:00</updated>
+ <updated>2021-03-09T14:38:10+01:00</updated>
  <id>http://madsravn.dk</id>
  <author>
    <name>Mads Ravn</name>
  </author>
  
+ 
+ <entry>
+   <title>Created my first keyboard from scratch</title>
+   <link href="https://madsravn.dk/posts/created-my-first-keyboard"/>
+   <updated>2021-03-09T00:00:00+01:00</updated>
+   <id>https://madsravn.dk/posts/created-my-first-keyboard</id>
+   <content type="html">&lt;h2 id=&quot;the-past&quot;&gt;The Past&lt;/h2&gt;
+
+&lt;p&gt;I love mechanical keyboards. I frequent &lt;code class=&quot;language-html highlighter-rouge&quot;&gt;r/mechanicalkeyboards&lt;/code&gt; and &lt;code class=&quot;language-html highlighter-rouge&quot;&gt;#mechboards&lt;/code&gt;. I probably have a few keyboards too many (as if).&lt;/p&gt;
+
+&lt;p&gt;I started out by buying a Coolermaster Quickfire Rapid-i with brown switches. Going from a regular keyboard to a mechanical was like a dream come true. I dream that I didn’t even know I had. A few years ago I started getting into electronics and soldering. I bought a few mechanical keyboard kits. After that I have created a few open source keyboards - people giving away their hard work by putting the design files freely available on Github. My latest keyboard is an &lt;a href=&quot;https://github.com/omkbd/ErgoDash/&quot;&gt;ErgoDash&lt;/a&gt; - a nice split keyboard with lots of features.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../images/image.jpg&quot; width=&quot;400&quot; height=&quot;300&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;now&quot;&gt;Now&lt;/h2&gt;
+
+&lt;p&gt;I recently purchased a 3D printer. A Prusa i3 MK3S+. I never thought I would own a 3D printer, but here we are. It seems like an excellent printer with nice support from the official slicer software. I found that Fusion 360 is pretty easy to learn for people who have never done 3D modelling before. I wanted to create a small macro pad for 2x2 LEGO bricks. I also wanted the possibility to build bricks on top of multiple keys, so I needed to design a keyboard where the keys had the correct distance between them. I went to the drawing board:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../images/ODNiEeN.jpeg&quot; width=&quot;300&quot; height=&quot;400&quot; /&gt; &lt;img src=&quot;../images/QHoj4Lv.jpeg&quot; width=&quot;300&quot; height=&quot;400&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;When I had printed the top and bottom of the new keyboard, I started soldering. For most of my own keyboards I have used the Pro Micro. It’s a cheap and well tested dev board which does the job! I had never handwired a keyboard before, so that was a fun experience. I am using &lt;a href=&quot;https://beta.docs.qmk.fm/&quot;&gt;QMK&lt;/a&gt; for the firmware on the Pro Micro and I had to figure out how to create my own keyboard and layout. I used the &lt;code class=&quot;language-html highlighter-rouge&quot;&gt;DIRECT_PINS&lt;/code&gt; mode because I have so few keys on my board that I do not need to create a matrix.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../images/jSB2xYc.jpeg&quot; width=&quot;300&quot; height=&quot;400&quot; /&gt; &lt;img src=&quot;../images/eS5NsIT.jpeg&quot; width=&quot;300&quot; height=&quot;400&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Once assembled and flashed, it was time to test. It works fine. Now I just need to find a purpose for it. It looks fine and I imagine that it can be used a gimmick keyboard.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../images/IMG_20210308_092718.jpg&quot; width=&quot;300&quot; height=&quot;400&quot; /&gt; &lt;img src=&quot;../images/IMG_20210309_090056.jpg&quot; width=&quot;300&quot; height=&quot;400&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;the-future&quot;&gt;The Future&lt;/h2&gt;
+
+&lt;p&gt;It’s fun to design your own keyboard. I had never thought I would do it. But now that I have done it, I want to make more. And I want to make bigger keyboards. Maybe even keyboards with the entire alphabet on them. The only limitation I have right now is the printing surface on the Prusa printer.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>My year in books, 2020</title>
+   <link href="https://madsravn.dk/posts/2020-My-Year-In-Books"/>
+   <updated>2020-12-31T00:00:00+01:00</updated>
+   <id>https://madsravn.dk/posts/2020-My-Year-In-Books</id>
+   <content type="html">&lt;p&gt;Inspired by threads on Reddit, this is &lt;em&gt;My year in books, 2020&lt;/em&gt;. I listen to most of my books. Or I listen to all of my fiction books, at least. I listen to books mostly when driving to and from work, going for a walk, going to sleep or doing menial tasks around the house or garden.&lt;/p&gt;
+
+&lt;p&gt;The genres I prefer are mostly fantasy, science fiction and crime. I listened to 46 books in 2020.&lt;/p&gt;
+
+&lt;h3 id=&quot;fantasy&quot;&gt;Fantasy&lt;/h3&gt;
+
+&lt;p&gt;What really stood out, fantasy-wise, for me in the books I listened to in 2020 was &lt;em&gt;The Highwayman&lt;/em&gt; by R.A. Salvatore, &lt;em&gt;Kings of the Wylde&lt;/em&gt; by Nicholas Eames, &lt;em&gt;The Licanius Trilogy&lt;/em&gt; by James Islington and &lt;em&gt;The Rage of Dragons&lt;/em&gt; by Evan Winter.&lt;/p&gt;
+
+&lt;p&gt;A special shout out to Joe Abercrombie for the second book in the &lt;em&gt;Age of Madness Trilogy&lt;/em&gt;. He really delivers! His books also have great re-read value.&lt;/p&gt;
+
+&lt;h3 id=&quot;science-fiction&quot;&gt;Science Fiction&lt;/h3&gt;
+
+&lt;p&gt;This category also contains some letdowns. I read &lt;em&gt;The Foundation Trilogy&lt;/em&gt; by Isaac Asimov. I love the romantic idea that Asimov have about the future - but in the end his series was quite boring.&lt;/p&gt;
+
+&lt;p&gt;Timothy Zahn with a new Thrawn book - who wouldn’t be super hyped for the first instalment of the new &lt;em&gt;Thrawn Ascendency&lt;/em&gt;? I think I was too hyped because Thrawn already have a great trilogy in the &lt;em&gt;Thrawn Trilogy&lt;/em&gt; and this really didn’t do it justice! It was with a sad heart that I realized I probably will not listen to book two and three in this trilogy.&lt;/p&gt;
+
+&lt;h3 id=&quot;crime&quot;&gt;Crime&lt;/h3&gt;
+
+</content>
+ </entry>
  
  <entry>
    <title>Enabling LaTeX rendering with jekyll</title>
