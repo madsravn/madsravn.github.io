@@ -4,7 +4,7 @@
  <title>Mads Ravn</title>
  <link href="https://madsravn.dk/atom.xml" rel="self"/>
  <link href="https://madsravn.dk/"/>
- <updated>2021-03-09T15:07:18+01:00</updated>
+ <updated>2021-12-12T22:06:50+01:00</updated>
  <id>http://madsravn.dk</id>
  <author>
    <name>Mads Ravn</name>
@@ -252,7 +252,7 @@
     &lt;span class=&quot;err&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Output&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;data&lt;/span&gt;
     &lt;span class=&quot;na&quot;&gt;error = &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;lodepng::encode(output_file,&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;out_image&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;height&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;);&lt;/span&gt;
 
-    &lt;span class=&quot;err&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;there&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;an&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;display&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;it&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;there&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;an&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;display&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;it&lt;/span&gt;
     &lt;span class=&quot;na&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;std::cout&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;encoder&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;error&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;error&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;&quot;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;lodepng_error_text&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;std::endl&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;;&lt;/span&gt;
 
     &lt;span class=&quot;na&quot;&gt;delete&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;input_image&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;;&lt;/span&gt;
