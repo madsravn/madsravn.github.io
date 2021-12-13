@@ -100,11 +100,11 @@
     December 13, 2021
   </section>
 
-  <p>I have been running Jekyll for 9 years now. I wrote about it <a href="first-post.html">in this post</a>. At this point, my needs and patience have outgrown Jekyll. There is a few features that I miss and there is some annoyance that comes with running Ruby, I feel.</p>
+  <p>I have been running Jekyll for 9 years now. I wrote about it <a href="first-post.html">in this post</a>. At this point, my needs and patience have outgrown Jekyll. There is a few features that I miss and there is some annoyance that comes with running Ruby, I feel.<br /><br /></p>
 
-<p>I have decided to write my own static site generator. I need something that I control - something that bends to my will. But because I am lazy, I will keep the content structure of Jekyll. This way I can just run my new static site generator on the exact same content that I already have. It means that I have to use markdown for my content and it means that I have to use liquid as my templating system. And I have no problem with this.</p>
+<p>I have decided to write my own static site generator. I need something that I control - something that bends to my will. But because I am lazy, I will keep the content structure of Jekyll. This way I can just run my new static site generator on the exact same content that I already have. It means that I have to use markdown for my content and it means that I have to use liquid as my templating system. And I have no problem with this.<br /><br /></p>
 
-<p>It was easy to find a markdown compiler for the project. I chose pulldown-cmark. It seems easy to use and passes all the compilations of my current markdown files. After looking for a good liquid crate, I fell upon <a href="https://github.com/cobalt-org/liquid-rust">liquid-rust</a>. It seems to be written for cobalt, which is a static site generator written in Rust. And it was damn easy to get started on. Until I hit my first speed bump. How do I put non-trivial objects into the templating engine?</p>
+<p>It was easy to find a markdown compiler for the project. I chose pulldown-cmark. It seems easy to use and passes all the compilations of my current markdown files. After looking for a good liquid crate, I fell upon <a href="https://github.com/cobalt-org/liquid-rust">liquid-rust</a>. It seems to be written for cobalt, which is a static site generator written in Rust. And it was damn easy to get started on. Until I hit my first speed bump. How do I put non-trivial objects into the templating engine?<br /><br /></p>
 
 <p>I have this piece liquid code in my html for my posts:</p>
 
@@ -120,7 +120,8 @@
 <span class="nt">&lt;/section&gt;</span>
 </code></pre></div></div>
 
-<p>Problem was just that all the examples I could find showed how to inject a very simple structure into the templating engine. The example is showed below and is showing to how put in a primitive type.</p>
+<p><br /><br />
+Problem was just that all the examples I could find showed how to inject a very simple structure into the templating engine. The example is showed below and is showing to how put in a primitive type.</p>
 
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>let template = liquid::ParserBuilder::with_stdlib()
   .build().unwrap()
@@ -134,7 +135,8 @@ let output = template.render(<span class="ni">&amp;globals).unwrap();</span>
 assert_eq!(output, "Liquid! 2".to_string());
 </code></pre></div></div>
 
-<p>My goal is just to inject a complex type which holds a list of <code class="language-html highlighter-rouge">post</code> and where each post object holds <code class="language-html highlighter-rouge">url</code>, <code class="language-html highlighter-rouge">title</code> and <code class="language-html highlighter-rouge">date</code>. I scoured the internet for a way of doing this and came up empty. I found the author of the crate was on the official Rust Discord and I introduced myself and my problem. And he showed me the simple solution. Use serde.</p>
+<p><br /><br />
+My goal is just to inject a complex type which holds a list of <code class="language-html highlighter-rouge">post</code> and where each post object holds <code class="language-html highlighter-rouge">url</code>, <code class="language-html highlighter-rouge">title</code> and <code class="language-html highlighter-rouge">date</code>. I scoured the internet for a way of doing this and came up empty. I found the author of the crate was on the official Rust Discord and I introduced myself and my problem. And he showed me the simple solution. Use serde.</p>
 
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>use serde::{Serialize, Deserialize};
 
@@ -156,7 +158,8 @@ struct Globals {
 }
 </code></pre></div></div>
 
-<p>And now with complex data structure described in serde, it was as easy as creating the objects and using them as input to the templating engine:</p>
+<p><br /><br />
+And now with complex data structure described in serde, it was as easy as creating the objects and using them as input to the templating engine:</p>
 
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>let site = Globals {
     site: p3
@@ -172,7 +175,8 @@ let output = template.render(<span class="ni">&amp;globals).unwrap();</span>
 println!("index: {}", output);
 </code></pre></div></div>
 
-<p>It took me some time to find the solution - or find the person who could give me the solution. But now that it is here, it seems so easy. And with with that, I can finalize my static site generator.</p>
+<p><br /><br />
+It took me some time to find the solution - or find the person who could give me the solution. But now that it is here, it seems so easy. And with with that, I can finalize my static site generator.</p>
 
 
   <section class="meta">

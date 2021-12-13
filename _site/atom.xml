@@ -4,7 +4,7 @@
  <title>Mads Ravn</title>
  <link href="https://madsravn.dk/atom.xml" rel="self"/>
  <link href="https://madsravn.dk/"/>
- <updated>2021-12-13T13:10:26+01:00</updated>
+ <updated>2021-12-13T13:44:34+01:00</updated>
  <id>http://madsravn.dk</id>
  <author>
    <name>Mads Ravn</name>
@@ -16,11 +16,11 @@
    <link href="https://madsravn.dk/posts/using-liquid-rust-with-serde"/>
    <updated>2021-12-13T00:00:00+01:00</updated>
    <id>https://madsravn.dk/posts/using-liquid-rust-with-serde</id>
-   <content type="html">&lt;p&gt;I have been running Jekyll for 9 years now. I wrote about it &lt;a href=&quot;first-post.html&quot;&gt;in this post&lt;/a&gt;. At this point, my needs and patience have outgrown Jekyll. There is a few features that I miss and there is some annoyance that comes with running Ruby, I feel.&lt;/p&gt;
+   <content type="html">&lt;p&gt;I have been running Jekyll for 9 years now. I wrote about it &lt;a href=&quot;first-post.html&quot;&gt;in this post&lt;/a&gt;. At this point, my needs and patience have outgrown Jekyll. There is a few features that I miss and there is some annoyance that comes with running Ruby, I feel.&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
 
-&lt;p&gt;I have decided to write my own static site generator. I need something that I control - something that bends to my will. But because I am lazy, I will keep the content structure of Jekyll. This way I can just run my new static site generator on the exact same content that I already have. It means that I have to use markdown for my content and it means that I have to use liquid as my templating system. And I have no problem with this.&lt;/p&gt;
+&lt;p&gt;I have decided to write my own static site generator. I need something that I control - something that bends to my will. But because I am lazy, I will keep the content structure of Jekyll. This way I can just run my new static site generator on the exact same content that I already have. It means that I have to use markdown for my content and it means that I have to use liquid as my templating system. And I have no problem with this.&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
 
-&lt;p&gt;It was easy to find a markdown compiler for the project. I chose pulldown-cmark. It seems easy to use and passes all the compilations of my current markdown files. After looking for a good liquid crate, I fell upon &lt;a href=&quot;https://github.com/cobalt-org/liquid-rust&quot;&gt;liquid-rust&lt;/a&gt;. It seems to be written for cobalt, which is a static site generator written in Rust. And it was damn easy to get started on. Until I hit my first speed bump. How do I put non-trivial objects into the templating engine?&lt;/p&gt;
+&lt;p&gt;It was easy to find a markdown compiler for the project. I chose pulldown-cmark. It seems easy to use and passes all the compilations of my current markdown files. After looking for a good liquid crate, I fell upon &lt;a href=&quot;https://github.com/cobalt-org/liquid-rust&quot;&gt;liquid-rust&lt;/a&gt;. It seems to be written for cobalt, which is a static site generator written in Rust. And it was damn easy to get started on. Until I hit my first speed bump. How do I put non-trivial objects into the templating engine?&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
 
 &lt;p&gt;I have this piece liquid code in my html for my posts:&lt;/p&gt;
 
@@ -36,7 +36,8 @@
 &lt;span class=&quot;nt&quot;&gt;&amp;lt;/section&amp;gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Problem was just that all the examples I could find showed how to inject a very simple structure into the templating engine. The example is showed below and is showing to how put in a primitive type.&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;br /&gt;
+Problem was just that all the examples I could find showed how to inject a very simple structure into the templating engine. The example is showed below and is showing to how put in a primitive type.&lt;/p&gt;
 
 &lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;syntax&quot;&gt;&lt;code&gt;let template = liquid::ParserBuilder::with_stdlib()
   .build().unwrap()
@@ -50,7 +51,8 @@ let output = template.render(&lt;span class=&quot;ni&quot;&gt;&amp;amp;globals).
 assert_eq!(output, &quot;Liquid! 2&quot;.to_string());
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;My goal is just to inject a complex type which holds a list of &lt;code class=&quot;language-html highlighter-rouge&quot;&gt;post&lt;/code&gt; and where each post object holds &lt;code class=&quot;language-html highlighter-rouge&quot;&gt;url&lt;/code&gt;, &lt;code class=&quot;language-html highlighter-rouge&quot;&gt;title&lt;/code&gt; and &lt;code class=&quot;language-html highlighter-rouge&quot;&gt;date&lt;/code&gt;. I scoured the internet for a way of doing this and came up empty. I found the author of the crate was on the official Rust Discord and I introduced myself and my problem. And he showed me the simple solution. Use serde.&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;br /&gt;
+My goal is just to inject a complex type which holds a list of &lt;code class=&quot;language-html highlighter-rouge&quot;&gt;post&lt;/code&gt; and where each post object holds &lt;code class=&quot;language-html highlighter-rouge&quot;&gt;url&lt;/code&gt;, &lt;code class=&quot;language-html highlighter-rouge&quot;&gt;title&lt;/code&gt; and &lt;code class=&quot;language-html highlighter-rouge&quot;&gt;date&lt;/code&gt;. I scoured the internet for a way of doing this and came up empty. I found the author of the crate was on the official Rust Discord and I introduced myself and my problem. And he showed me the simple solution. Use serde.&lt;/p&gt;
 
 &lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;syntax&quot;&gt;&lt;code&gt;use serde::{Serialize, Deserialize};
 
@@ -72,7 +74,8 @@ struct Globals {
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;And now with complex data structure described in serde, it was as easy as creating the objects and using them as input to the templating engine:&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;br /&gt;
+And now with complex data structure described in serde, it was as easy as creating the objects and using them as input to the templating engine:&lt;/p&gt;
 
 &lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;syntax&quot;&gt;&lt;code&gt;let site = Globals {
     site: p3
@@ -88,7 +91,8 @@ let output = template.render(&lt;span class=&quot;ni&quot;&gt;&amp;amp;globals).
 println!(&quot;index: {}&quot;, output);
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;It took me some time to find the solution - or find the person who could give me the solution. But now that it is here, it seems so easy. And with with that, I can finalize my static site generator.&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;br /&gt;
+It took me some time to find the solution - or find the person who could give me the solution. But now that it is here, it seems so easy. And with with that, I can finalize my static site generator.&lt;/p&gt;
 </content>
  </entry>
  
