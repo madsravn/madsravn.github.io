@@ -1,0 +1,278 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <title>Using liquid-rust with serde</title>
+  <meta name="author" content="Mads Ravn" />
+  <meta name="description" content="Mads Ravn - An avid coder and lazy donkey." />
+  <link rel="alternate" type="application/rss+xml" href="https://feeds.feedburner.com/madsravn" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab">
+  <link rel="stylesheet" href="/css/html5reset.css" media="all">
+  <link rel="stylesheet" href="/css/col.css" media="all">
+  <link rel="stylesheet" href="/css/2cols.css" media="all">
+  <link rel="stylesheet" href="/css/3cols.css" media="all">
+  <link rel="stylesheet" href="/css/4cols.css" media="all">
+  <link rel="stylesheet" href="/css/5cols.css" media="all">
+  <link rel="stylesheet" href="/css/6cols.css" media="all">
+  <link rel="stylesheet" href="/css/7cols.css" media="all">
+  <link rel="stylesheet" href="/css/8cols.css" media="all">
+  <link rel="stylesheet" href="/css/9cols.css" media="all">
+  <link rel="stylesheet" href="/css/10cols.css" media="all">
+  <link rel="stylesheet" href="/css/11cols.css" media="all">
+  <link rel="stylesheet" href="/css/12cols.css" media="all">
+  <link rel="stylesheet" href="/css/style.css" type="text/css" media="screen, projection" />
+  <link rel="stylesheet" href="/css/solarized-light-highlight.css" type="text/css" media="screen, projection" />
+  <link href='https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css'>
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script type='text/javascript' src='../js/highlight.js'></script> <!-- Highlight js code -->
+<script>hljs.initHighlightingOnLoad();</script> <!-- Start highlight.js -->
+</head>
+<body>
+<div class="section group">
+<div class="col span_1_of_10">
+  <div class="middle">
+      <a href=" https://madsravn.dk ">
+          <img src="https://madsravn.dk/images/IMG_2901.png" height="80" width="80" class="avatar" />
+    </a>
+
+    <section class="name">
+        <a href=" https://madsravn.dk ">
+        <span class="ravn">Mads</span>
+        <span class="ravn">Ravn</span>
+      </a>
+    </section>
+
+    <section class="meta">
+    <a href="https://github.com/madsravn"><img src="https://madsravn.dk/images/github.png" height="20" width=20" alt="Github"/></a>
+    <a href="https://twitter.com/ravnmads"><img src="https://madsravn.dk/images/twitter.png" height="20" width="20" alt="twitter"/></a>
+    <a href="https://feeds.feedburner.com/madsravn"><img src="https://madsravn.dk/images/rss.png" height="20" width="20" alt="feed"/> </a>
+    </section>
+    <br />
+
+    <section class="menu">
+        <a href="https://madsravn.dk">
+        <p class="menubig">
+          01
+        </p>
+        <p class="menusmall">
+          blog
+        </p>
+      </a>
+      <hr />
+      <a href="https://madsravn.dk/projects.html">
+        <p class="menubig">
+          02
+        </p>
+        <p class="menusmall">
+          projects
+        </p>
+      </a>
+      <hr />
+      <a href="https://madsravn.dk/about.html">
+        <p class="menubig">
+          03
+        </p>
+        <p class="menusmall">
+          about
+        </p>
+      </a>
+    </section>
+  </div>
+</div>
+<div class="col span_9_of_10 main-content" >
+
+  <div id="postindex" class="section group">
+    <div class="col span_1_of_10 push">
+
+    </div>
+    <div class="col span_6_of_10">
+ 
+<section class="content">
+  <h1>
+    <a class="headline" href="/posts/using-liquid-rust-with-serde">Using liquid-rust with serde</a>
+  </h1>
+
+  <section class="byline">
+    December 13, 2021
+  </section>
+
+  <p>I have been running Jekyll for 9 years now. I wrote about it <a href="first-post.html">in this post</a>. At this point, my needs and patience have outgrown Jekyll. There is a few features that I miss and there is some annoyance that comes with running Ruby, I feel.</p>
+
+<p>I have decided to write my own static site generator. I need something that I control - something that bends to my will. But because I am lazy, I will keep the content structure of Jekyll. This way I can just run my new static site generator on the exact same content that I already have. It means that I have to use markdown for my content and it means that I have to use liquid as my templating system. And I have no problem with this.</p>
+
+<p>It was easy to find a markdown compiler for the project. I chose pulldown-cmark. It seems easy to use and passes all the compilations of my current markdown files. After looking for a good liquid crate, I fell upon <a href="https://github.com/cobalt-org/liquid-rust">liquid-rust</a>. It seems to be written for cobalt, which is a static site generator written in Rust. And it was damn easy to get started on. Until I hit my first speed bump. How do I put non-trivial objects into the templating engine?</p>
+
+<p>I have this piece liquid code in my html for my posts:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="nt">&lt;section</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"listing"</span><span class="nt">&gt;</span>
+    
+    <span class="nt">&lt;li&gt;</span>
+       <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/posts/using-liquid-rust-with-serde"</span><span class="nt">&gt;</span>Using liquid-rust with serde<span class="nt">&lt;/a&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"left"</span><span class="nt">&gt;</span>December 13, 2021<span class="nt">&lt;/span&gt;</span>
+       <span class="nt">&lt;hr&gt;</span>
+    <span class="nt">&lt;/li&gt;</span>
+    
+    <span class="nt">&lt;li&gt;</span>
+       <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/posts/created-my-first-keyboard"</span><span class="nt">&gt;</span>Created my first keyboard from scratch<span class="nt">&lt;/a&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"left"</span><span class="nt">&gt;</span>March  9, 2021<span class="nt">&lt;/span&gt;</span>
+       <span class="nt">&lt;hr&gt;</span>
+    <span class="nt">&lt;/li&gt;</span>
+    
+    <span class="nt">&lt;li&gt;</span>
+       <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/posts/2020-My-Year-In-Books"</span><span class="nt">&gt;</span>My year in books, 2020<span class="nt">&lt;/a&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"left"</span><span class="nt">&gt;</span>December 31, 2020<span class="nt">&lt;/span&gt;</span>
+       <span class="nt">&lt;hr&gt;</span>
+    <span class="nt">&lt;/li&gt;</span>
+    
+    <span class="nt">&lt;li&gt;</span>
+       <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/posts/enabling-latex-with-jekyll"</span><span class="nt">&gt;</span>Enabling LaTeX rendering with jekyll<span class="nt">&lt;/a&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"left"</span><span class="nt">&gt;</span>November 10, 2020<span class="nt">&lt;/span&gt;</span>
+       <span class="nt">&lt;hr&gt;</span>
+    <span class="nt">&lt;/li&gt;</span>
+    
+    <span class="nt">&lt;li&gt;</span>
+       <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/posts/contributing-to-clang"</span><span class="nt">&gt;</span>Contributing to Clang<span class="nt">&lt;/a&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"left"</span><span class="nt">&gt;</span>June 20, 2017<span class="nt">&lt;/span&gt;</span>
+       <span class="nt">&lt;hr&gt;</span>
+    <span class="nt">&lt;/li&gt;</span>
+    
+    <span class="nt">&lt;li&gt;</span>
+       <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/posts/meeting-cpp-trip-report"</span><span class="nt">&gt;</span>Meeting C++ trip report<span class="nt">&lt;/a&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"left"</span><span class="nt">&gt;</span>November 22, 2016<span class="nt">&lt;/span&gt;</span>
+       <span class="nt">&lt;hr&gt;</span>
+    <span class="nt">&lt;/li&gt;</span>
+    
+    <span class="nt">&lt;li&gt;</span>
+       <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/posts/master-thesis-done-lessons-learned"</span><span class="nt">&gt;</span>Master thesis done - lessons learned<span class="nt">&lt;/a&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"left"</span><span class="nt">&gt;</span>November 21, 2015<span class="nt">&lt;/span&gt;</span>
+       <span class="nt">&lt;hr&gt;</span>
+    <span class="nt">&lt;/li&gt;</span>
+    
+    <span class="nt">&lt;li&gt;</span>
+       <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/posts/what-is-better-xbox-or-playstation"</span><span class="nt">&gt;</span>What is better - Xbox One or Playstation 4?<span class="nt">&lt;/a&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"left"</span><span class="nt">&gt;</span>November 19, 2013<span class="nt">&lt;/span&gt;</span>
+       <span class="nt">&lt;hr&gt;</span>
+    <span class="nt">&lt;/li&gt;</span>
+    
+    <span class="nt">&lt;li&gt;</span>
+       <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/posts/simple-image-processing-with-cuda"</span><span class="nt">&gt;</span>Simple image processing with CUDA<span class="nt">&lt;/a&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"left"</span><span class="nt">&gt;</span>October 27, 2013<span class="nt">&lt;/span&gt;</span>
+       <span class="nt">&lt;hr&gt;</span>
+    <span class="nt">&lt;/li&gt;</span>
+    
+    <span class="nt">&lt;li&gt;</span>
+       <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/posts/final-handin-for-rendalg"</span><span class="nt">&gt;</span>Improving performance with packet tracing and other methods<span class="nt">&lt;/a&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"left"</span><span class="nt">&gt;</span>April 10, 2013<span class="nt">&lt;/span&gt;</span>
+       <span class="nt">&lt;hr&gt;</span>
+    <span class="nt">&lt;/li&gt;</span>
+    
+    <span class="nt">&lt;li&gt;</span>
+       <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/posts/chess-summary-for-january"</span><span class="nt">&gt;</span>Chess summary for January<span class="nt">&lt;/a&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"left"</span><span class="nt">&gt;</span>January 31, 2013<span class="nt">&lt;/span&gt;</span>
+       <span class="nt">&lt;hr&gt;</span>
+    <span class="nt">&lt;/li&gt;</span>
+    
+    <span class="nt">&lt;li&gt;</span>
+       <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/posts/raspberry-with-slow-external-hard-drive"</span><span class="nt">&gt;</span>Raspberry Pi with slow external hard drive<span class="nt">&lt;/a&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"left"</span><span class="nt">&gt;</span>January  1, 2013<span class="nt">&lt;/span&gt;</span>
+       <span class="nt">&lt;hr&gt;</span>
+    <span class="nt">&lt;/li&gt;</span>
+    
+    <span class="nt">&lt;li&gt;</span>
+       <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/posts/music-or-audiobooks-or"</span><span class="nt">&gt;</span>Music or audiobooks or ...<span class="nt">&lt;/a&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"left"</span><span class="nt">&gt;</span>December 13, 2012<span class="nt">&lt;/span&gt;</span>
+       <span class="nt">&lt;hr&gt;</span>
+    <span class="nt">&lt;/li&gt;</span>
+    
+    <span class="nt">&lt;li&gt;</span>
+       <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/posts/first-post"</span><span class="nt">&gt;</span>First post with Jekyll<span class="nt">&lt;/a&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"left"</span><span class="nt">&gt;</span>October  7, 2012<span class="nt">&lt;/span&gt;</span>
+       <span class="nt">&lt;hr&gt;</span>
+    <span class="nt">&lt;/li&gt;</span>
+    
+  <span class="nt">&lt;/ul&gt;</span>
+<span class="nt">&lt;/section&gt;</span>
+</code></pre></div></div>
+
+<p>Problem was just that all the examples I could find showed how to inject a very simple structure into the templating engine. The example is showed below and is showing to how put in a primitive type.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>let template = liquid::ParserBuilder::with_stdlib()
+  .build().unwrap()
+  .parse("Liquid! -2").unwrap();
+
+let mut globals = liquid::object!({
+  "num": 4f64
+});
+
+let output = template.render(<span class="ni">&amp;globals).unwrap();</span>
+assert_eq!(output, "Liquid! 2".to_string());
+</code></pre></div></div>
+
+<p>My goal is just to inject a complex type which holds a list of <code class="language-html highlighter-rouge">post</code> and where each post object holds <code class="language-html highlighter-rouge">url</code>, <code class="language-html highlighter-rouge">title</code> and <code class="language-html highlighter-rouge">date</code>. I scoured the internet for a way of doing this and came up empty. I found the author of the crate was on the official Rust Discord and I introduced myself and my problem. And he showed me the simple solution. Use serde.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>use serde::{Serialize, Deserialize};
+
+#[derive(Serialize, Deserialize, Debug)]
+struct Post {
+  title: String,
+  url: String,
+  date: String,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+struct Posts {
+  posts: Vec<span class="nt">&lt;Post&gt;</span>,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+struct Globals {
+  site: Posts,
+}
+</code></pre></div></div>
+
+<p>And now with complex data structure described in serde, it was as easy as creating the objects and using them as input to the templating engine:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>let site = Globals {
+    site: p3
+};
+
+let index = fs::read_to_string("_build/index.html").expect("Should be able to read the index file");
+let template = liquid::ParserBuilder::with_stdlib()
+       .build().unwrap()
+       .parse(<span class="ni">&amp;index).unwrap();</span>
+let globals = liquid::to_object(<span class="err">&amp;</span>site).expect("Should be able to parse");
+    
+let output = template.render(<span class="ni">&amp;globals).unwrap();</span>
+println!("index: {}", output);
+</code></pre></div></div>
+
+<p>It took me some time to find the solution - or find the person who could give me the solution. But now that it is here, it seems so easy. And with with that, I can finalize my static site generator.</p>
+
+
+  <section class="meta">
+    <h3>Discussion, links, and tweets</h3>
+    <section class="copy">
+      <!-- <a href="https://twitter.com/madsravn">
+      <img src="https://1.gravatar.com/avatar/cff6826c1faad4528b1ce15dda1f0e6d" height="50" width="50" /> -->
+      </a>
+
+      <p>
+        I'm a developer and CS graduate. <a href="https://twitter.com/madsravn">Follow me on Twitter</a>;
+        you'll enjoy my tweets.
+      </p>
+
+      
+      
+      
+
+      <p>
+        I also keep an "ask me anything" type of project in a repository on GitHub (naturally!). Feel free to <a href="https://github.com/madsravn/madsravn.github.com/issues">ask me a question</a>.
+      </p>
+      <br />
+    <p>
+      <a href="https://twitter.com/share" class="twitter-share-button" data-count="none" data-via="ravnmads">Tweet</a>
+      <a href="https://twitter.com/ravnmads" class="twitter-follow-button" data-show-count="false">Follow @ravnmads</a>
+      <script src="https://platform.twitter.com/widgets.js" type="text/javascript"></script>
+    </p>
+    </section>
+  </section>
+</section>
+    </div>
+
+
+</div>
+
+</body>
+
+</html>
