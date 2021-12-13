@@ -110,77 +110,12 @@
 
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="nt">&lt;section</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"listing"</span><span class="nt">&gt;</span>
-    
+    {% for post in site.posts %}
     <span class="nt">&lt;li&gt;</span>
-       <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/posts/using-liquid-rust-with-serde"</span><span class="nt">&gt;</span>Using liquid-rust with serde<span class="nt">&lt;/a&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"left"</span><span class="nt">&gt;</span>December 13, 2021<span class="nt">&lt;/span&gt;</span>
+       <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"{{ post.url }}"</span><span class="nt">&gt;</span>{{ post.title }}<span class="nt">&lt;/a&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"left"</span><span class="nt">&gt;</span>{{ post.date | date: "%B %e, %Y" }}<span class="nt">&lt;/span&gt;</span>
        <span class="nt">&lt;hr&gt;</span>
     <span class="nt">&lt;/li&gt;</span>
-    
-    <span class="nt">&lt;li&gt;</span>
-       <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/posts/created-my-first-keyboard"</span><span class="nt">&gt;</span>Created my first keyboard from scratch<span class="nt">&lt;/a&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"left"</span><span class="nt">&gt;</span>March  9, 2021<span class="nt">&lt;/span&gt;</span>
-       <span class="nt">&lt;hr&gt;</span>
-    <span class="nt">&lt;/li&gt;</span>
-    
-    <span class="nt">&lt;li&gt;</span>
-       <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/posts/2020-My-Year-In-Books"</span><span class="nt">&gt;</span>My year in books, 2020<span class="nt">&lt;/a&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"left"</span><span class="nt">&gt;</span>December 31, 2020<span class="nt">&lt;/span&gt;</span>
-       <span class="nt">&lt;hr&gt;</span>
-    <span class="nt">&lt;/li&gt;</span>
-    
-    <span class="nt">&lt;li&gt;</span>
-       <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/posts/enabling-latex-with-jekyll"</span><span class="nt">&gt;</span>Enabling LaTeX rendering with jekyll<span class="nt">&lt;/a&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"left"</span><span class="nt">&gt;</span>November 10, 2020<span class="nt">&lt;/span&gt;</span>
-       <span class="nt">&lt;hr&gt;</span>
-    <span class="nt">&lt;/li&gt;</span>
-    
-    <span class="nt">&lt;li&gt;</span>
-       <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/posts/contributing-to-clang"</span><span class="nt">&gt;</span>Contributing to Clang<span class="nt">&lt;/a&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"left"</span><span class="nt">&gt;</span>June 20, 2017<span class="nt">&lt;/span&gt;</span>
-       <span class="nt">&lt;hr&gt;</span>
-    <span class="nt">&lt;/li&gt;</span>
-    
-    <span class="nt">&lt;li&gt;</span>
-       <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/posts/meeting-cpp-trip-report"</span><span class="nt">&gt;</span>Meeting C++ trip report<span class="nt">&lt;/a&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"left"</span><span class="nt">&gt;</span>November 22, 2016<span class="nt">&lt;/span&gt;</span>
-       <span class="nt">&lt;hr&gt;</span>
-    <span class="nt">&lt;/li&gt;</span>
-    
-    <span class="nt">&lt;li&gt;</span>
-       <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/posts/master-thesis-done-lessons-learned"</span><span class="nt">&gt;</span>Master thesis done - lessons learned<span class="nt">&lt;/a&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"left"</span><span class="nt">&gt;</span>November 21, 2015<span class="nt">&lt;/span&gt;</span>
-       <span class="nt">&lt;hr&gt;</span>
-    <span class="nt">&lt;/li&gt;</span>
-    
-    <span class="nt">&lt;li&gt;</span>
-       <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/posts/what-is-better-xbox-or-playstation"</span><span class="nt">&gt;</span>What is better - Xbox One or Playstation 4?<span class="nt">&lt;/a&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"left"</span><span class="nt">&gt;</span>November 19, 2013<span class="nt">&lt;/span&gt;</span>
-       <span class="nt">&lt;hr&gt;</span>
-    <span class="nt">&lt;/li&gt;</span>
-    
-    <span class="nt">&lt;li&gt;</span>
-       <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/posts/simple-image-processing-with-cuda"</span><span class="nt">&gt;</span>Simple image processing with CUDA<span class="nt">&lt;/a&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"left"</span><span class="nt">&gt;</span>October 27, 2013<span class="nt">&lt;/span&gt;</span>
-       <span class="nt">&lt;hr&gt;</span>
-    <span class="nt">&lt;/li&gt;</span>
-    
-    <span class="nt">&lt;li&gt;</span>
-       <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/posts/final-handin-for-rendalg"</span><span class="nt">&gt;</span>Improving performance with packet tracing and other methods<span class="nt">&lt;/a&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"left"</span><span class="nt">&gt;</span>April 10, 2013<span class="nt">&lt;/span&gt;</span>
-       <span class="nt">&lt;hr&gt;</span>
-    <span class="nt">&lt;/li&gt;</span>
-    
-    <span class="nt">&lt;li&gt;</span>
-       <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/posts/chess-summary-for-january"</span><span class="nt">&gt;</span>Chess summary for January<span class="nt">&lt;/a&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"left"</span><span class="nt">&gt;</span>January 31, 2013<span class="nt">&lt;/span&gt;</span>
-       <span class="nt">&lt;hr&gt;</span>
-    <span class="nt">&lt;/li&gt;</span>
-    
-    <span class="nt">&lt;li&gt;</span>
-       <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/posts/raspberry-with-slow-external-hard-drive"</span><span class="nt">&gt;</span>Raspberry Pi with slow external hard drive<span class="nt">&lt;/a&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"left"</span><span class="nt">&gt;</span>January  1, 2013<span class="nt">&lt;/span&gt;</span>
-       <span class="nt">&lt;hr&gt;</span>
-    <span class="nt">&lt;/li&gt;</span>
-    
-    <span class="nt">&lt;li&gt;</span>
-       <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/posts/music-or-audiobooks-or"</span><span class="nt">&gt;</span>Music or audiobooks or ...<span class="nt">&lt;/a&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"left"</span><span class="nt">&gt;</span>December 13, 2012<span class="nt">&lt;/span&gt;</span>
-       <span class="nt">&lt;hr&gt;</span>
-    <span class="nt">&lt;/li&gt;</span>
-    
-    <span class="nt">&lt;li&gt;</span>
-       <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/posts/first-post"</span><span class="nt">&gt;</span>First post with Jekyll<span class="nt">&lt;/a&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"left"</span><span class="nt">&gt;</span>October  7, 2012<span class="nt">&lt;/span&gt;</span>
-       <span class="nt">&lt;hr&gt;</span>
-    <span class="nt">&lt;/li&gt;</span>
-    
+    {% endfor %}
   <span class="nt">&lt;/ul&gt;</span>
 <span class="nt">&lt;/section&gt;</span>
 </code></pre></div></div>

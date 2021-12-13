@@ -10,7 +10,7 @@ I have decided to write my own static site generator. I need something that I co
 It was easy to find a markdown compiler for the project. I chose pulldown-cmark. It seems easy to use and passes all the compilations of my current markdown files. After looking for a good liquid crate, I fell upon [liquid-rust](https://github.com/cobalt-org/liquid-rust). It seems to be written for cobalt, which is a static site generator written in Rust. And it was damn easy to get started on. Until I hit my first speed bump. How do I put non-trivial objects into the templating engine? 
 
 I have this piece liquid code in my html for my posts:
-
+{% raw %}
     <section class="content">
       <ul class="listing">
         {% for post in site.posts %}
@@ -21,7 +21,7 @@ I have this piece liquid code in my html for my posts:
         {% endfor %}
       </ul>
     </section>
-
+{% endraw %}
 Problem was just that all the examples I could find showed how to inject a very simple structure into the templating engine. The example is showed below and is showing to how put in a primitive type.
 
     let template = liquid::ParserBuilder::with_stdlib()
