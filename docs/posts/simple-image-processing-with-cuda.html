@@ -1,0 +1,258 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <title>Simple image processing with CUDA</title>
+  <meta name="author" content="Mads Ravn" />
+  <meta name="description" content="Mads Ravn - An avid coder and lazy donkey." />
+  <link rel="alternate" type="application/rss+xml" href="https://feeds.feedburner.com/madsravn" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab">
+  <link rel="stylesheet" href="/css/html5reset.css" media="all">
+  <link rel="stylesheet" href="/css/col.css" media="all">
+  <link rel="stylesheet" href="/css/2cols.css" media="all">
+  <link rel="stylesheet" href="/css/3cols.css" media="all">
+  <link rel="stylesheet" href="/css/4cols.css" media="all">
+  <link rel="stylesheet" href="/css/5cols.css" media="all">
+  <link rel="stylesheet" href="/css/6cols.css" media="all">
+  <link rel="stylesheet" href="/css/7cols.css" media="all">
+  <link rel="stylesheet" href="/css/8cols.css" media="all">
+  <link rel="stylesheet" href="/css/9cols.css" media="all">
+  <link rel="stylesheet" href="/css/10cols.css" media="all">
+  <link rel="stylesheet" href="/css/11cols.css" media="all">
+  <link rel="stylesheet" href="/css/12cols.css" media="all">
+  <link rel="stylesheet" href="/css/style.css" type="text/css" media="screen, projection" />
+  <link rel="stylesheet" href="/css/solarized-light-highlight.css" type="text/css" media="screen, projection" />
+  <link href='https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css'>
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script type='text/javascript' src='../js/highlight.js'></script> <!-- Highlight js code -->
+<script>hljs.initHighlightingOnLoad();</script> <!-- Start highlight.js -->
+</head>
+<body>
+<div class="section group">
+<div class="col span_1_of_10">
+  <div class="middle">
+      <a href=" https://madsravn.dk ">
+          <img src="https://madsravn.dk/images/IMG_2901.png" height="80" width="80" class="avatar" />
+    </a>
+
+    <section class="name">
+        <a href=" https://madsravn.dk ">
+        <span class="ravn">Mads</span>
+        <span class="ravn">Ravn</span>
+      </a>
+    </section>
+
+    <section class="meta">
+    <a href="https://github.com/madsravn"><img src="https://madsravn.dk/images/github.png" height="20" width=20" alt="Github"/></a>
+    <a href="https://twitter.com/ravnmads"><img src="https://madsravn.dk/images/twitter.png" height="20" width="20" alt="twitter"/></a>
+    <a href="https://feeds.feedburner.com/madsravn"><img src="https://madsravn.dk/images/rss.png" height="20" width="20" alt="feed"/> </a>
+    </section>
+    <br />
+
+    <section class="menu">
+        <a href="https://madsravn.dk">
+        <p class="menubig">
+          01
+        </p>
+        <p class="menusmall">
+          blog
+        </p>
+      </a>
+      <hr />
+      <a href="https://madsravn.dk/projects.html">
+        <p class="menubig">
+          02
+        </p>
+        <p class="menusmall">
+          projects
+        </p>
+      </a>
+      <hr />
+      <a href="https://madsravn.dk/about.html">
+        <p class="menubig">
+          03
+        </p>
+        <p class="menusmall">
+          about
+        </p>
+      </a>
+    </section>
+  </div>
+</div>
+<div class="col span_9_of_10 main-content" >
+
+  
+<div id="postindex" class="section group">
+    <div class="col span_1_of_10 push">
+
+    </div>
+    <div class="col span_6_of_10">
+ 
+<section class="content">
+  <h1>
+    <a class="headline" href="https://madsravn.dk/posts/simple-image-processing-with-cuda.html">Simple image processing with CUDA</a>
+  </h1>
+
+  <section class="byline">
+    October 27, 2013
+  </section>
+
+  <p>I like graphics and image processing. So I have been fiddling a little with NVIDIAs CUDA in order to capatilize on some multithreaded programming. I have made a little starter edition for people who wants to try forces with CUDA for image processing.</p>
+<p>I am using <a href="https://lodev.org/lodepng/">lodepng</a> for loading and saving images for the filtering. It is very easy to easy, has no dependencies and just works. In my example code I am reading filenames for input and output images from the command line parameters.</p>
+<p>Enough talk, let's see some code:</p>
+<p>In my <code>main.cpp</code> file I load and save images and call the filter. </p>
+<pre><code>int main(int argc, char** argv) {
+    if(argc != 3) {
+        std::cout &lt;&lt; &quot;Run with input and output image filenames.&quot; &lt;&lt; std::endl;
+        return 0;
+    }
+
+    // Read the arguments
+    const char* input_file = argv[1];
+    const char* output_file = argv[2];
+
+    std::vector&lt;unsigned char&gt; in_image;
+    unsigned int width, height;
+
+    // Load the data
+    unsigned error = lodepng::decode(in_image, width, height, input_file);
+    if(error) std::cout &lt;&lt; &quot;decoder error &quot; &lt;&lt; error &lt;&lt; &quot;: &quot; &lt;&lt; lodepng_error_text(error) &lt;&lt; std::endl;
+
+    // Prepare the data
+    unsigned char* input_image = new unsigned char[(in_image.size()*3)/4];
+    unsigned char* output_image = new unsigned char[(in_image.size()*3)/4];
+    int where = 0;
+    for(int i = 0; i &lt; in_image.size(); ++i) {
+       if((i+1) % 4 != 0) {
+           input_image[where] = in_image.at(i);
+           output_image[where] = 255;
+           where++;
+       }
+    }
+
+    // Run the filter on it
+    filter(input_image, output_image, width, height); 
+
+    // Prepare data for output
+    std::vector&lt;unsigned char&gt; out_image;
+    for(int i = 0; i &lt; in_image.size(); ++i) {
+        out_image.push_back(output_image[i]);
+        if((i+1) % 3 == 0) {
+            out_image.push_back(255);
+        }
+    }
+    
+    // Output the data
+    error = lodepng::encode(output_file, out_image, width, height);
+
+    //if there's an error, display it
+    if(error) std::cout &lt;&lt; &quot;encoder error &quot; &lt;&lt; error &lt;&lt; &quot;: &quot;&lt;&lt; lodepng_error_text(error) &lt;&lt; std::endl;
+
+    delete[] input_image;
+    delete[] output_image;
+    return 0;
+
+}
+</code></pre>
+<p>We notice how easy lodepng is to use. We tell it we want our image loaded into our vector and voila, we have it. We then remove the alpha channel, as I was not using it in my project. You can however change it to your preferences. We then give our image data to the <code>filter</code> function - this is the function which will load the data onto our GPU and call the CUDA kernel which runs our filter. We then save our image, clean up and exits.</p>
+<p>Now let's look at some actual CUDA stuff. The code below resides in <code>kernels.cu</code>. The CUDA compiler, nvcc, is sort of picky as to what filename extensions it will compile as what. For now, just let the name be.</p>
+<pre><code> void filter (unsigned char* input_image, unsigned char* output_image, int width, int height) {
+
+    unsigned char* dev_input;
+    unsigned char* dev_output;
+    getError(cudaMalloc( (void**) &amp;dev_input, width*height*3*sizeof(unsigned char)));
+    getError(cudaMemcpy( dev_input, input_image, width*height*3*sizeof(unsigned char), cudaMemcpyHostToDevice ));
+ 
+    getError(cudaMalloc( (void**) &amp;dev_output, width*height*3*sizeof(unsigned char)));
+
+    dim3 blockDims(512,1,1);
+    dim3 gridDims((unsigned int) ceil((double)(width*height*3/blockDims.x)), 1, 1 );
+
+    filter&lt;&lt;&lt;gridDims, blockDims&gt;&gt;&gt;(dev_input, dev_output, width, height); 
+
+
+    getError(cudaMemcpy(output_image, dev_output, width*height*3*sizeof(unsigned char), cudaMemcpyDeviceToHost ));
+
+    getError(cudaFree(dev_input));
+    getError(cudaFree(dev_output));
+
+}
+</code></pre>
+<p>We allocate and copy our data to the GPU. We need the data on the GPU for the kernels to be able to read it. We also allocate storage for the output image, so we have a place to write the result of the filter to. The &lt;&lt;&lt;&gt;&gt;&gt; is CUDA syntax and will be interpreted when compiled. It tells the compiler how many blocks and grids we are going to use. Mostly every CUDA function an enum <code>cudaError_t</code> which is why every CUDA call is surrounded by <code>getError</code>. This way we get an error printed to the screen if anything goes wrong. Don't worry too much about it, you can see the code for it in <code>helpers.cpp</code>.</p>
+<p>Now, let's look at the actual filter, also located in <code>kernels.cu</code>.</p>
+<pre><code>__global__
+void blur(unsigned char* input_image, unsigned char* output_image, int width, int height) {
+
+    const unsigned int offset = blockIdx.x*blockDim.x + threadIdx.x;
+    int x = offset % width;
+    int y = (offset-x)/width;
+    int fsize = 5; // Filter size
+    if(offset &lt; width*height) {
+
+        float output_red = 0;
+        float output_green = 0;
+        float output_blue = 0;
+        int hits = 0;
+        for(int ox = -fsize; ox &lt; fsize+1; ++ox) {
+            for(int oy = -fsize; oy &lt; fsize+1; ++oy) {
+                if((x+ox) &gt; -1 &amp;&amp; (x+ox) &lt; width &amp;&amp; (y+oy) &gt; -1 &amp;&amp; (y+oy) &lt; height) {
+                    const int currentoffset = (offset+ox+oy*width)*3;
+                    output_red += input_image[currentoffset]; 
+                    output_green += input_image[currentoffset+1];
+                    output_blue += input_image[currentoffset+2];
+                    hits++;
+                }
+            }
+        }
+        output_image[offset*3] = output_red/hits;
+        output_image[offset*3+1] = output_green/hits;
+        output_image[offset*3+2] = output_blue/hits;
+        }
+}
+</code></pre>
+<p>Again, the <strong>global</strong> is a CUDA keyword. For each pixel in the input image we take the average of each of the neighbouring pixels and writes it to the output image. This filter is known as a Box blur. A better blur filter would be the Gaussian blur. I have written a Gaussian function in <code>helpers.cpp</code> if you want to try. However, before doing that, just try to play around it and see what happens. I learn best from trial and error, and that is also why graphics and image processing is a subject I like - because you can see the result of your work in an easily understanded way instead of reading thousands of lines of output data.</p>
+<p>Notice that we check if our <code>offset</code> is actually within the range of <code>width*height</code> because it can happen that it will be outside due to the blocks CUDA will run, so remember to keep that. Also we need to remember to check whether or not the pixel we read are actually in our image when doing the box blur as well. You can try to remove them one at a time and see what happens.</p>
+<p>So now, try running the program on an image and look at the output image. Blurred, huh? </p>
+<p>I have made a simple compile script for the project as well - it works for linux and MAC OSX. Under Windows I guess it's pretty easy to get it up and running in Visual Studio as well. Good luck. <a href="https://github.com/madsravn/easyCuda"> The code can be found on my github</a>.</p>
+
+
+  <section class="meta">
+    <h3>Discussion, links, and tweets</h3>
+    <section class="copy">
+      <!-- <a href="https://twitter.com/madsravn">
+      <img src="https://1.gravatar.com/avatar/cff6826c1faad4528b1ce15dda1f0e6d" height="50" width="50" /> -->
+      </a>
+
+      <p>
+        I'm a developer and CS graduate. <a href="https://twitter.com/madsravn">Follow me on Twitter</a>;
+        you'll enjoy my tweets.
+      </p>
+
+      
+      
+      
+
+      <p>
+        I also keep an "ask me anything" type of project in a repository on GitHub (naturally!). Feel free to <a href="https://github.com/madsravn/madsravn.github.com/issues">ask me a question</a>.
+      </p>
+      <br />
+    <p>
+      <a href="https://twitter.com/share" class="twitter-share-button" data-count="none" data-via="ravnmads">Tweet</a>
+      <a href="https://twitter.com/ravnmads" class="twitter-follow-button" data-show-count="false">Follow @ravnmads</a>
+      <script src="https://platform.twitter.com/widgets.js" type="text/javascript"></script>
+    </p>
+    </section>
+  </section>
+</section>
+    </div>
+
+
+</div>
+
+</body>
+
+</html>

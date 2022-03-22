@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <title>Enabling LaTeX rendering with jekyll</title>
+  <meta name="author" content="Mads Ravn" />
+  <meta name="description" content="Mads Ravn - An avid coder and lazy donkey." />
+  <link rel="alternate" type="application/rss+xml" href="https://feeds.feedburner.com/madsravn" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab">
+  <link rel="stylesheet" href="/css/html5reset.css" media="all">
+  <link rel="stylesheet" href="/css/col.css" media="all">
+  <link rel="stylesheet" href="/css/2cols.css" media="all">
+  <link rel="stylesheet" href="/css/3cols.css" media="all">
+  <link rel="stylesheet" href="/css/4cols.css" media="all">
+  <link rel="stylesheet" href="/css/5cols.css" media="all">
+  <link rel="stylesheet" href="/css/6cols.css" media="all">
+  <link rel="stylesheet" href="/css/7cols.css" media="all">
+  <link rel="stylesheet" href="/css/8cols.css" media="all">
+  <link rel="stylesheet" href="/css/9cols.css" media="all">
+  <link rel="stylesheet" href="/css/10cols.css" media="all">
+  <link rel="stylesheet" href="/css/11cols.css" media="all">
+  <link rel="stylesheet" href="/css/12cols.css" media="all">
+  <link rel="stylesheet" href="/css/style.css" type="text/css" media="screen, projection" />
+  <link rel="stylesheet" href="/css/solarized-light-highlight.css" type="text/css" media="screen, projection" />
+  <link href='https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css'>
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script type='text/javascript' src='../js/highlight.js'></script> <!-- Highlight js code -->
+<script>hljs.initHighlightingOnLoad();</script> <!-- Start highlight.js -->
+</head>
+<body>
+<div class="section group">
+<div class="col span_1_of_10">
+  <div class="middle">
+      <a href=" https://madsravn.dk ">
+          <img src="https://madsravn.dk/images/IMG_2901.png" height="80" width="80" class="avatar" />
+    </a>
+
+    <section class="name">
+        <a href=" https://madsravn.dk ">
+        <span class="ravn">Mads</span>
+        <span class="ravn">Ravn</span>
+      </a>
+    </section>
+
+    <section class="meta">
+    <a href="https://github.com/madsravn"><img src="https://madsravn.dk/images/github.png" height="20" width=20" alt="Github"/></a>
+    <a href="https://twitter.com/ravnmads"><img src="https://madsravn.dk/images/twitter.png" height="20" width="20" alt="twitter"/></a>
+    <a href="https://feeds.feedburner.com/madsravn"><img src="https://madsravn.dk/images/rss.png" height="20" width="20" alt="feed"/> </a>
+    </section>
+    <br />
+
+    <section class="menu">
+        <a href="https://madsravn.dk">
+        <p class="menubig">
+          01
+        </p>
+        <p class="menusmall">
+          blog
+        </p>
+      </a>
+      <hr />
+      <a href="https://madsravn.dk/projects.html">
+        <p class="menubig">
+          02
+        </p>
+        <p class="menusmall">
+          projects
+        </p>
+      </a>
+      <hr />
+      <a href="https://madsravn.dk/about.html">
+        <p class="menubig">
+          03
+        </p>
+        <p class="menusmall">
+          about
+        </p>
+      </a>
+    </section>
+  </div>
+</div>
+<div class="col span_9_of_10 main-content" >
+
+  
+<div id="postindex" class="section group">
+    <div class="col span_1_of_10 push">
+
+    </div>
+    <div class="col span_6_of_10">
+ 
+<section class="content">
+  <h1>
+    <a class="headline" href="https://madsravn.dk/posts/enabling-latex-with-jekyll.html">Enabling LaTeX rendering with jekyll</a>
+  </h1>
+
+  <section class="byline">
+    November 10, 2020
+  </section>
+
+  <p>I was looking for a good way render some LaTeX math while writing blog posts with jekyll. I couldn't find a jekyll plugin which would allow me to inline LaTeX equation and have them rendered client-side. I ended up finding <a href="https://www.mathjax.org/">mathjax.org</a>. It is an easy solution - it is as simple as adding these two lines to my layout document:</p>
+<pre><code class="language-html">&lt;script src=&quot;https://polyfill.io/v3/polyfill.min.js?features=es6&quot;&gt;&lt;/script&gt;
+&lt;script id=&quot;MathJax-script&quot; async src=&quot;https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<p>After adding these two lines it gets as simple as just writing your LaTeX equation within <code>$$...$$</code>. It's pretty straight forward plug'n'play compared to some other solutions. And it also works just as well for other blog solutions and static site generators. It was just jekyll I was looking for a solution for.</p>
+<p>As an example, here is a rendered equation from my thesis: <code>$$\sum\limits_{i=1}^{\lg_B \lg n} \frac{\lg n}{B^i} \cdot \mathcal{O}(B^i) = \mathcal{O}(\lg n \cdot \lg_B \lg n)$$</code> </p>
+<p>$$\sum\limits_{i=1}^{\lg_B \lg n} \frac{\lg n}{B^i} \cdot \mathcal{O}(B^i) = \mathcal{O}(\lg n \cdot \lg_B \lg n)$$</p>
+
+
+  <section class="meta">
+    <h3>Discussion, links, and tweets</h3>
+    <section class="copy">
+      <!-- <a href="https://twitter.com/madsravn">
+      <img src="https://1.gravatar.com/avatar/cff6826c1faad4528b1ce15dda1f0e6d" height="50" width="50" /> -->
+      </a>
+
+      <p>
+        I'm a developer and CS graduate. <a href="https://twitter.com/madsravn">Follow me on Twitter</a>;
+        you'll enjoy my tweets.
+      </p>
+
+      
+      
+      
+
+      <p>
+        I also keep an "ask me anything" type of project in a repository on GitHub (naturally!). Feel free to <a href="https://github.com/madsravn/madsravn.github.com/issues">ask me a question</a>.
+      </p>
+      <br />
+    <p>
+      <a href="https://twitter.com/share" class="twitter-share-button" data-count="none" data-via="ravnmads">Tweet</a>
+      <a href="https://twitter.com/ravnmads" class="twitter-follow-button" data-show-count="false">Follow @ravnmads</a>
+      <script src="https://platform.twitter.com/widgets.js" type="text/javascript"></script>
+    </p>
+    </section>
+  </section>
+</section>
+    </div>
+
+
+</div>
+
+</body>
+
+</html>

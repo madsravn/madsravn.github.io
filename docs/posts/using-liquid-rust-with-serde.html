@@ -1,0 +1,211 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <title>Using liquid-rust with serde</title>
+  <meta name="author" content="Mads Ravn" />
+  <meta name="description" content="Mads Ravn - An avid coder and lazy donkey." />
+  <link rel="alternate" type="application/rss+xml" href="https://feeds.feedburner.com/madsravn" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab">
+  <link rel="stylesheet" href="/css/html5reset.css" media="all">
+  <link rel="stylesheet" href="/css/col.css" media="all">
+  <link rel="stylesheet" href="/css/2cols.css" media="all">
+  <link rel="stylesheet" href="/css/3cols.css" media="all">
+  <link rel="stylesheet" href="/css/4cols.css" media="all">
+  <link rel="stylesheet" href="/css/5cols.css" media="all">
+  <link rel="stylesheet" href="/css/6cols.css" media="all">
+  <link rel="stylesheet" href="/css/7cols.css" media="all">
+  <link rel="stylesheet" href="/css/8cols.css" media="all">
+  <link rel="stylesheet" href="/css/9cols.css" media="all">
+  <link rel="stylesheet" href="/css/10cols.css" media="all">
+  <link rel="stylesheet" href="/css/11cols.css" media="all">
+  <link rel="stylesheet" href="/css/12cols.css" media="all">
+  <link rel="stylesheet" href="/css/style.css" type="text/css" media="screen, projection" />
+  <link rel="stylesheet" href="/css/solarized-light-highlight.css" type="text/css" media="screen, projection" />
+  <link href='https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css'>
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script type='text/javascript' src='../js/highlight.js'></script> <!-- Highlight js code -->
+<script>hljs.initHighlightingOnLoad();</script> <!-- Start highlight.js -->
+</head>
+<body>
+<div class="section group">
+<div class="col span_1_of_10">
+  <div class="middle">
+      <a href=" https://madsravn.dk ">
+          <img src="https://madsravn.dk/images/IMG_2901.png" height="80" width="80" class="avatar" />
+    </a>
+
+    <section class="name">
+        <a href=" https://madsravn.dk ">
+        <span class="ravn">Mads</span>
+        <span class="ravn">Ravn</span>
+      </a>
+    </section>
+
+    <section class="meta">
+    <a href="https://github.com/madsravn"><img src="https://madsravn.dk/images/github.png" height="20" width=20" alt="Github"/></a>
+    <a href="https://twitter.com/ravnmads"><img src="https://madsravn.dk/images/twitter.png" height="20" width="20" alt="twitter"/></a>
+    <a href="https://feeds.feedburner.com/madsravn"><img src="https://madsravn.dk/images/rss.png" height="20" width="20" alt="feed"/> </a>
+    </section>
+    <br />
+
+    <section class="menu">
+        <a href="https://madsravn.dk">
+        <p class="menubig">
+          01
+        </p>
+        <p class="menusmall">
+          blog
+        </p>
+      </a>
+      <hr />
+      <a href="https://madsravn.dk/projects.html">
+        <p class="menubig">
+          02
+        </p>
+        <p class="menusmall">
+          projects
+        </p>
+      </a>
+      <hr />
+      <a href="https://madsravn.dk/about.html">
+        <p class="menubig">
+          03
+        </p>
+        <p class="menusmall">
+          about
+        </p>
+      </a>
+    </section>
+  </div>
+</div>
+<div class="col span_9_of_10 main-content" >
+
+  
+<div id="postindex" class="section group">
+    <div class="col span_1_of_10 push">
+
+    </div>
+    <div class="col span_6_of_10">
+ 
+<section class="content">
+  <h1>
+    <a class="headline" href="https://madsravn.dk/posts/using-liquid-rust-with-serde.html">Using liquid-rust with serde</a>
+  </h1>
+
+  <section class="byline">
+    December 13, 2021
+  </section>
+
+  <p>I have been running Jekyll for 9 years now. I wrote about it <a href="first-post.html">in this post</a>. At this point, my needs and patience have outgrown Jekyll. There is a few features that I miss and there is some annoyance that comes with running Ruby, I feel.<br><br></p>
+<p>I have decided to write my own static site generator. I need something that I control - something that bends to my will. But because I am lazy, I will keep the content structure of Jekyll. This way I can just run my new static site generator on the exact same content that I already have. It means that I have to use markdown for my content and it means that I have to use liquid as my templating system. And I have no problem with this.<br><br></p>
+<p>It was easy to find a markdown compiler for the project. I chose pulldown-cmark. It seems easy to use and passes all the compilations of my current markdown files. After looking for a good liquid crate, I fell upon <a href="https://github.com/cobalt-org/liquid-rust">liquid-rust</a>. It seems to be written for cobalt, which is a static site generator written in Rust. And it was damn easy to get started on. Until I hit my first speed bump. How do I put non-trivial objects into the templating engine?<br><br></p>
+<p>I have this piece liquid code in my html for my posts:
+</p>
+<pre><code>&lt;section class=&quot;content&quot;&gt;
+  &lt;ul class=&quot;listing&quot;&gt;
+    {% for post in site.posts %}
+    &lt;li&gt;
+       &lt;a href=&quot;{{ post.url }}&quot;&gt;{{ post.title }}&lt;/a&gt; &lt;span class=&quot;left&quot;&gt;{{ post.date | date: &quot;%B %e, %Y&quot; }}&lt;/span&gt;
+       &lt;hr&gt;
+    &lt;/li&gt;
+    {% endfor %}
+  &lt;/ul&gt;
+&lt;/section&gt;
+</code></pre>
+<p></p>
+<p><br><br>
+Problem was just that all the examples I could find showed how to inject a very simple structure into the templating engine. The example is showed below and is showing to how put in a primitive type.
+</p>
+<pre><code>let template = liquid::ParserBuilder::with_stdlib()
+  .build().unwrap()
+  .parse(&quot;Liquid! {{num | minus: 2}}&quot;).unwrap();
+
+let mut globals = liquid::object!({
+  &quot;num&quot;: 4f64
+});
+
+let output = template.render(&amp;globals).unwrap();
+assert_eq!(output, &quot;Liquid! 2&quot;.to_string());
+</code></pre>
+<p></p>
+<p><br><br>
+My goal is just to inject a complex type which holds a list of <code>post</code> and where each post object holds <code>url</code>, <code>title</code> and <code>date</code>. I scoured the internet for a way of doing this and came up empty. I found the author of the crate was on the official Rust Discord and I introduced myself and my problem. And he showed me the simple solution. Use serde. </p>
+<pre><code>use serde::{Serialize, Deserialize};
+
+#[derive(Serialize, Deserialize, Debug)]
+struct Post {
+  title: String,
+  url: String,
+  date: String,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+struct Posts {
+  posts: Vec&lt;Post&gt;,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+struct Globals {
+  site: Posts,
+}
+</code></pre>
+<p><br><br>
+And now with complex data structure described in serde, it was as easy as creating the objects and using them as input to the templating engine:</p>
+<pre><code>let site = Globals {
+    site: p3
+};
+
+let index = fs::read_to_string(&quot;_build/index.html&quot;).expect(&quot;Should be able to read the index file&quot;);
+let template = liquid::ParserBuilder::with_stdlib()
+       .build().unwrap()
+       .parse(&amp;index).unwrap();
+let globals = liquid::to_object(&amp;site).expect(&quot;Should be able to parse&quot;);
+    
+let output = template.render(&amp;globals).unwrap();
+println!(&quot;index: {}&quot;, output);
+</code></pre>
+<p><br><br>
+It took me some time to find the solution - or find the person who could give me the solution. But now that it is here, it seems so easy. And with with that, I can finalize my static site generator. </p>
+
+
+  <section class="meta">
+    <h3>Discussion, links, and tweets</h3>
+    <section class="copy">
+      <!-- <a href="https://twitter.com/madsravn">
+      <img src="https://1.gravatar.com/avatar/cff6826c1faad4528b1ce15dda1f0e6d" height="50" width="50" /> -->
+      </a>
+
+      <p>
+        I'm a developer and CS graduate. <a href="https://twitter.com/madsravn">Follow me on Twitter</a>;
+        you'll enjoy my tweets.
+      </p>
+
+      
+      
+      
+
+      <p>
+        I also keep an "ask me anything" type of project in a repository on GitHub (naturally!). Feel free to <a href="https://github.com/madsravn/madsravn.github.com/issues">ask me a question</a>.
+      </p>
+      <br />
+    <p>
+      <a href="https://twitter.com/share" class="twitter-share-button" data-count="none" data-via="ravnmads">Tweet</a>
+      <a href="https://twitter.com/ravnmads" class="twitter-follow-button" data-show-count="false">Follow @ravnmads</a>
+      <script src="https://platform.twitter.com/widgets.js" type="text/javascript"></script>
+    </p>
+    </section>
+  </section>
+</section>
+    </div>
+
+
+</div>
+
+</body>
+
+</html>
