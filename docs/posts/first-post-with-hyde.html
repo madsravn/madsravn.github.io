@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <title>First post with Hyde</title>
+  <meta name="author" content="Mads Ravn" />
+  <meta name="description" content="Mads Ravn - An avid coder and lazy donkey." />
+  <link rel="alternate" type="application/rss+xml" href="https://feeds.feedburner.com/madsravn" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab">
+  <link rel="stylesheet" href="/css/html5reset.css" media="all">
+  <link rel="stylesheet" href="/css/col.css" media="all">
+  <link rel="stylesheet" href="/css/2cols.css" media="all">
+  <link rel="stylesheet" href="/css/3cols.css" media="all">
+  <link rel="stylesheet" href="/css/4cols.css" media="all">
+  <link rel="stylesheet" href="/css/5cols.css" media="all">
+  <link rel="stylesheet" href="/css/6cols.css" media="all">
+  <link rel="stylesheet" href="/css/7cols.css" media="all">
+  <link rel="stylesheet" href="/css/8cols.css" media="all">
+  <link rel="stylesheet" href="/css/9cols.css" media="all">
+  <link rel="stylesheet" href="/css/10cols.css" media="all">
+  <link rel="stylesheet" href="/css/11cols.css" media="all">
+  <link rel="stylesheet" href="/css/12cols.css" media="all">
+  <link rel="stylesheet" href="/css/style.css" type="text/css" media="screen, projection" />
+  <link rel="stylesheet" href="/css/solarized-light-highlight.css" type="text/css" media="screen, projection" />
+  <link href='https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css'>
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script type='text/javascript' src='../js/highlight.js'></script> <!-- Highlight js code -->
+<script>hljs.initHighlightingOnLoad();</script> <!-- Start highlight.js -->
+</head>
+<body>
+<div class="section group">
+<div class="col span_1_of_10">
+  <div class="middle">
+      <a href=" https://madsravn.dk ">
+          <img src="https://madsravn.dk/images/IMG_2901.png" height="80" width="80" class="avatar" />
+    </a>
+
+    <section class="name">
+        <a href=" https://madsravn.dk ">
+        <span class="ravn">Mads</span>
+        <span class="ravn">Ravn</span>
+      </a>
+    </section>
+
+    <section class="meta">
+    <a href="https://github.com/madsravn"><img src="https://madsravn.dk/images/github.png" height="20" width=20" alt="Github"/></a>
+    <a href="https://twitter.com/ravnmads"><img src="https://madsravn.dk/images/twitter.png" height="20" width="20" alt="twitter"/></a>
+    <a href="https://feeds.feedburner.com/madsravn"><img src="https://madsravn.dk/images/rss.png" height="20" width="20" alt="feed"/> </a>
+    </section>
+    <br />
+
+    <section class="menu">
+        <a href="https://madsravn.dk">
+        <p class="menubig">
+          01
+        </p>
+        <p class="menusmall">
+          blog
+        </p>
+      </a>
+      <hr />
+      <a href="https://madsravn.dk/projects.html">
+        <p class="menubig">
+          02
+        </p>
+        <p class="menusmall">
+          projects
+        </p>
+      </a>
+      <hr />
+      <a href="https://madsravn.dk/about.html">
+        <p class="menubig">
+          03
+        </p>
+        <p class="menusmall">
+          about
+        </p>
+      </a>
+    </section>
+  </div>
+</div>
+<div class="col span_9_of_10 main-content" >
+
+  
+<div id="postindex" class="section group">
+    <div class="col span_1_of_10 push">
+
+    </div>
+    <div class="col span_6_of_10">
+ 
+<section class="content">
+  <h1>
+    <a class="headline" href="https://madsravn.dk/posts/first-post-with-hyde.html">First post with Hyde</a>
+  </h1>
+
+  <section class="byline">
+    March 22, 2022
+  </section>
+
+  <p>Nearly ten years ago, I wrote my first post on this blog. It was about just having configured <a href="https://jekyllrb.com/">Jekyll</a> as my static site generator for this blog. Jekyll is also the main driver for github pages where my website lives. Since then I have tried to twist and turn Jekyll into something that would meet all my goals. But I haven't been able to. So I decided to write my own static site generator: Hyde. Currently it is a very specialized piece of software - it compiles only this webpage. </p>
+<p>I started out with one goal when I sat down and started writing Hyde: To take the same input files that I have been using with Jekyll for the last ten years and compile the same page. I didn't want to go back and change the format of my old posts or change the layout system. I have now reached that goal. This post is compiled with Hyde. I have replaced Jekyll with Hyde. </p>
+<h3>Background</h3>
+<p>I picked Rust as the language for Hyde. Rust is quickly becoming my new favorite language over C++. It feels like a modern approach to both high-level and low-level coding. It has a very nice package manager called <a href="https://doc.rust-lang.org/cargo/">Cargo</a>. This is also a very nice exercise for me while learning the language: To create an actual product which will live longer than just the hours it takes for me to create it and run the program for a solution.</p>
+<p>As mentioned the first goal for Hyde was to eat the same input as Jekyll did. Jekyll uses markdown and liquid. Liquid is a template language which I have used to write my layouts in. A layout is the container for the content of the page - essentially the HTML with my menu and the like so I don't have to write that more than once. It was easy to compile markdown to HTML. I found <a href="https://github.com/raphlinus/pulldown-cmark">pulldown-cmark</a> and saw it easily translated a markdown document to HTML. There are some very minute differences in the output from Jekyll and pulldown-cmark, but nothing noticeable. Compiling liquid required a bit more work from me - it wasn't just plug'n'play. I wrote about it in my <a href="https://madsravn.dk/posts/using-liquid-rust-with-serde.html">previous post</a>. But once I figured it out things started to work pretty quickly.</p>
+<h3>The Future</h3>
+<p>So now that I have a working prototype of my static site generator, what is next? The reason I moved away from Jekyll was because I was missing features. So implementing these features is my next goal. I want to have a wikipedia-like page linking to pages where I can write notes about links, articles and books. I also want to add a configuration file so I can change things on my page much easier. </p>
+<p>I can't see anyone ever using Hyde over the million other static site generators out there, but I want to aim for making Hyde production ready for other users. I need to create a test suite. I need to make Hyde much general purpose than &quot;compile madsravn.dk&quot;. I might also need to find another name since <a href="https://github.com/hyde/hyde">Hyde</a> exists - even though it is 6 years in the grave. </p>
+
+
+  <section class="meta">
+    <h3>Discussion, links, and tweets</h3>
+    <section class="copy">
+      <!-- <a href="https://twitter.com/madsravn">
+      <img src="https://1.gravatar.com/avatar/cff6826c1faad4528b1ce15dda1f0e6d" height="50" width="50" /> -->
+      </a>
+
+      <p>
+        I'm a developer and CS graduate. <a href="https://twitter.com/madsravn">Follow me on Twitter</a>;
+        you'll enjoy my tweets.
+      </p>
+
+      
+      
+      
+
+      <p>
+        I also keep an "ask me anything" type of project in a repository on GitHub (naturally!). Feel free to <a href="https://github.com/madsravn/madsravn.github.com/issues">ask me a question</a>.
+      </p>
+      <br />
+    <p>
+      <a href="https://twitter.com/share" class="twitter-share-button" data-count="none" data-via="ravnmads">Tweet</a>
+      <a href="https://twitter.com/ravnmads" class="twitter-follow-button" data-show-count="false">Follow @ravnmads</a>
+      <script src="https://platform.twitter.com/widgets.js" type="text/javascript"></script>
+    </p>
+    </section>
+  </section>
+</section>
+    </div>
+
+
+</div>
+
+</body>
+
+</html>
