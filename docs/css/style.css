@@ -167,6 +167,10 @@
     list-style-type: none;
 }
 
+#projects li {
+    list-style-type: none;
+}
+
 #postindex li {
     list-style-position: inside;
     margin: 5px;
