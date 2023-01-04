@@ -91,6 +91,16 @@
 #postindex p {
     text-align: left;
     font-family: 'Helvitica', Regular; 
+    font-size: 20px;
+    line-height: 25px;
+    letter-spacing: 0px;
+    color: #000000;
+    opacity: 1;
+}
+
+#projects p {
+    text-align: left;
+    font-family: 'Helvitica', Regular; 
     font-size: 15px;
     line-height: 25px;
     letter-spacing: 0px;
@@ -147,7 +157,7 @@
 #about p {
     text-align: left;
     font-family: 'Helvitica', Regular; 
-    font-size: 15px;
+    font-size: 20px;
     line-height: 30px;
     letter-spacing: 0px;
     color: #000000;
@@ -178,6 +188,17 @@
 
 #postindex a {
     font-family: 'Helvitica', Regular; 
+    font-size: 20px;
+    line-height: 25px;
+    letter-spacing: 0px;
+    font-weight: 600;
+    color: #86A691;
+    opacity: 1;
+    text-decoration: none;
+}
+
+#projects a {
+    font-family: 'Helvitica', Regular; 
     font-size: 15px;
     line-height: 25px;
     letter-spacing: 0px;
@@ -187,9 +208,16 @@
     text-decoration: none;
 }
 
+
 #postindex a:hover {
     color: #000000;
 }
+
+
+#projects a:hover {
+    color: #000000;
+}
+
 
 
 #postindex .headline {
