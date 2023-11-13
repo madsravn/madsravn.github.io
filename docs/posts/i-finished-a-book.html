@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <title>Finished 'Writing an interpreter in Go'</title>
+  <meta name="author" content="Mads Ravn" />
+  <meta name="description" content="Mads Ravn - An avid coder and lazy donkey." />
+  <link rel="alternate" type="application/rss+xml" href="https://feeds.feedburner.com/madsravn" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab">
+  <link rel="stylesheet" href="/css/html5reset.css" media="all">
+  <link rel="stylesheet" href="/css/col.css" media="all">
+  <link rel="stylesheet" href="/css/2cols.css" media="all">
+  <link rel="stylesheet" href="/css/3cols.css" media="all">
+  <link rel="stylesheet" href="/css/4cols.css" media="all">
+  <link rel="stylesheet" href="/css/5cols.css" media="all">
+  <link rel="stylesheet" href="/css/6cols.css" media="all">
+  <link rel="stylesheet" href="/css/7cols.css" media="all">
+  <link rel="stylesheet" href="/css/8cols.css" media="all">
+  <link rel="stylesheet" href="/css/9cols.css" media="all">
+  <link rel="stylesheet" href="/css/10cols.css" media="all">
+  <link rel="stylesheet" href="/css/11cols.css" media="all">
+  <link rel="stylesheet" href="/css/12cols.css" media="all">
+  <link rel="stylesheet" href="/css/style.css" type="text/css" media="screen, projection" />
+  <link rel="stylesheet" href="/css/solarized-light-highlight.css" type="text/css" media="screen, projection" />
+  <link href='https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css'>
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script type='text/javascript' src='../js/highlight.js'></script> <!-- Highlight js code -->
+<script>hljs.initHighlightingOnLoad();</script> <!-- Start highlight.js -->
+</head>
+<body>
+<div class="section group">
+<div class="col span_1_of_10">
+  <div class="middle">
+      <a href=" https://madsravn.dk ">
+          <img src="https://madsravn.dk/images/IMG_2901.png" height="80" width="80" class="avatar" />
+    </a>
+
+    <section class="name">
+        <a href=" https://madsravn.dk ">
+        <span class="ravn">Mads</span>
+        <span class="ravn">Ravn</span>
+      </a>
+    </section>
+
+    <section class="meta">
+    <a href="https://github.com/madsravn"><img src="https://madsravn.dk/images/github.png" height="20" width=20" alt="Github"/></a>
+    <a href="https://twitter.com/ravnmads"><img src="https://madsravn.dk/images/twitter.png" height="20" width="20" alt="twitter"/></a>
+    <a href="https://feeds.feedburner.com/madsravn"><img src="https://madsravn.dk/images/rss.png" height="20" width="20" alt="feed"/> </a>
+    </section>
+    <br />
+
+    <section class="menu">
+        <a href="https://madsravn.dk">
+        <p class="menubig">
+          01
+        </p>
+        <p class="menusmall">
+          blog
+        </p>
+      </a>
+      <hr />
+      <a href="https://madsravn.dk/projects.html">
+        <p class="menubig">
+          02
+        </p>
+        <p class="menusmall">
+          projects
+        </p>
+      </a>
+      <hr />
+      <a href="https://madsravn.dk/about.html">
+        <p class="menubig">
+          03
+        </p>
+        <p class="menusmall">
+          about
+        </p>
+      </a>
+    </section>
+  </div>
+</div>
+<div class="col span_9_of_10 main-content" >
+
+  
+<div id="postindex" class="section group">
+    <div class="col span_1_of_10 push">
+
+    </div>
+    <div class="col span_6_of_10">
+ 
+<section class="content">
+  <h1>
+    <a class="headline" href="https://madsravn.dk/posts/i-finished-a-book.html">Finished 'Writing an interpreter in Go'</a>
+  </h1>
+
+  <section class="byline">
+    November 13, 2023
+  </section>
+
+  <p>I did it. I finished a non-fiction book and completed all the exercises in the book. I just completed <a href="https://interpreterbook.com/">'Writing an interpreter in Go'</a> by Thorsten Ball. I read the entire book, cover to cover.<br/> <br/></p>
+  <p>With a fulltime job, wife, kids and a house it is not often I find the time to finish a book like this. Sure, I read a bit here and there - but I don't always find the time to sit down and do the actual work of the books that I read. So completing the last page of the book felt like an achievement of sorts. It helped me along the way that it was a cool subject and that Ball is able to convey the content in a clear way. He writes very conversationally while still delivering a good theoretical background. <br/> <br/> </p>
+<h1>About the book</h1>
+<p>The subject of the book should not come as a surprise after having read the title. 'Writing an interpreter in Go' is about.... writing an interpreter in Go. And one of the goals Ball sets is to use no 3rd party libraries. And he actually keeps to this promise. Most of the time when I see such promises in books there is always exceptions and they end up using one or two libraries anyways. This goal makes it very easy to translate the implementation from Go to any other language. You can see on the <a href="https://monkeylang.org/">Monkey Language webpage</a> that the interpreter has been implemented in pretty much all languages. Using no 3rd party libraries also helps you understand every bit of the interpreter: Nothing is hidden behind a magic function.<br/> <br/> </p>
+<p>The language that you implement an interpreter for is the Monkey Language. It looks a bit like javascript and behaves similarly. But it is easy to read and write and does not have too much fuzz about it. This makes it easy to follow along on the examples and code snippets because you do not have to waste time figuring out why the language behaves strangely or why a line of Monkey language code does something that seems like magic. If you know how to program in pretty much any language, you should be able to easily decipher the Monkey language.<br/> <br/></p>
+<p>You will start from scratch with no code, no tests and no project files and 250 pages later you will have a fully functioning interpreter. There is a lot of code in the book and everything is done in TDD fashion.<br/> <br/> </p>
+<p>If you are interested in compilers or interpreters and want an easy-to-follow project, this is definitely the book for you. It was fun and leaves you with a fully working interpreter that you can easily extend by yourself. Ball describes the reasoning for all the steps and provides you enough theory to take new concepts and add them to the finished codebase.<br/> <br/> </p>
+<h1>Writing an interpreter in Go ... in Java?</h1>
+<p>I chose to write the implementation of the interpreter in Java. I know, I know, Java is not very sexy and sooo last year (decade?). All the cool kids are either doing it in Go or Rust today. I actually started doing it in Rust and with the pattern matching in Rust it felt like a great fit. But then I decided that I wanted a chance to test out the new features in recent Java version that I do not get to try out at work. It is also rare that I create a Java project from scratch so that was a small exercise. Trying out pattern match for switch (as mentioned <a href="https://belief-driven-design.com/looking-at-java-21-switch-pattern-matching-14648/">here</a>) was a fun experience. Java might not be sooo last year anymore.<br/> <br/> </p>
+<p>This might be sacrilegious to say but I definitely prefer the code structure of Java compared to Rust and Go. I have many small logical files with clear names instead of bigger files containing lots and lots of structs. And with Functional Interfaces, streams, pattern matching and records I do not really feel like I am missing out on the modern cool stuff that attracts people to Go and Rust.<br/> <br/> </p>
+<h1>What's next?</h1>
+<p>I left a bunch of TODO's in my code that I need to fix. I also have a few ideas for how to make the code prettier and easier to read. So I will work on that. I think it could be fun to throw the code into a backend and then create a website where you can REPL the Monkey language and explore the AST. So there is definitely still work to be done on the code even though I am done with the book.<br/> <br/></p>
+<p>Thorsten Ball has also written a successor to this book. It is called 'Writing a compiler in Go'. That is a project I will start maybe first thing in the new year. It is a little thicker than his interpreter book with around 330 pages.<br/> <br/> </p>
+<h1>I think you should read it too</h1>
+<p>The subject of the book was easy to digest because of the writing style of Ball. It is far from dry and he talks you through thing rather than just stating facts. If you are able and willing to do the code in the book you are rewarded with a working interpreter and a lot of green checkmarks due to the test driven development style of the book.<br/> <br/></p>
+
+
+  <section class="meta">
+    <h3>Discussion, links, and tweets</h3>
+    <section class="copy">
+      <!-- <a href="https://twitter.com/madsravn">
+      <img src="https://1.gravatar.com/avatar/cff6826c1faad4528b1ce15dda1f0e6d" height="50" width="50" /> -->
+      </a>
+
+      <p>
+        I'm a developer and CS graduate. <a href="https://twitter.com/madsravn">Follow me on Twitter</a>;
+        you'll enjoy my tweets.
+      </p>
+
+      
+      
+      
+
+      <p>
+        I also keep an "ask me anything" type of project in a repository on GitHub (naturally!). Feel free to <a href="https://github.com/madsravn/madsravn.github.com/issues">ask me a question</a>.
+      </p>
+      <br />
+    <p>
+      <a href="https://twitter.com/share" class="twitter-share-button" data-count="none" data-via="ravnmads">Tweet</a>
+      <a href="https://twitter.com/ravnmads" class="twitter-follow-button" data-show-count="false">Follow @ravnmads</a>
+      <script src="https://platform.twitter.com/widgets.js" type="text/javascript"></script>
+    </p>
+    </section>
+  </section>
+</section>
+    </div>
+
+
+</div>
+
+</body>
+
+</html>
