@@ -260,7 +260,8 @@ span.left {
     opacity: 1;
 }
 .content p {
-    display: inline-block
+    display: inline-block;
+    padding-bottom: 25px;
 }
 .content p code {
     font-size: 12px;
@@ -280,6 +281,18 @@ span.left {
     display: inline-block;
     opacity: 1;
 }
+
+.content ul {
+    font-family: 'Helvitica', Regular; 
+    font-size: 20px;
+    padding-bottom: 25px;
+}
+
+.content li {
+    font-family: 'Helvitica', Regular; 
+    font-size: 20px;
+}
+
 
 .pictureme {
   max-width: 100%;
